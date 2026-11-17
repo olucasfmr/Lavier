@@ -1,0 +1,7 @@
+[
+  {
+    "check": "phone-number",
+    "target": "nav__actions",
+    "reason": "The WhatsApp link is the clinic's own public booking channel, given in the brief (the Instagram bio of @laviercorpoemente links wa.me with this number); the number is never printed on the page."
+  }
+]

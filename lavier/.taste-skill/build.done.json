@@ -1,0 +1,11 @@
+{
+ "page": "dist/index.html",
+ "url": null,
+ "root": "dist",
+ "kind": "service",
+ "category": "estética facial e corporal",
+ "primary": "Agendar avaliação",
+ "rounds": 3,
+ "start": "2026-11-17T01:23:28.526Z",
+ "by": "gate.mjs --start"
+}

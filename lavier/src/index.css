@@ -1,0 +1,88 @@
+/* Tailwind without its preflight: the design kit (public/assets/system.css) owns the base, the grid,
+   the type scale and the buttons. Tailwind's theme carries the client's palette for page-level CSS. */
+/* The client's two faces, self-hosted (latin covers Portuguese): Cormorant Garamond for headings,
+   Montserrat for text. */
+@import "@fontsource/cormorant-garamond/latin-400.css";
+@import "@fontsource/cormorant-garamond/latin-500.css";
+@import "@fontsource/cormorant-garamond/latin-400-italic.css";
+@import "@fontsource-variable/montserrat/wght.css";
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+/* The kit's grid classes (start-7, span-6) share names with Tailwind utilities: keep Tailwind from
+   generating the colliding ones (start-7 would shift every split picture 28px right). */
+@source not inline("start-{1,2,3,4,5,6,7,8,9,10,11,12}");
+
+@theme {
+  --color-creme: #f7f1e8;
+  --color-rose: #e3a294;
+  --color-olive: #4a5233;
+  --color-gold: #c9a15b;
+  --font-cormorant: "Cormorant Garamond", Georgia, serif;
+  --font-montserrat: "Montserrat", system-ui, sans-serif;
+}
+
+/* Page CSS: only what sits inside a visual and the kit lacks. */
+
+/* The client's gold and rosé, as small marks only (never text: both fail 4.5:1 on creme). */
+.nav__logo .mark--initial { background: var(--olive); color: var(--gold); font-family: var(--font-display); font-weight: 500; }
+.hero__kicker .dot, [data-peek-to] .rows__name::after { background: var(--gold); }
+.hero__media { background: var(--rose); }
+.btn--primary .m-arrow { color: var(--gold); }
+
+/* peek-list: the photograph as tall as the list beside it */
+#tratamentos .frame--fill { height: min(520px, var(--ly-fit)); }
+
+/* photo-pair: one ratio, one light */
+.pair .frame { aspect-ratio: 5 / 4; overflow: hidden; border-radius: var(--r-lg); }
+.pair .frame__img { width: 100%; height: 100%; object-fit: cover; }
+
+/* picture-develops: the section's one photograph, on the split's right column */
+.develop { margin: 0; border-radius: var(--r-lg); overflow: hidden; height: min(560px, var(--ly-fit)); }
+.develop > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.steps-list { margin-bottom: var(--s-7); }
+.steps-list .rows__name small { display: block; font-weight: 400; color: var(--muted); font-size: var(--t-body); margin-top: var(--s-1); }
+
+/* Larissa: her line set large, the detail photograph on columns 8 to 12 (layout in Tailwind utilities) */
+.about__quote blockquote { margin: 0; font-size: var(--t-h3); line-height: 1.12; font-style: italic; }
+.about__photo { height: min(560px, var(--ly-fit) - 120px); overflow: hidden; border-radius: var(--r-lg); }
+.about__photo .frame__img { width: 100%; height: 100%; object-fit: cover; }
+
+/* the close and the footer on the client's rosé: olive ink on it reads 5:1, so the grey text level
+   becomes the ink there (the muted olive would fall to 3:1) */
+.closing--rose { --bg: var(--rose); --surface: #eab5a9; --muted: var(--p-ink); --line: color-mix(in oklab, var(--p-ink) 22%, transparent); --line-strong: color-mix(in oklab, var(--p-ink) 45%, transparent); background: var(--bg); }
+
+/* the footer's Instagram mark keeps the ink */
+.socials img { display: block; }
+
+/* tablet: splits stack, except the treatments list, which keeps its photograph beside it */
+@media (max-width: 1023px) {
+  .develop { height: auto; aspect-ratio: 2 / 1; margin-top: var(--s-6); }
+  .steps-list { margin-bottom: var(--s-6); }
+  .about__photo { height: auto; aspect-ratio: 16 / 9; margin-top: var(--s-6); }
+  #espaco .pair { grid-template-columns: 1fr 1fr; }
+  #espaco .pair > .frame { grid-column: auto; aspect-ratio: 3 / 5; }
+}
+@media (min-width: 640px) and (max-width: 1023px) {
+  #tratamentos [data-peek] { grid-template-columns: 1fr 1fr; }
+  #tratamentos [data-peek] > * { grid-column: auto; }
+  #tratamentos .frame--fill { height: 100%; min-height: 0; margin-top: 0; }
+}
+/* phone: a treatment row shows its line only while its photograph is the one on show (system.js
+   swaps the photograph on a tap), so the
+   list and its photograph share one screen; the kit lets sections grow on short phones */
+@media (max-width: 639px) {
+  #tratamentos [data-peek-to] p { display: none; }
+  #tratamentos [data-peek]:has([data-peek-for="corporal"]:not([hidden])) [data-peek-to="corporal"] p,
+  #tratamentos [data-peek]:has([data-peek-for="facial"]:not([hidden])) [data-peek-to="facial"] p,
+  #tratamentos [data-peek]:has([data-peek-for="integrativa"]:not([hidden])) [data-peek-to="integrativa"] p,
+  #tratamentos [data-peek]:has([data-peek-for="avaliacao"]:not([hidden])) [data-peek-to="avaliacao"] p { display: block; }
+  #tratamentos .frame--fill { flex: none; height: auto; aspect-ratio: 2 / 1; margin-top: 0; }
+  #tratamentos [data-peek] { gap: var(--s-5); }
+  #tratamentos .rows__value { display: none; } /* the short tag repeats the name on a phone */
+  #avaliacao .btn-row { display: none; } /* the phone bar carries the main action */
+  .develop { aspect-ratio: 16 / 7; margin-top: var(--s-5); }
+  #espaco .pair { grid-template-columns: 1fr; }
+  #espaco .pair > .frame { aspect-ratio: 16 / 10; }
+  main > .section > .wrap > .fill { flex: 1 0 auto; } /* never shrink under what it holds (320px phones) */
+}
