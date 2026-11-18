@@ -9,8 +9,8 @@ export default function Hero() {
       <div className="wrap">
         <div className="hero-text grid hero__grid">
           <div className="hero__text span-5">
-            <p className="hero__kicker"><span className="dot" aria-hidden="true" />Agenda de dezembro de 2026 aberta</p>
-            <h1 id="hero-h">Estética corporal e facial em Salvador</h1>
+            <p className="hero__kicker eyebrow">Agenda de dezembro de 2026 aberta</p>
+            <h1 id="hero-h">Estética corporal e facial <em>em Salvador</em></h1>
             <p className="hero__lead">
               Estética avançada e terapia integrativa com Larissa Xavier, esteticista e terapeuta. Cada protocolo
               começa por uma avaliação individual do seu corpo.
@@ -20,7 +20,7 @@ export default function Hero() {
               <a className="btn btn--secondary" href="#tratamentos">Ver tratamentos</a>
             </div>
           </div>
-          <div className="hero__media span-6 start-7">
+          <div className="hero__media frame--corners span-6 start-7">
             <Photo photo={photos.hero} eager sizes="(max-width: 1023px) 100vw, 628px" style={{ '--ly-pos': '50% 40%' }} />
             <div className="ly-float">
               <div className="ly-float__row"><span>Salvador, BA</span><span>Hora marcada</span></div>

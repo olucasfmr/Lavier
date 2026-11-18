@@ -2,7 +2,9 @@
 
 Site de uma página da Clínica Lavier (estética avançada e terapia integrativa, Salvador, BA), em
 React + Vite + Tailwind. O build gera HTML estático: o React roda só na hora do build
-(`scripts/prerender.mjs`), e o navegador recebe a página pronta, sem o React no cliente.
+(`scripts/prerender.mjs`), e o navegador recebe a página pronta, sem o React no cliente. O único
+JavaScript empacotado que vai para o site é `src/client.js` (rolagem suave com Lenis e parallax com
+GSAP ScrollTrigger).
 
 ## Rodar
 
@@ -20,24 +22,45 @@ Hostinger etc.).
 
 - `src/content.js`: todos os textos dos tratamentos, os links (WhatsApp e Instagram) e as fotos.
 - `src/components/`: Nav, Hero, Sections (tratamentos, espaço, avaliação, Larissa) e Footer.
+- `src/components/ui/background-gradient-glow.jsx`: o fundo da página (brilhos rosé, champanhe e
+  oliva nos cantos da tela, fixos enquanto a página rola). As cores estão no início do arquivo. O
+  atalho `@/` aponta para `src/` (`vite.config.js` e `jsconfig.json`).
+- `src/components/ui/parallax-scrolling.jsx` e `src/lib/parallax.js`: a faixa "Corpo e mente, em
+  harmonia" logo depois da abertura. Quatro camadas (foto, arco dourado, textos, onda creme) andam em
+  velocidades diferentes; as velocidades estão em `LAYERS`. Com "reduzir movimento" ligado no sistema,
+  nada se move e a rolagem é a nativa. Baseado no recurso de parallax da Osmo (osmo.supply), sem usar
+  as imagens dele.
 - `src/index.css`: tokens da paleta no Tailwind (`@theme`), fontes e o CSS próprio da página.
 - `public/assets/`: o kit de design (grade, tipografia, botões, menu, movimento). Não edite esses
   arquivos; ajuste a página em `src/index.css`.
 
-## Paleta e tipos
+## Identidade visual
 
-Creme `#F7F1E8` (fundo), oliva `#4A5233` (texto e botões), rosé `#E3A294` (fechamento da página e
-detalhes), dourado `#C9A15B` (marca, pontos e setas). Rosé e dourado não são usados como cor de texto
-sobre o creme, porque ficam abaixo do contraste mínimo de leitura (4,5:1).
-Títulos em Cormorant Garamond, texto em Montserrat, ambos servidos pelo próprio site.
+Segue o manual da marca (yin-ebook-59181448.figma.site):
+
+- **Cores:** creme `#F4E9E1` e branco quente `#FBF6F1` (fundos), verde escuro `#4A5233` (texto,
+  botões, faixa do manifesto e rodapé), rosé claro `#F5C6B8` (faixa da Larissa e itálicos sobre o
+  verde), rosé gold `#E3A294` e dourado `#C9A15B` (linhas, cantos, arco, setas), oliva `#6B7A4B` (no
+  brilho do fundo). O itálico dos títulos sobre fundo claro usa `#A86A5C`, um rosé escuro um pouco
+  mais fundo que o `#C98778` do manual, porque este fica em 2,6:1 e não é legível.
+- **Tipos:** títulos em Cormorant Garamond com a segunda parte em itálico rosé; textos em Montserrat
+  Light; rótulos e botões em Montserrat Medium, maiúsculas com espaçamento aberto, com um fio
+  dourado. Fontes servidas pelo próprio site.
+- **Formas:** cantos retos em fotos, cartões e botões; cantos dourados na foto da abertura e na logo
+  do rodapé.
+- **Logo:** o original fica em `design/lavier-logo-original.webp` (1234 px, fundo transparente, fora
+  do site publicado). O site usa versões leves geradas dele em `public/img/`: `lavier-wordmark.webp`
+  (só o nome, no menu, 17 KB), `lavier-logo-224.webp` (logo inteira no rodapé, sobre uma placa creme,
+  25 KB) e `lavier-icon-64.png` / `lavier-icon-180.png` (a figura, no ícone da aba e do celular).
 
 ## O que a clínica ainda precisa enviar
 
-1. **Fotos próprias.** As 10 fotos atuais são provisórias, do Unsplash (licença livre), escolhidas só
+1. **Fotos próprias.** As 11 fotos atuais são provisórias, do Unsplash (licença livre), escolhidas só
    para compor o layout. Substitua em `src/content.js` por fotos reais: o espaço, a Larissa atendendo,
    cada tratamento. A seção "O espaço" em especial deve mostrar o espaço de verdade.
 2. **Retrato da Larissa** para a seção dela (hoje há uma foto de detalhe no lugar).
-3. **Logo em SVG.** O site usa a inicial "L" e o nome em Cormorant enquanto o logo oficial não chega.
+3. **Logo em SVG** (opcional). O site já usa a logo enviada em WebP; um SVG ou PNG só com o nome
+   deixaria o menu mais nítido do que o recorte atual.
 4. **Lista real de protocolos**, com nomes e, se quiser, preços. Hoje o site mostra as quatro
    categorias que o Instagram confirma (corporal, facial, terapia integrativa, avaliação).
 5. **Endereço** (rua e bairro), se a clínica quiser aparecer no mapa. Sem ele, o site diz só

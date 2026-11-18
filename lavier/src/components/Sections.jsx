@@ -79,10 +79,10 @@ export function Evaluation() {
 // no portrait until the clinic sends one.
 export function Larissa() {
   return (
-    <section className="section" id="larissa" aria-labelledby="larissa-h">
+    <section className="section ground-rose" id="larissa" aria-labelledby="larissa-h">
       <div className="wrap">
         <div className="section-head">
-          <h2 id="larissa-h">Larissa Xavier, esteticista e terapeuta</h2>
+          <h2 id="larissa-h">Larissa Xavier, <em>esteticista e terapeuta</em></h2>
         </div>
         <div className="grid grid--top fill">
           <div className="span-6 flex flex-col gap-6">

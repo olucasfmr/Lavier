@@ -51,7 +51,8 @@ export default function Nav() {
         <div className="nav__actions">
           <BookButton />
         </div>
-        <button className="nav__toggle" type="button" aria-expanded="false" aria-label="Abrir menu">
+        <button className="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
+          <span className="nav__toggle-label">Menu</span>
           <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
             <path d="M2 5h14M2 13h14" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
           </svg>

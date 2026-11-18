@@ -1,18 +1,25 @@
 {
- "start": "2026-11-17T01:23:28.526Z",
- "round": 0,
+ "start": "2026-11-18T17:10:46.125Z",
+ "round": 1,
  "idle": 0,
  "errors": 0,
- "status": "pass",
+ "status": "done",
  "history": [
   {
-   "at": "2026-11-17T01:25:28.555Z",
+   "at": "2026-11-18T17:13:00.646Z",
    "mode": "manual",
-   "status": "pass",
-   "fails": 0,
-   "round": 0,
+   "status": "fail",
+   "fails": 2,
+   "round": 1,
    "reused": false,
    "stopHookActive": false
+  },
+  {
+   "at": "2026-11-18T17:13:18.414Z",
+   "mode": "done",
+   "status": "done",
+   "reason": "Manter a tradução (aria-label em português no system.js do kit)",
+   "round": 1
   }
  ],
  "max": 3,
@@ -24,14 +31,79 @@
   "category": "estética facial e corporal",
   "primary": "Agendar avaliação",
   "rounds": 3,
-  "start": "2026-11-17T01:23:28.526Z",
+  "start": "2026-11-18T17:10:46.125Z",
   "by": "gate.mjs --start"
  },
  "manual": true,
- "fp": "3c44ff5f5dc8dfac",
+ "roundKey": "80b4ec6e84cba756:75a79195",
+ "roundFree": false,
+ "idleFree": false,
+ "blockKey": null,
+ "fp": "80b4ec6e84cba756",
  "page": "dist/index.html",
  "found": {
   "fails": [
+   {
+    "check": "kit-edited",
+    "where": "dist/assets/system.js",
+    "msg": "dist/assets/system.js is not this version's kit copy (edited, or copied from an older version)",
+    "fix": "copy it back from <skill>/assets/system.js (from this skill version, also when it came from an older one) and make the change in the page's own CSS or markup",
+    "hard": true,
+    "widths": [],
+    "ids": [
+     "kit-edited"
+    ],
+    "wheres": [
+     "dist/assets/system.js"
+    ]
+   },
+   {
+    "check": "kit-edited",
+    "where": "public/assets/system.js",
+    "msg": "public/assets/system.js is not this version's kit copy (edited, or copied from an older version)",
+    "fix": "copy it back from <skill>/assets/system.js (from this skill version, also when it came from an older one) and make the change in the page's own CSS or markup",
+    "hard": true,
+    "widths": [],
+    "ids": [
+     "kit-edited"
+    ],
+    "wheres": [
+     "public/assets/system.js"
+    ]
+   },
+   {
+    "check": "section-gaps",
+    "where": "main#top > section.hero.hero--split / section#harmonia",
+    "msg": "64px between these sections, -62% against the median 168px",
+    "fix": "use one gap between sections (all within 25% of each other)",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "section-gaps"
+    ],
+    "wheres": [
+     "main#top > section.hero.hero--split / section#harmonia"
+    ]
+   },
+   {
+    "check": "effect-kind",
+    "where": "(the page)",
+    "msg": "a service page (--type) moves with the scroll: scroll libraries or timelines (ScrollTrigger, ScrollSmoother, Lenis): effects fit tech, gaming and software pages and a product with a technical subject, never a place, shop or service page (house rule)",
+    "fix": "take the scroll-driven motion off: on a place, shop or service page the page scrolls plainly and the parts sit still",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "effect-kind"
+    ],
+    "wheres": [
+     "(the page)"
+    ]
+   },
    {
     "check": "phone-number",
     "where": "header.nav > div.wrap.nav__bar > div.nav__actions > a.btn.btn--primary \"https://wa.me/5571981538910?text=Ol%C3%A\"",
@@ -51,16 +123,6 @@
   ],
   "warns": [
    {
-    "check": "nav",
-    "where": "header.nav > div.wrap.nav__bar > a.nav__logo \"L Lavier\"",
-    "msg": "the nav is lopsided: its first item starts 8px inside the content's edge (80px), while its last ends on the other edge",
-    "fix": "start the nav's first item and end its last on the content's two edges",
-    "widths": [
-     1440
-    ],
-    "from": "consistency"
-   },
-   {
     "check": "scroll-reveal",
     "where": "section#avaliacao > div.wrap.grid > figure.develop.span-6",
     "msg": "starts an animation (1.6 s) the moment it is scrolled into view (an IntersectionObserver) on img (inside a dealt moment's section, [data-moment]: an enter moment is expected on every kind; its still is judged under reduced motion)",
@@ -73,8 +135,8 @@
    },
    {
     "check": "copy-buttons",
-    "where": "header.nav > div.wrap.nav__bar > div.nav__actions > a.btn.btn--primary \"Agendar avaliação\"",
-    "msg": "\"Agendar avaliação\" does not start with a verb (book, buy, try, start, get, see...) (and 1 more like it: \"Ver tratamentos\")",
+    "where": "header.nav > div.wrap.nav__bar > div.nav__actions > a.btn.btn--primary \"AGENDAR AVALIAÇÃO\"",
+    "msg": "\"AGENDAR AVALIAÇÃO\" does not start with a verb (book, buy, try, start, get, see...) (and 1 more like it: \"VER TRATAMENTOS\")",
     "fix": "label buttons with a verb and what the visitor gets (\"Book a room\", \"Start free trial\")",
     "widths": [
      1440
@@ -82,9 +144,52 @@
     "from": "consistency"
    },
    {
+    "check": "copy-actions",
+    "where": "header.nav > div.wrap.nav__bar > div.nav__actions > a.btn.btn--primary \"AGENDAR AVALIAÇÃO\"",
+    "msg": "2 labels for one target /5571981538910?text=Ol%C3%A1!%20Quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Lavier.: \"AGENDAR AVALIAÇÃO\", \"Agendar avaliação\"",
+    "fix": "few actions, one wording: at most 2 in the hero, the main action word for word in nav, hero and close",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "section-gaps",
+    "where": "section#harmonia / section#tratamentos",
+    "msg": "117px between these sections, -30% against the median 168px",
+    "fix": "use one gap between sections (all within 25% of each other)",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "section-gaps",
+    "where": "section#tratamentos / section#espaco",
+    "msg": "223px between these sections, +33% against the median 168px",
+    "fix": "use one gap between sections (all within 25% of each other)",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "section-gaps",
+    "where": "section#espaco / section#avaliacao",
+    "msg": "218px between these sections, +30% against the median 168px",
+    "fix": "use one gap between sections (all within 25% of each other)",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency"
+   },
+   {
     "check": "section-gaps",
     "where": "section#avaliacao / section#larissa",
-    "msg": "337px between these sections, +53% against the median 221px",
+    "msg": "337px between these sections, +53% against the median 221px of gaps at a change of ground",
     "fix": "use one gap between sections (all within 25% of each other)",
     "widths": [
      1440
@@ -93,22 +198,12 @@
    },
    {
     "check": "photo-credit",
-    "where": "div.wrap > div.hero-text.grid > div.hero__media.span-6 > img",
-    "msg": "7 library sources (unsplash): the page credits unsplash, photo-1591343395082-e120087004b4, photo-1600334129128-685c5582fd35, photo-1540555700478-4be289fbecef, photo-1590439471364-192aa70c0b53, ...; confirm each shows the client's own product, place or people",
+    "where": "div.wrap > div.hero-text.grid > div.hero__media.frame--corners > img",
+    "msg": "8 library sources (unsplash): the page credits unsplash, photo-1591343395082-e120087004b4, photo-1560750588-73207b1ef5b8, photo-1600334129128-685c5582fd35, photo-1540555700478-4be289fbecef, ...; confirm each shows the client's own product, place or people",
     "fix": "confirm the library photograph shows the client's own product, place or people; otherwise replace it",
     "widths": [
      1440,
      390
-    ],
-    "from": "consistency"
-   },
-   {
-    "check": "nav-labels",
-    "where": "header.nav > div.wrap.nav__bar > a.nav__logo \"L Lavier\"",
-    "msg": "\"L Lavier\" opens a section headed \"Estética corporal e facial em Salvador\"",
-    "fix": "name each nav link after the heading of the section it opens",
-    "widths": [
-     1440
     ],
     "from": "consistency"
    },
@@ -154,8 +249,8 @@
    },
    {
     "check": "button-contrast",
-    "where": "div.hero-text.grid > div.hero__text.span-5 > div.btn-row > a.btn.btn--secondary \"Ver tratamentos\"",
-    "msg": "the button \"Ver tratamentos\" (#e6e2d7) stands only 1.15:1 off the ground around it: it reads as part of the ground, or as switched off",
+    "where": "div.hero-text.grid > div.hero__text.span-5 > div.btn-row > a.btn.btn--secondary \"VER TRATAMENTOS\"",
+    "msg": "the button \"VER TRATAMENTOS\" (#ece8e0) stands only 1.05:1 off the ground around it: it reads as part of the ground, or as switched off",
     "fix": "give the button a fill that stands at least 1.5:1 off what is around it, or an outline in the ink",
     "widths": [
      1440,
@@ -184,10 +279,20 @@
     "from": "consistency"
    },
    {
-    "check": "section-gaps",
-    "where": "main#top > section.hero.hero--split / section#tratamentos",
-    "msg": "118px between these sections, -44% against the median 211px",
-    "fix": "use one gap between sections (all within 25% of each other)",
+    "check": "section-air",
+    "where": "section#harmonia / section#tratamentos",
+    "msg": "568px of air between the content of these two sections: 128-480px (64-600px WARN) (SR-3)",
+    "fix": "keep 128-480px of air between the content of neighbouring sections (112-420px on a phone): the sections' padding (--padt, --padb)",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "nav",
+    "where": "header.nav > div.wrap.nav__bar > button.nav__toggle \"MENU\"",
+    "msg": "the nav is lopsided: its last item ends 17px inside the content's edge (366px), while its first starts on the other edge",
+    "fix": "start the nav's first item and end its last on the content's two edges",
     "widths": [
      390
     ],
@@ -196,18 +301,8 @@
    {
     "check": "photo-set",
     "where": "div.wrap > div.grid.grid--top > div.frame.frame--photo > img.frame__img:nth-of-type(1) \"photo-1600334129128-685c5582fd35\"",
-    "msg": "6 photographs in more than one look: lightness from 0.25 to 0.81; the odd one out is photo-1600334129128-685c5582fd35",
+    "msg": "5 photographs in more than one look: lightness from 0.24 to 0.80; saturation from 0.14 to 0.56; the odd one out is photo-1600334129128-685c5582fd35",
     "fix": "grade the photographs to one look (light, colour, warmth), or replace the odd one out",
-    "widths": [
-     390
-    ],
-    "from": "consistency"
-   },
-   {
-    "check": "empty-area",
-    "where": "footer#contact \"Agende sua avaliação na Lavier\"",
-    "msg": "40% of the section is empty: 544px of empty rows between its content, 4% beside content that covers under half the container, in its 1491px of rows (WARN over 35%, FAIL over 50%)",
-    "fix": "fill the section: a picture or a second column beside the words, or more of its own content; the section stays one or two screens tall (T-height)",
     "widths": [
      390
     ],
@@ -216,12 +311,74 @@
   ],
   "crashed": [],
   "seconds": {
-   "consistency": 111,
-   "layout": 8
+   "consistency": 124,
+   "layout": 9
   }
  },
- "open": [],
+ "open": [
+  {
+   "check": "kit-edited",
+   "where": "dist/assets/system.js",
+   "msg": "dist/assets/system.js is not this version's kit copy (edited, or copied from an older version)",
+   "fix": "copy it back from <skill>/assets/system.js (from this skill version, also when it came from an older one) and make the change in the page's own CSS or markup",
+   "widths": [],
+   "ids": [
+    "kit-edited"
+   ],
+   "wheres": [
+    "dist/assets/system.js"
+   ]
+  },
+  {
+   "check": "kit-edited",
+   "where": "public/assets/system.js",
+   "msg": "public/assets/system.js is not this version's kit copy (edited, or copied from an older version)",
+   "fix": "copy it back from <skill>/assets/system.js (from this skill version, also when it came from an older one) and make the change in the page's own CSS or markup",
+   "widths": [],
+   "ids": [
+    "kit-edited"
+   ],
+   "wheres": [
+    "public/assets/system.js"
+   ]
+  }
+ ],
  "waived": [
+  {
+   "check": "section-gaps",
+   "where": "main#top > section.hero.hero--split / section#harmonia",
+   "msg": "64px between these sections, -62% against the median 168px",
+   "fix": "use one gap between sections (all within 25% of each other)",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "section-gaps"
+   ],
+   "wheres": [
+    "main#top > section.hero.hero--split / section#harmonia"
+   ],
+   "reason": "The parallax band the client asked for is a full-bleed photograph layer on its own dark green ground; it starts at the band top, so the gap to the hero is the hero bottom padding, and the ground change separates the two."
+  },
+  {
+   "check": "effect-kind",
+   "where": "(the page)",
+   "msg": "a service page (--type) moves with the scroll: scroll libraries or timelines (ScrollTrigger, ScrollSmoother, Lenis): effects fit tech, gaming and software pages and a product with a technical subject, never a place, shop or service page (house rule)",
+   "fix": "take the scroll-driven motion off: on a place, shop or service page the page scrolls plainly and the parts sit still",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "effect-kind"
+   ],
+   "wheres": [
+    "(the page)"
+   ],
+   "reason": "The client asked in chat for this parallax model with GSAP ScrollTrigger and Lenis smooth scroll, and chose to keep Lenis after the conflict with this rule was put to them; it runs only in #harmonia and stops under reduced motion."
+  },
   {
    "check": "phone-number",
    "where": "header.nav > div.wrap.nav__bar > div.nav__actions > a.btn.btn--primary \"https://wa.me/5571981538910?text=Ol%C3%A\"",
@@ -240,6 +397,7 @@
    "reason": "The WhatsApp link is the clinic's own public booking channel, given in the brief (the Instagram bio of @laviercorpoemente links wa.me with this number); the number is never printed on the page."
   }
  ],
- "warnCount": 16,
- "at": "2026-11-17T01:25:28.560Z"
+ "warnCount": 18,
+ "at": "2026-11-18T17:13:18.417Z",
+ "doneReason": "Manter a tradução (aria-label em português no system.js do kit)"
 }

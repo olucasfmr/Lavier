@@ -26,6 +26,7 @@ export const photos = {
   ritual: { src: unsplash('1590439471364-192aa70c0b53'), w: 1256, h: 1000, alt: 'Toalha enrolada, escova de corpo, sabonete e sal em pratos de cerâmica clara' },
   oleo: { src: unsplash('1515377905703-c4788e51af15'), w: 1000, h: 1250, alt: 'Gotas de óleo caem de um frasco âmbar na palma da mão' },
   menu: { src: unsplash('1600428877878-1a0fd85beda8'), w: 640, h: 320, alt: 'Sérum em frasco âmbar, rolo de quartzo rosa e pedra gua sha sobre fundo claro' },
+  harmonia: { src: unsplash('1560750588-73207b1ef5b8'), w: 1920, h: 1400, alt: '' },
 }
 
 export const treatments = [

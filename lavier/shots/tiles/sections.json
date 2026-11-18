@@ -5,8 +5,8 @@
    "width": 1440,
    "height": 900,
    "navH": 72,
-   "scrollHeight": 5400,
-   "screens": 6,
+   "scrollHeight": 6300,
+   "screens": 7,
    "sections": [
     {
      "n": 1,
@@ -27,8 +27,8 @@
     {
      "n": 2,
      "tag": "section",
-     "id": "tratamentos",
-     "cls": "section",
+     "id": "harmonia",
+     "cls": "section parallax ground-inverse",
      "top": 900,
      "h": 900,
      "hScreens": 1,
@@ -43,7 +43,7 @@
     {
      "n": 3,
      "tag": "section",
-     "id": "espaco",
+     "id": "tratamentos",
      "cls": "section",
      "top": 1800,
      "h": 900,
@@ -59,7 +59,7 @@
     {
      "n": 4,
      "tag": "section",
-     "id": "avaliacao",
+     "id": "espaco",
      "cls": "section",
      "top": 2700,
      "h": 900,
@@ -75,7 +75,7 @@
     {
      "n": 5,
      "tag": "section",
-     "id": "larissa",
+     "id": "avaliacao",
      "cls": "section",
      "top": 3600,
      "h": 900,
@@ -90,9 +90,9 @@
     },
     {
      "n": 6,
-     "tag": "footer",
-     "id": "contact",
-     "cls": "footer closing g2m ground-surface closing--rose",
+     "tag": "section",
+     "id": "larissa",
+     "cls": "section ground-rose",
      "top": 4500,
      "h": 900,
      "hScreens": 1,
@@ -103,6 +103,22 @@
        "scrollY": 4500
       }
      ]
+    },
+    {
+     "n": 7,
+     "tag": "footer",
+     "id": "contact",
+     "cls": "footer closing g2m ground-inverse",
+     "top": 5400,
+     "h": 900,
+     "hScreens": 1,
+     "offGrid": 0,
+     "tiles": [
+      {
+       "file": "desktop-sec-07-a.jpg",
+       "scrollY": 5400
+      }
+     ]
     }
    ],
    "consoleErrors": []
@@ -111,8 +127,8 @@
    "width": 390,
    "height": 844,
    "navH": 56,
-   "scrollHeight": 5908,
-   "screens": 7,
+   "scrollHeight": 6969,
+   "screens": 8.26,
    "sections": [
     {
      "n": 1,
@@ -133,8 +149,8 @@
     {
      "n": 2,
      "tag": "section",
-     "id": "tratamentos",
-     "cls": "section",
+     "id": "harmonia",
+     "cls": "section parallax ground-inverse",
      "top": 844,
      "h": 844,
      "hScreens": 1,
@@ -149,7 +165,7 @@
     {
      "n": 3,
      "tag": "section",
-     "id": "espaco",
+     "id": "tratamentos",
      "cls": "section",
      "top": 1688,
      "h": 844,
@@ -165,7 +181,7 @@
     {
      "n": 4,
      "tag": "section",
-     "id": "avaliacao",
+     "id": "espaco",
      "cls": "section",
      "top": 2532,
      "h": 844,
@@ -181,7 +197,7 @@
     {
      "n": 5,
      "tag": "section",
-     "id": "larissa",
+     "id": "avaliacao",
      "cls": "section",
      "top": 3376,
      "h": 844,
@@ -196,21 +212,41 @@
     },
     {
      "n": 6,
-     "tag": "footer",
-     "id": "contact",
-     "cls": "footer closing g2m ground-surface closing--rose",
+     "tag": "section",
+     "id": "larissa",
+     "cls": "section ground-rose",
      "top": 4220,
-     "h": 1688,
-     "hScreens": 2,
+     "h": 844,
+     "hScreens": 1,
      "offGrid": 0,
      "tiles": [
       {
        "file": "mobile-sec-06-a.jpg",
        "scrollY": 4220
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "tag": "footer",
+     "id": "contact",
+     "cls": "footer closing g2m ground-inverse",
+     "top": 5064,
+     "h": 1905,
+     "hScreens": 2.26,
+     "offGrid": 217,
+     "tiles": [
+      {
+       "file": "mobile-sec-07-a.jpg",
+       "scrollY": 5064
       },
       {
-       "file": "mobile-sec-06-b.jpg",
-       "scrollY": 5064
+       "file": "mobile-sec-07-b.jpg",
+       "scrollY": 5908
+      },
+      {
+       "file": "mobile-sec-07-c.jpg",
+       "scrollY": 6125
       }
      ]
     }
@@ -218,5 +254,5 @@
    "consoleErrors": []
   }
  },
- "at": "2026-11-17T01:09:05.139Z"
+ "at": "2026-11-18T16:43:54.390Z"
 }

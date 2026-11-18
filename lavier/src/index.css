@@ -22,13 +22,57 @@
   --font-montserrat: "Montserrat", system-ui, sans-serif;
 }
 
-/* Page CSS: only what sits inside a visual and the kit lacks. */
+/* Page CSS: the Lavier identity over the kit, then what sits inside a visual. */
 
-/* The client's gold and rosé, as small marks only (never text: both fail 4.5:1 on creme). */
-.nav__logo .mark--initial { background: var(--olive); color: var(--gold); font-family: var(--font-display); font-weight: 500; }
-.hero__kicker .dot, [data-peek-to] .rows__name::after { background: var(--gold); }
-.hero__media { background: var(--rose); }
+/* Identity: square corners everywhere (frames, cards, buttons), as in the brand manual */
+html[data-radius] { --r-sm: 0px; --r-md: 0px; --r-lg: 0px; --r-btn: 0px; }
+
+/* Identity: text in Montserrat Light, labels and buttons in Medium caps with open tracking */
+body { font-weight: 300; }
+/* Light only from 16px up: the small lines (labels, captions, the legal row) take Regular, where the
+   thin strokes of Montserrat Light stop reading well */
+:is(.t-small, .t-label, small, figcaption, .footer__legal, .credits, .ly-float__row, .menu-col a span) { font-weight: 400; }
+.btn:not(.btn--xl) { font-weight: 500; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; }
+.eyebrow { display: flex; align-items: center; gap: var(--s-3); font: 500 13px/1.4 var(--font-text);
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink); }
+/* the gold line follows the words, so every label still starts on the page's left line */
+.eyebrow::after { content: ""; flex: none; width: 40px; height: 1px; background: var(--gold); }
+
+/* Identity: a heading's second part in Cormorant italic rosé (the deep rosé that reads on light
+   grounds; the manual's rosé claro on the dark green band) */
+:is(h1, h2) :is(em, .muted) { font-style: italic; color: var(--rose-text); }
+.ground-inverse :is(h1, h2) :is(em, .muted), .ground-inverse .about__quote blockquote { color: var(--rose-light); }
+.ground-inverse .link { color: var(--p-inv-ink); }
+
+/* The client's gold and rosé as small marks only (never body text: both fail 4.5:1 on creme) */
+[data-peek-to] .rows__name::after { background: var(--gold); }
+.hero__media { background: var(--rose-light); }
 .btn--primary .m-arrow { color: var(--gold); }
+
+/* Identity: thin gold corner marks on the hero photograph, as on the manual's logo card */
+.frame--corners::before, .frame--corners::after { content: ""; position: absolute; z-index: 2; width: 44px; height: 44px;
+  pointer-events: none; border: 1px solid var(--gold); }
+.frame--corners::before { top: var(--s-5); left: var(--s-5); border-right: 0; border-bottom: 0; }
+.frame--corners::after { right: var(--s-5); bottom: var(--s-5); border-left: 0; border-top: 0; }
+
+/* the client's logo: the bar shows the wordmark file at half its pixel size */
+.nav__logo.logo--word img { display: block; width: 124px; height: auto; }
+/* the footer sits on the dark green: the logo keeps its own colours on a creme plate (its CORPO E
+   MENTE line is green), with the gold corner marks of the manual */
+.nav__logo.logo--full { position: relative; display: inline-block; padding: var(--s-4) var(--s-5); background: var(--creme); }
+.nav__logo.logo--full img { display: block; width: 112px; height: auto; }
+.closing__cta > .btn--xl { flex: none; }
+.nav__logo.logo--full::before, .nav__logo.logo--full::after { width: 20px; height: 20px; }
+.nav__logo.logo--full::before { top: var(--s-2); left: var(--s-2); }
+.nav__logo.logo--full::after { right: var(--s-2); bottom: var(--s-2); }
+.ground-inverse .socials img { filter: invert(1); }
+@media (max-width: 639px) {
+  .btn--xl, .btn--xl.btn--wide { font: 500 13px/1 var(--font-text); letter-spacing: 0.16em; text-transform: uppercase; }
+  .nav__logo.logo--word img { width: 104px; }
+  /* a label that wraps on a phone drops its gold line, which would float off the words */
+  .eyebrow { letter-spacing: 0.14em; }
+  .eyebrow::after { display: none; }
+}
 
 /* peek-list: the photograph as tall as the list beside it */
 #tratamentos .frame--fill { height: min(520px, var(--ly-fit)); }
@@ -48,9 +92,10 @@
 .about__photo { height: min(560px, var(--ly-fit) - 120px); overflow: hidden; border-radius: var(--r-lg); }
 .about__photo .frame__img { width: 100%; height: 100%; object-fit: cover; }
 
-/* the close and the footer on the client's rosé: olive ink on it reads 5:1, so the grey text level
-   becomes the ink there (the muted olive would fall to 3:1) */
-.closing--rose { --bg: var(--rose); --surface: #eab5a9; --muted: var(--p-ink); --line: color-mix(in oklab, var(--p-ink) 22%, transparent); --line-strong: color-mix(in oklab, var(--p-ink) 45%, transparent); background: var(--bg); }
+/* the Larissa band on the manual's rosé claro: a deeper green ink there reads 7:1 for running text, so the grey level and the
+   italic accents become the ink (the deep rosé would fall to 2.8:1) */
+.ground-rose { --ink: #353b25; --p-ink: #353b25; --bg: var(--rose-light); --surface: #f9dacf; --muted: var(--p-ink); --line: color-mix(in oklab, var(--p-ink) 22%, transparent); --line-strong: color-mix(in oklab, var(--p-ink) 45%, transparent); background: var(--bg); color: var(--ink); }
+.ground-rose :is(h1, h2) :is(em, .muted), .ground-rose .about__quote blockquote { color: var(--p-ink); }
 
 /* the footer's Instagram mark keeps the ink */
 .socials img { display: block; }
@@ -85,4 +130,66 @@
   #espaco .pair { grid-template-columns: 1fr; }
   #espaco .pair > .frame { aspect-ratio: 16 / 10; }
   main > .section > .wrap > .fill { flex: 1 0 auto; } /* never shrink under what it holds (320px phones) */
+}
+
+/* phone: the 44px target override makes the social link inline-flex; keep the icon centred in its circle */
+@media (max-width: 639px) { .footer__legal .socials a { justify-content: center; } }
+
+/* Parallax band (#harmonia, src/components/ui/parallax-scrolling.jsx): three picture layers beside the
+   section's .wrap and the words on the grid; GSAP moves each at its own speed. At rest (no script,
+   reduced motion) it is a still, finished composition. */
+#harmonia { position: relative; overflow: hidden; background: var(--olive); }
+#harmonia > .parallax__layer { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; max-width: none; pointer-events: none; will-change: transform; }
+/* the photograph sits low under the green so the creme words keep 4.5:1 or more over it */
+#harmonia > .parallax__layer--photo { object-fit: cover; opacity: 0.2; mix-blend-mode: luminosity; }
+#harmonia > .parallax__layer--arc { object-fit: contain; object-position: 84% 50%; }
+#harmonia > .parallax__layer--front { object-fit: fill; }
+.parallax__text { display: flex; flex-direction: column; gap: var(--s-5); }
+.parallax__text h2 { margin: 0; }
+.parallax__quote { margin: 0; max-width: 20ch; font: var(--display-weight) clamp(28px, 2.6vw, 40px)/1.12 var(--font-display);
+  letter-spacing: var(--display-tracking); color: var(--ink); text-wrap: balance; }
+.parallax__quote em { font-style: italic; color: var(--rose-light); }
+.parallax__eyebrow { color: var(--ink); }
+.parallax__lede { margin: 0; max-width: 44ch; font-size: var(--t-lead); line-height: 1.6; color: var(--ink); }
+@media (max-width: 639px) { #harmonia > .parallax__layer--arc { object-position: 50% 30%; opacity: 0.6; } }
+
+/* Lenis smooth scroll (lenis/dist/lenis.css) */
+html.lenis, html.lenis body { height: auto; }
+.lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
+/* Mobile layout (antislop-layoutmobile) */
+/* the menu button says what it opens: the word beside the icon, on its 44px tap area */
+.nav__toggle .nav__toggle-label { font: 500 12px/1 var(--font-text); letter-spacing: 0.16em; text-transform: uppercase; }
+@media (max-width: 1023px) {
+  .nav__toggle { display: inline-flex; align-items: center; gap: var(--s-2); width: auto; padding-inline: var(--s-4); }
+}
+/* touch tablets: footer links and text links get the 44px tap height the kit gives phones, and the
+   four link columns sit in one row so the footer still fits its screen */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .footer__col a, .link { display: inline-flex; align-items: center; min-height: 44px; }
+  .footer__col li + li { margin-top: 0; }
+  .closing__links > .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .closing__links > .grid > .closing__brand-desk { grid-column: 1 / -1; }
+  .closing__links > .grid > .footer__col { grid-column: auto; }
+  .footer__col ul { gap: 0; }
+  /* the logo plate and its line side by side, a smaller plate */
+  .closing__links > .grid > .closing__brand-desk { display: flex; flex-direction: row; align-items: center; gap: var(--s-6); }
+  .closing__brand-desk > * + * { margin-top: 0; }
+  .closing__brand-desk .nav__logo.logo--full img { width: 92px; }
+}
+/* the photo pair stacks only where two side by side get too narrow (under 480px) */
+@media (min-width: 480px) and (max-width: 639px) {
+  #espaco .pair { grid-template-columns: 1fr 1fr; }
+  #espaco .pair > .frame { aspect-ratio: 4 / 5; }
+}
+/* phone: the brand block sits in the close (screen one of the footer), not in the links row */
+.closing__brand { display: none; }
+@media (max-width: 639px) {
+  .closing__brand { display: flex; flex-direction: column; margin-top: var(--s-8); }
+  .closing__brand-desk { display: none; }
+}
+@media (max-width: 1023px) {
+  .footer__legal .socials a { width: 44px; height: 44px; }
+  .footer__legal .credits { display: inline-flex; align-items: center; min-height: 44px; }
 }

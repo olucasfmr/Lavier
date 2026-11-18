@@ -92,7 +92,7 @@ function nav() {
       item.querySelector('.nav__link').after(btn);
     }
     const label = item.querySelector('.nav__link')?.textContent.trim() || 'section';
-    btn.setAttribute('aria-label', `Show ${label} links`);
+    btn.setAttribute('aria-label', `Mostrar links de ${label}`);
     btn.setAttribute('aria-expanded', 'false');
     btn.addEventListener('click', () => {
       const open = !item.classList.contains('is-expanded');

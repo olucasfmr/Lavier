@@ -42,11 +42,15 @@ export function Photo({ photo, className, sizes = '(max-width: 1023px) 100vw, 50
   )
 }
 
-// The footer shows the name alone: the 13px initial tile there sits beside the line and reads as a stray dot.
-export function Logo({ mark = true }) {
+// The client's logo, cut from the original (design/lavier-logo-original.webp) at twice its shown size:
+// the bar shows only the wordmark (LAVIER over CORPO E MENTE), the footer the whole logo.
+export function Logo({ full = false }) {
+  const img = full
+    ? { src: 'img/lavier-logo-224.webp', width: 224, height: 231, loading: 'lazy' }
+    : { src: 'img/lavier-wordmark.webp', width: 248, height: 102 }
   return (
-    <a className="nav__logo" href="#top">
-      {mark && <span className="mark mark--initial" aria-hidden="true">L</span>}Lavier
+    <a className={`nav__logo logo ${full ? 'logo--full frame--corners' : 'logo--word'}`} href="#top">
+      <img {...img} alt="Lavier Corpo e Mente" />
     </a>
   )
 }

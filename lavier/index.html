@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR" data-type="service" data-radius="soft" data-buttons="tonal" data-motion>
+<html lang="pt-BR" data-type="service" data-radius="sharp" data-buttons="tonal" data-motion>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -10,8 +10,9 @@
 <meta property="og:description" content="Estética avançada e terapia integrativa com Larissa Xavier, esteticista e terapeuta. Agende sua avaliação pelo WhatsApp.">
 <meta property="og:image" content="share.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<meta name="theme-color" content="#f7f1e8">
+<link rel="icon" href="img/lavier-icon-64.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="img/lavier-icon-180.png">
+<meta name="theme-color" content="#fbf6f1">
 <!-- <link rel="canonical" href="https://[domínio da clínica]/"> : entra quando o domínio existir -->
 <meta name="site-kind" content="other">
 <meta name="page-type" content="service">
@@ -21,21 +22,24 @@
 <link rel="stylesheet" href="assets/motion/motion.css">
 <link rel="stylesheet" href="assets/layout/layout.css">
 <link rel="stylesheet" href="assets/icons/icon.css">
-<!-- Paleta da cliente (start.mjs brand): creme de fundo, oliva como tinta e ação, rosé nas superfícies,
-     dourado só em detalhes (marca, pontos, setas). Tipos da cliente: Cormorant Garamond + Montserrat. -->
+<!-- Paleta da identidade visual Lavier (sistema de cores do manual): creme #F4E9E1, rosé claro #F5C6B8,
+     rosé gold #E3A294, rosé escuro #C98778, dourado #C9A15B, oliva #6B7A4B, verde escuro #4A5233.
+     Verde escuro é a tinta e a ação; o rosé escuro de leitura (#A86A5C) é o itálico dos títulos sobre
+     fundo claro, porque o #C98778 do manual fica em 2,6:1 ali. Tipos: Cormorant Garamond + Montserrat. -->
 <style>
 :root {
-  --p-bg: #f7f1e8; --p-surface: #f2ddd4; --p-ink: #3a4128; --p-muted: #5a5f49;
-  --p-accent: #4a5233; --p-accent-ink: #f7f1e8; --p-action: #4a5233; --p-action-ink: #f7f1e8;
-  --p-inv-bg: #3a4128; --p-inv-surface: #464c34; --p-inv-ink: #f7f1e8; --p-inv-muted: #c0beb0;
-  --p-inv-accent: #f7f1e8; --p-inv-accent-ink: #3a4128; --p-inv-action: #f7f1e8; --p-inv-action-ink: #3a4128;
+  --p-bg: #fbf6f1; --p-surface: #f4e9e1; --p-ink: #4a5233; --p-muted: #5a6540;
+  --p-accent: #4a5233; --p-accent-ink: #fbf6f1; --p-action: #4a5233; --p-action-ink: #fbf6f1;
+  --p-inv-bg: #4a5233; --p-inv-surface: #56603d; --p-inv-ink: #fbf6f1; --p-inv-muted: #f5c6b8;
+  --p-inv-accent: #f5c6b8; --p-inv-accent-ink: #4a5233; --p-inv-action: #f4e9e1; --p-inv-action-ink: #4a5233;
   --font-display: "Cormorant Garamond", Georgia, serif;
   --font-text: "Montserrat Variable", "Montserrat", system-ui, sans-serif;
-  --display-weight: 500;
-  --display-tracking: -0.01em;
-  --display-tracking-xl: -0.015em;
-  --ly-scale: 1.04;
-  --rose: #e3a294; --gold: #c9a15b; --olive: #4a5233;
+  --display-weight: 400;
+  --display-tracking: -0.02em;
+  --display-tracking-xl: -0.035em;
+  --ly-scale: 1.06;
+  --creme: #f4e9e1; --rose-light: #f5c6b8; --rose: #e3a294; --rose-deep: #c98778; --rose-text: #a86a5c;
+  --gold: #c9a15b; --olive-mid: #6b7a4b; --olive: #4a5233;
 }
 </style>
 <script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>

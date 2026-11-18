@@ -4,22 +4,28 @@ import { Arrow, BookButton, Logo } from './ui.jsx'
 // footer.closing: row 1 the dealt close-type, row 2 the dealt footer-columns, ordered as the nav.
 export default function Footer() {
   return (
-    <footer className="footer closing g2m ground-surface closing--rose" id="contact" aria-labelledby="close-h">
+    <footer className="footer closing g2m ground-inverse" id="contact" aria-labelledby="close-h">
       <div className="wrap">
         <div className="closing__cta close--type">
           <div className="section-head">
-            <h2 id="close-h">Agende sua avaliação na Lavier</h2>
+            <h2 id="close-h">Agende sua avaliação <em>na Lavier</em></h2>
             <p>Atendimento com hora marcada em Salvador. A conversa começa pelo WhatsApp da clínica.</p>
           </div>
           <a className="btn btn--primary btn--xl" href={links.whatsapp} target="_blank" rel="noopener">
             {MAIN_ACTION}
             <Arrow />
           </a>
+          {/* phone only: the brand block joins the close, so the footer's first screen is not an empty
+              green field; the links row's copy of it hides there (index.css) */}
+          <div className="closing__brand stack-4">
+            <Logo full />
+            <p className="footer__lede">Estética avançada e terapia integrativa em Salvador.</p>
+          </div>
         </div>
         <div className="closing__links">
           <div className="grid">
-            <div className="span-4 stack-4">
-              <Logo mark={false} />
+            <div className="span-4 stack-4 closing__brand-desk">
+              <Logo full />
               <p className="footer__lede">Estética avançada e terapia integrativa em Salvador.</p>
             </div>
             <div className="span-2 footer__col">
