@@ -32,6 +32,7 @@ html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; backgro
 .cap h2 { margin: 0; font: 400 76px/1.04 "Cormorant Garamond"; letter-spacing: -.01em; color: var(--ink-deep); }
 .cap p { margin: 0; font: 300 24px/1.5 "Montserrat"; color: var(--ink); max-width: 25ch; }
 .cap .part { will-change: transform, opacity; }
+.cap p.eyebrow { font: 500 16px/1 "Montserrat"; letter-spacing: .24em; max-width: none; }
 
 /* the browser window with the real site */
 #win { position: absolute; left: 736px; top: 182px; width: 1056px; transform-origin: 50% 60%; }
@@ -54,9 +55,9 @@ html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; backgro
 .tap { position: absolute; z-index: 41; width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 50%; border: 2px solid var(--gold); background: rgb(201 161 91 / .18); pointer-events: none; }
 
 /* the close on the olive band */
-#outro { position: absolute; inset: 0; z-index: 50; background: var(--olive); color: var(--bg); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0;
-  background-image: radial-gradient(68% 70% at 22% 8%, rgb(251 246 241 / .08) 0, rgb(251 246 241 / .02) 50%, transparent 80%), radial-gradient(40% 62% at 70% 0%, rgb(251 246 241 / .05) 0, transparent 100%); }
-#outro .edge { position: absolute; left: 0; right: 0; top: -1px; width: 100%; height: 120px; }
+#outro { position: absolute; inset: 0; z-index: 50; background: var(--olive); overflow: visible; color: var(--bg); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0;
+  background-image: radial-gradient(46% 46% at 28% 58%, rgb(251 246 241 / .07) 0, rgb(251 246 241 / .02) 55%, transparent 100%), radial-gradient(34% 40% at 74% 62%, rgb(251 246 241 / .05) 0, transparent 100%); }
+#outro .edge { position: absolute; left: 0; top: -139px; width: 1920px; height: 140px; overflow: visible; }
 .plate { position: relative; padding: 22px 30px; background: var(--creme); }
 .plate img { display: block; width: 132px; height: auto; }
 .plate::before, .plate::after { content: ""; position: absolute; width: 22px; height: 22px; border: 1px solid var(--gold); }
@@ -81,7 +82,7 @@ html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; backgro
   </section>
 
   <div class="cap" id="cap2">
-    <p class="eyebrow part">Lavier Corpo &amp; Mente</p>
+    <p class="eyebrow part">Site novo</p>
     <h2 class="part">O novo site da <em>Lavier Corpo &amp; Mente</em></h2>
     <p class="part">Estética avançada e terapia integrativa em Salvador.</p>
   </div>
@@ -110,6 +111,10 @@ html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; backgro
   <div class="tap" id="tap"></div>
 
   <section id="outro">
+    <svg class="edge" viewBox="0 0 1920 140" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 78 C 380 8, 760 118, 1150 66 S 1680 6, 1920 46 L1920 141 L0 141 Z" fill="#4a5233"/>
+      <path d="M0 78 C 380 8, 760 118, 1150 66 S 1680 6, 1920 46" fill="none" stroke="#c9a15b" stroke-width="1.5"/>
+    </svg>
     <div class="plate" id="plate"><img src="/img/lavier-logo-224.webp" alt=""></div>
     <h2 id="outroH"></h2>
     <div class="btn" id="btn">Agendar avaliação<span class="chip"><svg viewBox="0 0 12 12"><path d="M1 6h8"/><path d="M4.5 2.5 8 6l-3.5 3.5"/></svg></span></div>
@@ -261,7 +266,7 @@ window.renderAt = async function (t) {
   const o = $('outro');
   const kO = p(t, 16.85, 17.75, inOut);
   o.style.visibility = t >= 16.8 ? 'visible' : 'hidden';
-  o.style.clipPath = `inset(${(1 - kO) * 100}% 0 0 0)`;
+  o.style.transform = `translateY(${(1 - kO) * 1240}px)`;
   rise($('plate'), p(t, 17.45, 18.3), 30, 8);
   outroW.forEach((w, i) => { const a = 17.75 + i * .1; rise(w, p(t, a, a + .85), 34, 10); });
   const kb = p(t, 18.35, 19.15); rise($('btn'), kb, 30, 8);
