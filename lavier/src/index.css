@@ -65,7 +65,6 @@ body { font-weight: 300; }
 .nav__logo.logo--full::before, .nav__logo.logo--full::after { width: 20px; height: 20px; }
 .nav__logo.logo--full::before { top: var(--s-2); left: var(--s-2); }
 .nav__logo.logo--full::after { right: var(--s-2); bottom: var(--s-2); }
-.ground-inverse .socials img { filter: invert(1); }
 @media (max-width: 639px) {
   .btn--xl, .btn--xl.btn--wide { font: 500 13px/1 var(--font-text); letter-spacing: 0.16em; text-transform: uppercase; }
   .nav__logo.logo--word img { width: 104px; }
@@ -97,8 +96,6 @@ body { font-weight: 300; }
 .ground-rose { --ink: #353b25; --p-ink: #353b25; --bg: var(--rose-light); --surface: #f9dacf; --muted: var(--p-ink); --line: color-mix(in oklab, var(--p-ink) 22%, transparent); --line-strong: color-mix(in oklab, var(--p-ink) 45%, transparent); background: var(--bg); color: var(--ink); }
 .ground-rose :is(h1, h2) :is(em, .muted), .ground-rose .about__quote blockquote { color: var(--p-ink); }
 
-/* the footer's Instagram mark keeps the ink */
-.socials img { display: block; }
 
 /* tablet: splits stack, except the treatments list, which keeps its photograph beside it */
 @media (max-width: 1023px) {
@@ -132,8 +129,6 @@ body { font-weight: 300; }
   main > .section > .wrap > .fill { flex: 1 0 auto; } /* never shrink under what it holds (320px phones) */
 }
 
-/* phone: the 44px target override makes the social link inline-flex; keep the icon centred in its circle */
-@media (max-width: 639px) { .footer__legal .socials a { justify-content: center; } }
 
 /* Parallax band (#harmonia, src/components/ui/parallax-scrolling.jsx): three picture layers beside the
    section's .wrap and the words on the grid; GSAP moves each at its own speed. At rest (no script,
@@ -143,7 +138,6 @@ body { font-weight: 300; }
 /* the photograph sits low under the green so the creme words keep 4.5:1 or more over it */
 #harmonia > .parallax__layer--photo { object-fit: cover; opacity: 0.2; mix-blend-mode: luminosity; }
 #harmonia > .parallax__layer--arc { object-fit: contain; object-position: 84% 50%; }
-#harmonia > .parallax__layer--front { object-fit: fill; }
 .parallax__text { display: flex; flex-direction: column; gap: var(--s-5); }
 .parallax__text h2 { margin: 0; }
 .parallax__quote { margin: 0; max-width: 20ch; font: var(--display-weight) clamp(28px, 2.6vw, 40px)/1.12 var(--font-display);
@@ -159,37 +153,278 @@ html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth iframe { pointer-events: none; }
 
 /* Mobile layout (antislop-layoutmobile) */
-/* the menu button says what it opens: the word beside the icon, on its 44px tap area */
-.nav__toggle .nav__toggle-label { font: 500 12px/1 var(--font-text); letter-spacing: 0.16em; text-transform: uppercase; }
+/* the menu button says what it opens: the word beside the icon, on its 44px tap area. The word is
+   generated content because system.js rewrites the button's markup (bars or cross) on every toggle. */
+.nav__toggle::before { content: "Menu"; font: 500 12px/1 var(--font-text); letter-spacing: 0.16em; text-transform: uppercase; }
 @media (max-width: 1023px) {
   .nav__toggle { display: inline-flex; align-items: center; gap: var(--s-2); width: auto; padding-inline: var(--s-4); }
 }
-/* touch tablets: footer links and text links get the 44px tap height the kit gives phones, and the
-   four link columns sit in one row so the footer still fits its screen */
-@media (min-width: 640px) and (max-width: 1023px) {
+/* touch screens from 640px (tablets upright and on their side, where the kit's phone rule no longer
+   reaches): footer links, text links and the pill's links get the 44px tap height */
+@media (min-width: 640px) and (max-width: 1023px), (min-width: 1024px) and (pointer: coarse) {
   .footer__col a, .link { display: inline-flex; align-items: center; min-height: 44px; }
   .footer__col li + li { margin-top: 0; }
-  .closing__links > .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  .closing__links > .grid > .closing__brand-desk { grid-column: 1 / -1; }
-  .closing__links > .grid > .footer__col { grid-column: auto; }
   .footer__col ul { gap: 0; }
-  /* the logo plate and its line side by side, a smaller plate */
-  .closing__links > .grid > .closing__brand-desk { display: flex; flex-direction: row; align-items: center; gap: var(--s-6); }
-  .closing__brand-desk > * + * { margin-top: 0; }
-  .closing__brand-desk .nav__logo.logo--full img { width: 92px; }
+  .footer__legal .credits { display: inline-flex; align-items: center; min-height: 44px; }
+  .tubelight__link { min-height: 44px; }
+}
+/* footer under 1024px, composed as on the desktop: the brand block (logo plate over its line) opens
+   the links row on its own line, the four link columns sit side by side wherever they fit (from 480px;
+   under that "Tratamentos" is wider than a quarter of the column, so they pair up two by two) */
+@media (min-width: 480px) and (max-width: 1023px) {
+  .closing__links > .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .closing__links > .grid > .closing__brand { grid-column: 1 / -1; }
+  .closing__links > .grid > .footer__col { grid-column: auto; }
+}
+/* phone: the legal row keeps the desktop's order, the line on the left and the Instagram button on the
+   right (the line wraps beside it), the credits on the line below */
+@media (max-width: 639px) {
+  .footer__legal { flex-wrap: wrap; align-items: center; }
+  .footer__legal > span:first-child { flex: 1 1 0; min-width: 0; }
+  .footer__legal > .credits { flex-basis: 100%; }
 }
 /* the photo pair stacks only where two side by side get too narrow (under 480px) */
 @media (min-width: 480px) and (max-width: 639px) {
   #espaco .pair { grid-template-columns: 1fr 1fr; }
   #espaco .pair > .frame { aspect-ratio: 4 / 5; }
 }
-/* phone: the brand block sits in the close (screen one of the footer), not in the links row */
-.closing__brand { display: none; }
 @media (max-width: 639px) {
-  .closing__brand { display: flex; flex-direction: column; margin-top: var(--s-8); }
-  .closing__brand-desk { display: none; }
-}
-@media (max-width: 1023px) {
-  .footer__legal .socials a { width: 44px; height: 44px; }
   .footer__legal .credits { display: inline-flex; align-items: center; min-height: 44px; }
 }
+
+/* Continuous page: the colour bands (manifesto, Larissa, footer) end in the logo's organic wave
+   instead of a straight edge. A mask cuts the band, so its dips show the same fixed glow as the
+   transparent sections around it, and a gold line follows the edge. */
+.band { -webkit-mask: url('/img/band-mask.svg') center / 100% 100% no-repeat; mask: url('/img/band-mask.svg') center / 100% 100% no-repeat; }
+.band.band--top { -webkit-mask-image: url('/img/band-mask-top.svg'); mask-image: url('/img/band-mask-top.svg'); }
+.band > .band-edge { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; max-width: none; object-fit: fill; pointer-events: none; }
+
+/* The evaluation steps as a timeline: a gold line down the left, a marker on each step */
+.steps { position: relative; }
+/* the line and markers are drawn by CSS in the gutter left of the column, so the step text stays on
+   the page line; motion.js only moves two numbers: --draw (the line, 0 to 1) and --lit (a marker) */
+.steps { --draw: 1; }
+.steps::before { content: ""; position: absolute; left: -16px; top: 12px; bottom: var(--s-6); width: 1px; background: var(--gold);
+  transform: scaleY(var(--draw)); transform-origin: 50% 0; }
+.steps .steps-list > li { --lit: 1; position: relative; }
+.steps .steps-list > li::before { content: ""; position: absolute; left: -20px; top: calc(var(--s-4) + 7px); width: 9px; height: 9px; border-radius: 50%;
+  background: color-mix(in srgb, var(--gold) calc(var(--lit) * 100%), var(--rose)); transform: scale(calc(0.55 + 0.45 * var(--lit))); }
+.steps .steps-list > li:first-child::before { top: 7px; }
+
+/* tablet held upright: the manifesto band's words sit lower, so the tall screen is not
+   left as an empty green field under them */
+@media (min-width: 640px) and (max-width: 1023px) {
+  #harmonia { --padt: 30svh; }
+  #harmonia .parallax__text { gap: var(--s-7); }
+  /* one close button look: the big one takes the regular height and label on tablets */
+  .closing__cta > .btn--xl { height: var(--btn-h, 44px); font: 500 13px/1 var(--font-text); letter-spacing: 0.16em; text-transform: uppercase; }
+}
+
+
+/* phone: the space between sections is even all the way down. The wave bands meet with little air,
+   the plain sections had up to 251px; the treatments list starts lower and its photograph is a
+   little shorter, the Espaco photographs a little taller, the evaluation photograph shorter */
+@media (max-width: 639px) {
+  #tratamentos { --padt: 140px; }
+  #tratamentos .frame--fill { aspect-ratio: 7 / 3; }
+  #espaco .pair > .frame { aspect-ratio: 3 / 2; }
+  .develop { aspect-ratio: 12 / 5; }
+}
+
+/* Instagram button and profile card (src/components/ui/instagram-card.jsx, after vinodjangid07 on
+   Uiverse.io, MIT). Five stacked squares fan out on hover or keyboard focus, the real Instagram mark
+   on the top one; a creme card with the clinic's profile rises above. Square corners and the brand's
+   rosé, gold and creme, the colours of the footer it sits in. */
+.ig { position: relative; flex: none; }
+.ig__tooltip { position: absolute; right: 0; bottom: calc(100% + var(--s-5)); z-index: 5; width: 264px; opacity: 0; visibility: hidden;
+  transform: translateY(12px); pointer-events: none; transition: opacity 0.3s, transform 0.3s, visibility 0.3s; box-shadow: 0 14px 32px rgba(0, 0, 0, 0.28); }
+.ig:hover .ig__tooltip, .ig:focus-within .ig__tooltip { opacity: 1; visibility: visible; transform: none; pointer-events: auto; }
+.ig__profile { padding: var(--s-4); background: var(--creme); border: 1px solid var(--gold); color: var(--p-ink); }
+.ig__user { display: flex; align-items: center; gap: var(--s-3); }
+.ig__avatar { width: 48px; height: 48px; flex: none; background: #fff; border: 1px solid var(--gold); }
+.ig__details { display: flex; flex-direction: column; min-width: 0; }
+.ig__name { font: 500 19px/1.15 var(--font-display); color: var(--p-ink); }
+.ig__handle { font-size: 13px; font-weight: 500; color: var(--p-ink); }
+.ig__about { margin: var(--s-3) 0 0; font-size: 13px; font-weight: 400; line-height: 1.45; color: var(--p-muted); }
+.ig__icon { position: relative; display: block; width: 55px; height: 55px; color: var(--rose-light); text-decoration: none; }
+.ig__layer { position: relative; display: block; width: 55px; height: 55px; transition: transform 0.3s; }
+.ig__layer > span { position: absolute; inset: 0; border: 1px solid var(--rose-light); transition: transform 0.3s, opacity 0.3s, box-shadow 0.3s; }
+/* the top square in the footer's own colours: rosé claro with the mark in the dark green */
+.ig__glyph { display: grid; place-items: center; border-color: var(--rose-light) !important; background: var(--rose-light); }
+.ig__glyph { color: var(--olive); }
+.ig__glyph svg { display: block; width: 24px; height: 24px; }
+.ig__text { position: absolute; left: 50%; bottom: -5px; transform: translateX(-50%); opacity: 0; font-size: 13px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; color: var(--rose-light); transition: bottom 0.3s ease, opacity 0.3s ease; }
+.ig__icon:is(:hover, :focus-visible) .ig__layer { transform: rotate(-35deg) skew(20deg); }
+.ig__icon:is(:hover, :focus-visible) .ig__layer > span { box-shadow: -1px 1px 3px var(--rose-light); }
+.ig__icon:is(:hover, :focus-visible) .ig__layer > span:nth-child(1) { opacity: 0.2; }
+.ig__icon:is(:hover, :focus-visible) .ig__layer > span:nth-child(2) { opacity: 0.4; transform: translate(5px, -5px); }
+.ig__icon:is(:hover, :focus-visible) .ig__layer > span:nth-child(3) { opacity: 0.6; transform: translate(10px, -10px); }
+.ig__icon:is(:hover, :focus-visible) .ig__layer > span:nth-child(4) { opacity: 0.8; transform: translate(15px, -15px); }
+.ig__icon:is(:hover, :focus-visible) .ig__layer > span:nth-child(5) { opacity: 1; transform: translate(20px, -20px); }
+.ig__icon:is(:hover, :focus-visible) .ig__text { bottom: -35px; opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .ig__tooltip, .ig__layer, .ig__layer > span, .ig__text { transition: none; }
+  .ig__icon:is(:hover, :focus-visible) .ig__layer { transform: none; }
+}
+/* phone: the button sits at the legal row's right end, as on the desktop; the card opens from the row's
+   right edge and is never wider than the row, so even hidden it never widens the page */
+@media (max-width: 639px) {
+  .footer__legal { position: relative; }
+  .ig { position: static; }
+  .ig__tooltip { right: 0; left: auto; width: min(264px, 100%); }
+}
+
+/* Accordion height (shadcn): the open and close animation of the FAQ answers */
+@theme inline {
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+}
+@keyframes accordion-down { from { height: 0; } to { height: var(--radix-accordion-content-height); } }
+@keyframes accordion-up { from { height: var(--radix-accordion-content-height); } to { height: 0; } }
+
+/* FAQ (#faq, components/ui/text-reveal-faqs.jsx): the page's split, the questions as rows closed by
+   the page's 1px line, the chevron in gold, the open question in the deep rosé italic of the headings */
+.faq__help { margin-top: var(--s-6); color: var(--ink); }
+.accordion__item { border-bottom: 1px solid var(--line); }
+.accordion__item:first-child { border-top: 1px solid var(--line); }
+.accordion__header { margin: 0; font: var(--display-weight) clamp(21px, 1.2vw + 15px, 26px)/1.2 var(--font-display); }
+/* the chevron sits at the right edge, out of the text, so a long question wraps as one block */
+.accordion__trigger { position: relative; display: block; width: 100%; min-height: 56px;
+  padding: var(--s-4) var(--s-7) var(--s-4) 0; background: none; border: 0; color: var(--ink); text-align: left; cursor: pointer;
+  font: var(--display-weight) clamp(21px, 1.2vw + 15px, 26px)/1.2 var(--font-display); letter-spacing: var(--display-tracking); }
+/* a deeper rosé than the headings' italic: the question is smaller than 24px on a phone, so it needs 4.5:1 */
+.accordion__trigger:hover, .accordion__trigger[data-state="open"] { color: #965a4c; }
+.accordion__trigger[data-state="open"] { font-style: italic; }
+/* the chevron in the deeper reading gold, so the open/closed sign keeps 3:1 against the page */
+.accordion__trigger::after { content: ""; position: absolute; right: 4px; top: 50%; width: 8px; height: 8px; margin-top: -6px;
+  border-right: 1.5px solid var(--gold-deep); border-bottom: 1.5px solid var(--gold-deep); transform: rotate(45deg); transition: transform 0.2s ease; }
+.accordion__trigger[data-state="open"]::after { transform: translateY(4px) rotate(-135deg); }
+.accordion__body { padding: 0 0 var(--s-5); }
+.accordion__text { margin: 0; max-width: 60ch; font-size: var(--t-body); line-height: 1.7; color: var(--ink); }
+@media (prefers-reduced-motion: reduce) { .accordion__content { animation: none !important; } .accordion__trigger::after { transition: none; } }
+
+/* Tubelight menu (components/ui/tubelight-navbar.jsx) in the bar's colours: a creme pill with the
+   page's line, the lamp of the logo's gold glowing over the lit link. From 1024px it takes
+   the place of the bar's links; below that the Menu button's full-screen list stays. */
+.nav__pill { display: none; }
+@media (min-width: 1024px) {
+  .nav:not(.is-open) .nav__links { display: none; }
+  .nav__pill { display: flex; align-self: stretch; align-items: center; margin-inline: auto; }
+}
+.tubelight { display: flex; align-items: center; gap: var(--s-1); padding: 4px; border: 1px solid var(--line); border-radius: 999px; background: var(--p-bg); }
+.tubelight__item { position: static; display: flex; align-items: center; }
+/* the Tratamentos panel opens from the pill as it does from the kit's links: hover or focus, after 150ms */
+@media (min-width: 1024px) {
+  .tubelight__item:hover > .nav__menu, .tubelight__item:focus-within > .nav__menu {
+    opacity: 1; visibility: visible; transform: none; transition-duration: 200ms, 200ms, 0s; transition-delay: 150ms, 150ms, 150ms; }
+  .tubelight__item:hover > .tubelight__link .chev, .tubelight__item:focus-within > .tubelight__link .chev { transform: rotate(180deg); }
+}
+.tubelight__link .chev { transition: transform 0.2s; }
+.tubelight__link { position: relative; z-index: 0; display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 var(--s-5);
+  border-radius: 999px; color: var(--ink); font-size: 14px; font-weight: 500; text-decoration: none; transition: color 0.2s, background-color 0.2s; }
+.tubelight__link:hover { color: var(--rose-text); }
+.tubelight__link.is-active { color: var(--ink); }
+.tubelight__link .chev { width: 10px; height: 10px; }
+.tubelight__lamp { position: absolute; inset: 0; z-index: -1; border-radius: 999px; pointer-events: none; }
+/* the lamp's bar marks the section on screen: the deeper gold keeps it 3:1 against the bar; the glow stays soft */
+.tubelight__bar { position: absolute; top: -5px; left: 50%; width: 32px; height: 3px; transform: translateX(-50%); border-radius: 3px 3px 0 0; background: var(--gold-deep); }
+.tubelight__glow { position: absolute; border-radius: 999px; background: color-mix(in oklab, var(--gold) 28%, transparent); }
+.tubelight__glow--wide { width: 48px; height: 22px; top: -8px; left: -8px; filter: blur(10px); }
+.tubelight__glow--mid { width: 32px; height: 22px; top: -4px; left: 0; filter: blur(10px); }
+.tubelight__glow--core { width: 16px; height: 16px; top: 0; left: 8px; filter: blur(4px); }
+/* 1024 to 1279: the pill tightens so the logo, the five links and the booking button fit the bar */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .tubelight__link { padding: 0 var(--s-3); font-size: 13px; }
+  .nav__bar { gap: var(--s-4); }
+}
+/* the FAQ rows get room to breathe, so the list holds its half of the screen */
+.accordion__trigger { min-height: 68px; }
+@media (max-width: 639px) { .accordion__trigger { min-height: 60px; } }
+
+/* Sticky footer (components/ui/sticky-footer.jsx): soft beams of creme light across the dark green,
+   in the footer's own colours; on a desktop screen tall enough for it, the footer's content is fixed
+   under the page and the footer box (already cut by its wave mask) shows it as the page scrolls away */
+.sticky-footer {
+  background-image:
+    radial-gradient(68% 70% at 22% 8%, rgb(251 246 241 / 0.07) 0, rgb(251 246 241 / 0.02) 50%, transparent 80%),
+    radial-gradient(28% 62% at 34% 0%, rgb(251 246 241 / 0.05) 0, rgb(251 246 241 / 0.01) 80%, transparent 100%),
+    radial-gradient(26% 58% at 12% 14%, rgb(251 246 241 / 0.05) 0, rgb(251 246 241 / 0.01) 80%, transparent 100%);
+}
+@media (min-width: 1024px) and (min-height: 860px) {
+  footer.closing.sticky-footer > .wrap { position: fixed; left: 0; right: 0; bottom: 0; z-index: 0; margin-inline: auto;
+    padding-block: var(--padt) calc(var(--padb) + var(--bar)); }
+}
+/* the treatment rows are controls (hover, focus or tap swaps the photograph): they show the pointer
+   and keep a 44px tap height (the first row has no top padding) */
+[data-peek-to] { cursor: pointer; min-height: 44px; }
+
+/* non-text contrast: the tonal secondary button keeps its tint and gains a 1px edge at 3.6:1, so the
+   control is found by its shape, not only by its words */
+.btn--secondary { border: 1px solid color-mix(in srgb, var(--ink) 70%, var(--bg)); }
+
+/* High-end finish (high-end-visual-design, adapted to the brand manual: square corners, the client's
+   faces and palette). One spring ease for every interface move, frames as a tray around each photograph,
+   the arrow in its own chip, a menu that turns and rises, the bar floating free of the top, paper grain. */
+:root { --ease-spring: cubic-bezier(0.32, 0.72, 0, 1); }
+.ig__tooltip, .ig__layer, .ig__layer > span, .ig__text, .accordion__trigger::after, .tubelight__link, .btn {
+  transition-timing-function: var(--ease-spring); }
+
+/* double frame: the photograph sits in a lighter tray with a gold hairline around it, drawn as shadows
+   outside the box (no layout change, square like the manual), and a soft olive-tinted ambient shadow */
+:is(.frame--photo, .develop, .hero__media) {
+  --tray: color-mix(in srgb, var(--bg) 40%, #fff);
+  box-shadow: 0 0 0 6px var(--tray), 0 0 0 7px color-mix(in srgb, var(--gold) 50%, transparent),
+    0 28px 56px -28px rgb(53 59 37 / 0.30); }
+.develop { position: relative; }
+/* the inner edge: a faint light line inside the photograph, as glass in its tray */
+:is(.frame--photo, .develop)::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.22); }
+
+/* button inside the button: the arrow in a square gold-tinted chip, flush with the button's right edge */
+.btn:has(> .btn__chip) { --chip: calc(var(--btn-h, 44px) - 12px); position: relative; padding-right: calc(var(--chip) + 6px + var(--s-4)); }
+.btn--xl:has(> .btn__chip) { --chip: 52px; }
+.btn__chip { position: absolute; right: 6px; top: 50%; display: grid; place-items: center; width: var(--chip); height: var(--chip);
+  background: color-mix(in srgb, var(--gold) 18%, transparent); border: 1px solid color-mix(in srgb, var(--gold) 55%, transparent);
+  transform: translateY(-50%); transition: transform 600ms var(--ease-spring), background-color 600ms var(--ease-spring); }
+.btn__chip .m-arrow { margin: 0; }
+:is(.btn:hover, .btn:focus-visible) > .btn__chip { background: color-mix(in srgb, var(--gold) 32%, transparent); }
+:is(.btn:focus-visible) > .btn__chip .m-arrow__stem { opacity: 1; transform: none; }
+:is(.btn:focus-visible) > .btn__chip .m-arrow__head { transform: translateX(3px); }
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover > .btn__chip { transform: translate(2px, calc(-50% - 1px)) scale(1.05); }
+  .btn:hover > .btn__chip .m-arrow__stem { opacity: 1; transform: none; }
+  .btn:hover > .btn__chip .m-arrow__head { transform: translateX(3px); }
+}
+@media (min-width: 640px) and (max-width: 1023px) { .btn--xl:has(> .btn__chip) { --chip: calc(var(--btn-h, 44px) - 12px); } }
+@media (max-width: 639px) { .btn--xl:has(> .btn__chip) { --chip: 36px; } }
+
+/* the menu (phones and tablets): the icon turns as the kit swaps bars and cross, and the links rise one
+   after another out of the sheet */
+@media (prefers-reduced-motion: no-preference) {
+  .nav__toggle svg { animation: lv-turn 520ms var(--ease-spring); }
+  .nav.is-open .nav__links > .nav__item { animation: lv-rise 700ms var(--ease-spring) both; }
+  .nav.is-open .nav__links > .nav__item:nth-child(2) { animation-delay: 50ms; }
+  .nav.is-open .nav__links > .nav__item:nth-child(3) { animation-delay: 100ms; }
+  .nav.is-open .nav__links > .nav__item:nth-child(4) { animation-delay: 150ms; }
+  .nav.is-open .nav__links > .nav__item:nth-child(5) { animation-delay: 200ms; }
+  .nav.is-open .nav__actions { animation: lv-rise 700ms var(--ease-spring) 260ms both; }
+}
+@keyframes lv-turn { from { opacity: 0; transform: rotate(-90deg) scale(0.5); } }
+@keyframes lv-rise { from { opacity: 0; transform: translateY(28px); } }
+
+/* desktop: the bar floats 12px under the top, inside the page's gutters, with a gold hairline, a soft
+   shadow and frosted creme (blur only on this fixed bar); its content keeps the page's column */
+@media (min-width: 1024px) {
+  .nav { top: var(--s-3); width: min(100% - 2 * (var(--gut) - 20px), var(--container) + 40px); margin-inline: auto;
+    border: 1px solid color-mix(in srgb, var(--gold) 45%, transparent); background: color-mix(in srgb, var(--bg) 86%, transparent);
+    -webkit-backdrop-filter: blur(16px) saturate(1.1); backdrop-filter: blur(16px) saturate(1.1);
+    box-shadow: 0 18px 40px -24px rgb(53 59 37 / 0.30); }
+  .nav > .nav__bar, .nav__menu > .wrap { width: auto; padding-inline: 20px; }
+  .nav__menu { left: -1px; right: -1px; border: 1px solid color-mix(in srgb, var(--gold) 45%, transparent); border-top-color: var(--line);
+    box-shadow: 0 28px 56px -28px rgb(53 59 37 / 0.30); }
+}
+
+/* paper: a faint fixed grain over the whole page, never in the way of a tap (z 60: over the bar's 50) */
+body::after { content: ""; position: fixed; inset: 0; z-index: 60; pointer-events: none; opacity: 0.05;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .21 0 0 0 0 .23 0 0 0 0 .15 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") repeat; }

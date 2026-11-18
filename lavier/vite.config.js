@@ -10,11 +10,11 @@ export default defineConfig({
   base: './',
   plugins: [react(), tailwindcss()],
   resolve: { alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) } },
-  // two entries: index.html (React, used only by the prerender and dev) and src/client.js, the one
+  // two entries: index.html (React, used only by the prerender and dev) and src/client.jsx, the one
   // script the built page keeps (smooth scroll + parallax); the manifest tells the prerender its files
   build: {
     assetsDir: 'build',
     manifest: true,
-    rollupOptions: { input: { index: fileURLToPath(new URL('./index.html', import.meta.url)), client: fileURLToPath(new URL('./src/client.js', import.meta.url)) } },
+    rollupOptions: { input: { index: fileURLToPath(new URL('./index.html', import.meta.url)), client: fileURLToPath(new URL('./src/client.jsx', import.meta.url)) } },
   },
 })

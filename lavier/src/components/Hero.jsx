@@ -9,7 +9,6 @@ export default function Hero() {
       <div className="wrap">
         <div className="hero-text grid hero__grid">
           <div className="hero__text span-5">
-            <p className="hero__kicker eyebrow">Agenda de dezembro de 2026 aberta</p>
             <h1 id="hero-h">Estética corporal e facial <em>em Salvador</em></h1>
             <p className="hero__lead">
               Estética avançada e terapia integrativa com Larissa Xavier, esteticista e terapeuta. Cada protocolo

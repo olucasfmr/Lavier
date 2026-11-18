@@ -15,8 +15,13 @@
     "reason": "The parallax band the client asked for is a full-bleed photograph layer on its own dark green ground; it starts at the band top, so the gap to the hero is the hero bottom padding, and the ground change separates the two."
   },
   {
-    "check": "scroll-reveal",
-    "target": "footer__col:nth-of-type(5) > ul > li:nth-of-type(1) > a",
-    "reason": "The footer links have no scroll-driven style; the 0.1 s colour change is the kit hover transition firing when the checker resting pointer lands on the link as the page scrolls under it (same artefact measured in a browser on the close button)."
+    "check": "section-gaps",
+    "target": "section#larissa / footer#contact",
+    "reason": "The client asked for a continuous page with no breaks between sections: the Larissa band and the footer each end in a masked wave edge with the gold line, and the fixed glow shows in the dip between them, so the two grounds never touch."
+  },
+  {
+    "check": "copy-headings",
+    "target": "h2#faq-h",
+    "reason": "Perguntas frequentes is the Portuguese section noun for Questions (the FAQ the client asked for); the checker reads English section nouns only, and FAQ entries may be questions (copy.md)."
   }
 ]

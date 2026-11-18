@@ -1,97 +1,101 @@
 consistency  C:\Users\Administrador\Documents\site larissa kelvin\lavier\dist\index.html
+--quick: not checked: scroll-linked (stepping), scroll-reveal (the reveal walk; IntersectionObserver reveals are read), hover-spill, hidden-visual, loop-pause, forms, reduced-motion, the dead-IntersectionObserver walk (hidden content is read with scripts off and under reduced motion), hover-move. Still told: IntersectionObserver reveals (scroll-reveal), held sections (pinned) and CSS scroll timelines (scroll-linked); faults inside held or [data-big-scene] sections are WARNs
 
-768x1024  9 screens  9 FAIL  13 WARN
-  FAIL scroll-linked   section#harmonia > img.parallax__layer.parallax__layer--photo  "img: photo-1560750588-73207b1ef5b8?w=192"
-       moves with the scroll and changes back when the scroll goes back (moves); 3 more parts of this section change with the scroll too (img.parallax__layer.parallax__layer--arc, img.parallax__layer.parallax__layer--front, div.grid)  [768-10-scroll-linked.jpg]
-       fix: remove the scroll-driven motion; motion lives inside a visual as a small loop
-  FAIL button-styles   footer#contact > div.wrap > div.closing__cta.close--type > a.btn.btn--primary  "Agendar avaliação"
-       one button style (square, fill #ece8e0) in 2 heights: 44, 64px ("Agendar avaliação" 64px, "VER TRATAMENTOS" 44px)  [768-15-button-styles.jpg]
-       fix: one primary and one secondary button: one shape, one height per size, one label size
-  FAIL same-action     header.nav > div.wrap.nav__bar > div.nav__actions > a.btn.btn--primary  "AGENDAR AVALIAÇÃO"
-       "AGENDAR AVALIAÇÃO" appears 4 times in different looks: 44px and 64px tall, labels at 13px and 21px  [768-01-same-action.jpg]
-       fix: draw one action the same way everywhere (only the nav copy may be one size smaller)
-  FAIL section-gaps    section#espaco / section#avaliacao
-       324px between these sections, +110% against the median 154px  [768-13-section-gaps.jpg]
+1440x900  10 screens  6 FAIL  16 WARN
+  FAIL copy-fact       h1#hero-h  "Estética corporal e facial em Salvador"
+       the first screen holds no number, price, date, place, platform or genre  [1440-01-copy-fact.jpg]
+       fix: put one hard fact from the brief on the first screen: a number, a price, a date, the place, the platforms it runs on or a game's genre; take it from the brief or remove the claim
+  FAIL copy-headings   h2#faq-h  "Perguntas frequentes"
+       "Perguntas frequentes" names no product, part, place or section (4 headings like it; at most one brand line per page) (and 3 more like it: "Quais tratamentos a Lavi", "Quanto custa um tratamen", "Onde fica a clínica?")  [1440-09-copy-headings.jpg]
+       fix: name the thing in every heading: the product, a part, the place or a section noun
+  FAIL section-gaps    main#top > section.hero.hero--split / section#harmonia
+       64px between these sections, -71% against the median 218px  [1440-02-section-gaps.jpg]
        fix: use one gap between sections (all within 25% of each other)
-  FAIL effect-kind     section#harmonia > img.parallax__layer.parallax__layer--photo
-       a service page (--type) moves with the scroll: scroll libraries or timelines (ScrollTrigger, ScrollSmoother, Lenis); parts that drift off the scroll (parallax): section#harmonia > img.parallax__layer.parallax__layer--photo 70px; section#harmonia > img.parallax__layer.parallax__layer--arc 55px; section#harmonia > img.parallax__layer.parallax__layer--front 10px: effects fit tech, gaming and software pages and a product with a technical subject, never a place, shop or service page (house rule)  [768-11-effect-kind.jpg]
+  FAIL section-gaps    section#larissa / footer#contact
+       0px between these sections, -100% against the median 218px  [1440-14-section-gaps.jpg]
+       fix: use one gap between sections (all within 25% of each other)
+  FAIL effect-kind     (the page)
+       a service page (--type) moves with the scroll: scroll libraries or timelines (ScrollTrigger, ScrollSmoother, Lenis): effects fit tech, gaming and software pages and a product with a technical subject, never a place, shop or service page (house rule)
        fix: take the scroll-driven motion off: on a place, shop or service page the page scrolls plainly and the parts sit still
   FAIL phone-number    header.nav > div.wrap.nav__bar > div.nav__actions > a.btn.btn--primary  "https://wa.me/5571981538910?text=Ol%C3%A"
-       a WhatsApp link calls a number in a real dialable format: "https://wa.me/5571981538910?text=Ol%C3%A"; a visitor can dial it and reach a stranger (and 5 more like it: div.hero-text.grid > div.hero__text.span-5 > div.btn-row > a.btn.btn--primary, div.wrap.grid > div.span-6 > div.btn-row > a.btn.btn--primary, footer#contact > div.wrap > div.closing__cta.close--type > a.btn.btn--primary, ...)  [768-02-phone-number.jpg]
+       a WhatsApp link calls a number in a real dialable format: "https://wa.me/5571981538910?text=Ol%C3%A"; a visitor can dial it and reach a stranger (and 6 more like it: div.hero-text.grid > div.hero__text.span-5 > div.btn-row > a.btn.btn--primary, div.wrap.grid > div.span-6 > div.btn-row > a.btn.btn--primary, div.wrap.grid > div.span-5.faq__intro > p.faq__help > a.link, ...)  [1440-03-phone-number.jpg]
        fix: drop the number and its tel: link (a "Request a call" form may stand in), unless the brief gives the number
-  FAIL a11y-name       header.nav > div.wrap.nav__bar > button.nav__toggle
-       a button with no accessible name: a screen reader says only "link" or "button"  [768-03-a11y-name.jpg]
-       fix: give the control words: its text, or an aria-label in the page's language for an icon-only button
-  WARN nav             header.nav > div.wrap.nav__bar > button.nav__toggle  "MENU"
-       the nav is lopsided: its last item ends 17px inside the content's edge (720px), while its first starts on the other edge  [768-04-nav.jpg]
-       fix: start the nav's first item and end its last on the content's two edges
   WARN scroll-reveal   section#avaliacao > div.wrap.grid > figure.develop.span-6
-       starts an animation (1.6 s) the moment it is scrolled into view (an IntersectionObserver) on img (inside a dealt moment's section, [data-moment]: an enter moment is expected on every kind; its still is judged under reduced motion)  [768-14-scroll-reveal.jpg]
+       starts an animation (1.6 s) the moment it is scrolled into view (an IntersectionObserver) on img (inside a dealt moment's section, [data-moment]: an enter moment is expected on every kind; its still is judged under reduced motion)  [1440-10-scroll-reveal.jpg]
        fix: show it at rest: no fade, rise or unmask when it is scrolled into view
+  WARN text-only       section#faq  "Perguntas frequentes"
+       the section is only text: no picture, icon, mock or effect in it  [1440-12-text-only.jpg]
+       fix: give the section a visual: a photograph that fits, the real icons, or a UI fragment on a ground
   WARN copy-buttons    header.nav > div.wrap.nav__bar > div.nav__actions > a.btn.btn--primary  "AGENDAR AVALIAÇÃO"
-       "AGENDAR AVALIAÇÃO" does not start with a verb (book, buy, try, start, get, see...) (and 1 more like it: "VER TRATAMENTOS")  [768-05-copy-buttons.jpg]
+       "AGENDAR AVALIAÇÃO" does not start with a verb (book, buy, try, start, get, see...) (and 1 more like it: "VER TRATAMENTOS")  [1440-04-copy-buttons.jpg]
        fix: label buttons with a verb and what the visitor gets ("Book a room", "Start free trial")
   WARN copy-actions    header.nav > div.wrap.nav__bar > div.nav__actions > a.btn.btn--primary  "AGENDAR AVALIAÇÃO"
-       2 labels for one target /5571981538910?text=Ol%C3%A1!%20Quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Lavier.: "AGENDAR AVALIAÇÃO", "Agendar avaliação"  [768-06-copy-actions.jpg]
+       2 labels for one target /5571981538910?text=Ol%C3%A1!%20Quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Lavier.: "AGENDAR AVALIAÇÃO", "Agendar avaliação"  [1440-05-copy-actions.jpg]
        fix: few actions, one wording: at most 2 in the hero, the main action word for word in nav, hero and close
-  WARN section-gaps    main#top > section.hero.hero--split / section#harmonia
-       64px between these sections, -58% against the median 154px  [768-07-section-gaps.jpg]
+  WARN section-gaps    section#harmonia / section#tratamentos
+       117px between these sections, -46% against the median 218px  [1440-08-section-gaps.jpg]
        fix: use one gap between sections (all within 25% of each other)
-  WARN photo-set       div.wrap > div.grid.grid--top > div.frame.frame--photo > img.frame__img:nth-of-type(1)  "photo-1600334129128-685c5582fd35"
-       4 photographs in more than one look: lightness from 0.24 to 0.65; saturation from 0.06 to 0.56; the odd one out is photo-1600334129128-685c5582fd35  [768-12-photo-set.jpg]
-       fix: grade the photographs to one look (light, colour, warmth), or replace the odd one out
+  WARN section-gaps    section#avaliacao / section#faq
+       337px between these sections, +55% against the median 218px  [1440-11-section-gaps.jpg]
+       fix: use one gap between sections (all within 25% of each other)
+  WARN section-gaps    section#faq / section#larissa
+       306px between these sections, +40% against the median 218px  [1440-13-section-gaps.jpg]
+       fix: use one gap between sections (all within 25% of each other)
   WARN photo-credit    div.wrap > div.hero-text.grid > div.hero__media.frame--corners > img
        8 library sources (unsplash): the page credits unsplash, photo-1591343395082-e120087004b4, photo-1560750588-73207b1ef5b8, photo-1600334129128-685c5582fd35, photo-1540555700478-4be289fbecef, ...; confirm each shows the client's own product, place or people
        fix: confirm the library photograph shows the client's own product, place or people; otherwise replace it
   WARN nav-labels      div.nav__menu > div.wrap.grid > div.menu-col.span-3:nth-of-type(2) > a:nth-of-type(2)  "O espaçoAberto em outubro de 2026"
        "O espaçoAberto em outubro de 2026" opens a section headed "O espaço Lavier em Salvador"
        fix: name each nav link after the heading of the section it opens
-  WARN nav-labels      div.nav__item:nth-of-type(1) > div.nav__menu > div.wrap.grid > a.menu-card.span-3  "Agenda de dezembro de 2026 abertaAvaliaç"
-       "Agenda de dezembro de 2026 abertaAvaliaç" opens a section headed "A avaliação individual. Todo protocolo começa nela"
+  WARN nav-labels      div.wrap.nav__bar > nav.nav__links > div.nav__item:nth-of-type(5) > a.nav__link  "Dúvidas"
+       "Dúvidas" opens a section headed "Perguntas frequentes"
+       fix: name each nav link after the heading of the section it opens
+  WARN nav-labels      div.nav__pill > nav.tubelight > div.tubelight__item:nth-of-type(5) > a.tubelight__link  "Dúvidas"
+       "Dúvidas" opens a section headed "Perguntas frequentes"  [1440-06-nav-labels.jpg]
        fix: name each nav link after the heading of the section it opens
   WARN nav-labels      div.nav__menu > div.wrap.grid > div.menu-col.span-3:nth-of-type(1) > a:nth-of-type(1)  "Estética corporalProtocolos pa"
        3 entries of one menu go to the same place (#tratamentos): "Estética corporalProtocolos pa", "Estética facialPele do rosto", "Terapia integrativaCorpo e men"
        fix: give each menu entry its own target (its section, its tab, its page), or show fewer entries
   WARN button-contrast div.hero-text.grid > div.hero__text.span-5 > div.btn-row > a.btn.btn--secondary  "VER TRATAMENTOS"
-       the button "VER TRATAMENTOS" (#ece8e0) stands only 1.04:1 off the ground around it: it reads as part of the ground, or as switched off  [768-08-button-contrast.jpg]
+       the button "VER TRATAMENTOS" (#ece8e0) stands only 1.07:1 off the ground around it: it reads as part of the ground, or as switched off  [1440-07-button-contrast.jpg]
        fix: give the button a fill that stands at least 1.5:1 off what is around it, or an outline in the ink
-  WARN hover           header.nav > div.wrap.nav__bar > button.nav__toggle
-       the nav link ("") looks the same hovered as at rest, while the filled button, text link answer  [768-09-hover.jpg]
-       fix: give buttons and links a small answer to the pointer (the motion layer: a fill change, a drawn underline, an arrow that moves)
   WARN skip-link       header.nav > div.wrap.nav__bar > a.skip-link:nth-of-type(1)  "Pular para o conteúdo"
        the first Tab stop is "Pular para o conteúdo", not a skip link: a keyboard user tabs through the whole nav on every visit
        fix: add the starter's skip link as the header's first child: <a class="skip-link" href="#top">Skip to content</a>
-  FAIL section-height  footer#contact  "Agende sua avaliação na LavierAtendiment"
-       the section is 1135px tall (1.1 screens), 111px over one screen (1024px): every section after the hero is one screen or two, 2px either way (SR-2)  [768-rhythm-01-section-height.jpg]
-       fix: set the section to one screen or two (height: calc(var(--h,1) * 100vh), --h 1 or 2) and cut or split its content to fit
-  FAIL section-air     section#harmonia / section#tratamentos
-       744px of air between the content of these two sections: 128-480px (64-600px WARN) (SR-3)  [768-rhythm-02-section-air.jpg]
+  WARN action-repeat   header.nav > div.wrap.nav__bar > div.nav__actions:nth-of-type(2) > a.btn.btn--primary  "agendar avaliação"
+       "agendar avaliação" shows 2 times on the first screen at 1440px (nav, hero): the nav's button and the hero's; nothing else on the screen may repeat it  [1440-15-action-repeat.jpg]
+       fix: show the action once a screen besides the nav's button: the hero's, the close's or the phone bar's, never all at once
+  WARN section-air     section#harmonia / section#tratamentos
+       568px of air between the content of these two sections: 128-480px (64-600px WARN) (SR-3)  [1440-rhythm-01-section-air.jpg]
        fix: keep 128-480px of air between the content of neighbouring sections (112-420px on a phone): the sections' padding (--padt, --padb)
 
-390x844  10 screens  3 FAIL  9 WARN
-  FAIL scroll-linked   section#harmonia > img.parallax__layer.parallax__layer--photo  "img: photo-1560750588-73207b1ef5b8?w=192"
-       moves with the scroll and changes back when the scroll goes back (moves); 3 more parts of this section change with the scroll too (img.parallax__layer.parallax__layer--arc, img.parallax__layer.parallax__layer--front, div.grid)  [390-04-scroll-linked.jpg]
-       fix: remove the scroll-driven motion; motion lives inside a visual as a small loop
+390x844  11 screens  2 FAIL  9 WARN
   FAIL section-gaps    main#top > section.hero.hero--split / section#harmonia
-       24px between these sections, -86% against the median 167px  [390-01-section-gaps.jpg]
+       24px between these sections, -83% against the median 138px  [390-01-section-gaps.jpg]
+       fix: use one gap between sections (all within 25% of each other)
+  FAIL section-gaps    section#larissa / footer#contact
+       0px between these sections, -100% against the median 138px  [390-10-section-gaps.jpg]
        fix: use one gap between sections (all within 25% of each other)
   WARN nav             header.nav > div.wrap.nav__bar > button.nav__toggle  "MENU"
        the nav is lopsided: its last item ends 17px inside the content's edge (366px), while its first starts on the other edge  [390-02-nav.jpg]
        fix: start the nav's first item and end its last on the content's two edges
   WARN scroll-reveal   section#avaliacao > div.wrap.grid > figure.develop.span-6
-       starts an animation (1.6 s) the moment it is scrolled into view (an IntersectionObserver) on img (inside a dealt moment's section, [data-moment]: an enter moment is expected on every kind; its still is judged under reduced motion)  [390-09-scroll-reveal.jpg]
+       starts an animation (1.6 s) the moment it is scrolled into view (an IntersectionObserver) on img (inside a dealt moment's section, [data-moment]: an enter moment is expected on every kind; its still is judged under reduced motion)  [390-07-scroll-reveal.jpg]
        fix: show it at rest: no fade, rise or unmask when it is scrolled into view
-  WARN section-gaps    section#harmonia / section#tratamentos
-       94px between these sections, -44% against the median 167px  [390-05-section-gaps.jpg]
-       fix: use one gap between sections (all within 25% of each other)
+  WARN text-only       section#faq  "Perguntas frequentes"
+       the section is only text: no picture, icon, mock or effect in it  [390-09-text-only.jpg]
+       fix: give the section a visual: a photograph that fits, the real icons, or a UI fragment on a ground
   WARN section-gaps    section#tratamentos / section#espaco
-       251px between these sections, +50% against the median 167px  [390-06-section-gaps.jpg]
+       207px between these sections, +50% against the median 138px  [390-04-section-gaps.jpg]
        fix: use one gap between sections (all within 25% of each other)
   WARN section-gaps    section#espaco / section#avaliacao
-       240px between these sections, +44% against the median 167px  [390-08-section-gaps.jpg]
+       212px between these sections, +54% against the median 138px  [390-06-section-gaps.jpg]
+       fix: use one gap between sections (all within 25% of each other)
+  WARN section-gaps    section#avaliacao / section#faq
+       215px between these sections, +56% against the median 138px  [390-08-section-gaps.jpg]
        fix: use one gap between sections (all within 25% of each other)
   WARN photo-set       div.wrap > div.grid.grid--top > div.frame.frame--photo > img.frame__img:nth-of-type(1)  "photo-1600334129128-685c5582fd35"
-       5 photographs in more than one look: lightness from 0.24 to 0.80; saturation from 0.14 to 0.56; the odd one out is photo-1600334129128-685c5582fd35  [390-07-photo-set.jpg]
+       5 photographs in more than one look: lightness from 0.26 to 0.80; saturation from 0.14 to 0.53; the odd one out is photo-1600334129128-685c5582fd35  [390-05-photo-set.jpg]
        fix: grade the photographs to one look (light, colour, warmth), or replace the odd one out
   WARN photo-credit    div.wrap > div.hero-text.grid > div.hero__media.frame--corners > img
        7 library sources (unsplash): photo-1591343395082-e120087004b4, photo-1560750588-73207b1ef5b8, photo-1600334129128-685c5582fd35, photo-1540555700478-4be289fbecef, photo-1590439471364-192aa70c0b53, ...; confirm each shows the client's own product, place or people
@@ -99,16 +103,16 @@ consistency  C:\Users\Administrador\Documents\site larissa kelvin\lavier\dist\in
   WARN button-contrast div.hero-text.grid > div.hero__text.span-5 > div.btn-row > a.btn.btn--secondary  "VER TRATAMENTOS"
        the button "VER TRATAMENTOS" (#ece8e0) stands only 1.04:1 off the ground around it: it reads as part of the ground, or as switched off  [390-03-button-contrast.jpg]
        fix: give the button a fill that stands at least 1.5:1 off what is around it, or an outline in the ink
-  WARN section-air     section#harmonia / section#tratamentos
-       542px of air between the content of these two sections: 112-420px (56-560px WARN) (SR-3)  [390-rhythm-02-section-air.jpg]
-       fix: keep 128-480px of air between the content of neighbouring sections (112-420px on a phone): the sections' padding (--padt, --padb)
-  FAIL container-edges div.grid.grid--top > div.span-6.flex > p:nth-of-type(2) > a.link  "Ver o Instagram da Lavier"
-       a box over half the container wide runs 24-252px, not on the container's lines at 24-366px (SR-6)  [390-rhythm-01-container-edges.jpg]
-       fix: run the picture or box from the container's left line to its right line, or put it in a row or a split
 
-first screen at 1280, 1152, 1024, 896  0 FAIL  0 WARN
+first screen at 1280, 1152, 1024, 896, 768  0 FAIL  0 WARN
 
 the page at 320x640, walked for what runs past the screen's edge  0 FAIL
+  WARN fold-cut        [320] div.hero__media.frame--corners > div.ly-float > div.ly-float__row > span:nth-of-type(1)  "Salvador, BA"
+       a line of the hero text is sliced by the bottom of the first screen  [narrow-320-01-fold-cut.jpg]
+       fix: size the hero so the heading ends above the fold, or starts below it
+  WARN fold-cut        [320] div.hero__media.frame--corners > div.ly-float > div.ly-float__row > span:nth-of-type(2)  "Hora marcada"
+       a line of the hero text is sliced by the bottom of the first screen  [narrow-320-02-fold-cut.jpg]
+       fix: size the hero so the heading ends above the fold, or starts below it
 
 checks
   PASS assets                 PASS shader-lint            PASS gl-fallback            
@@ -116,24 +120,24 @@ checks
   PASS placeholder            PASS sample-label           PASS caption                
   PASS credit-wall            WARN nav                    PASS nav-covers             
   PASS spill                  PASS off-viewport           PASS fold-card              
-  PASS hover-spill            PASS overlap-text           PASS collide                
+  SKIP hover-spill            PASS overlap-text           PASS collide                
   PASS tap-size               PASS row-gap                PASS cut-text               
-  PASS fold-cut               PASS marquee                FAIL scroll-linked          
-  WARN scroll-reveal          PASS pinned                 PASS loop-pause             
-  PASS reduced-motion         PASS hidden-content         PASS webgl                  
-  PASS no-visual              PASS text-only              PASS card-visual            
-  PASS hidden-visual          PASS card-family            PASS card-layout            
+  WARN fold-cut               PASS marquee                SKIP scroll-linked          
+  WARN scroll-reveal          PASS pinned                 SKIP loop-pause             
+  SKIP reduced-motion         PASS hidden-content         PASS webgl                  
+  PASS no-visual              WARN text-only              PASS card-visual            
+  SKIP hidden-visual          PASS card-family            PASS card-layout            
   PASS nesting                PASS effect-repeat          PASS ui-fit                 
-  PASS ui-centre              PASS dark-ground            FAIL button-styles          
-  PASS button-shape           FAIL same-action            PASS button-picture         
+  PASS ui-centre              PASS dark-ground            PASS button-styles          
+  PASS button-shape           PASS same-action            PASS button-picture         
   PASS cta                    PASS pricing-tiers          PASS copy-headline          
-  PASS copy-fact              PASS copy-headings          WARN copy-buttons           
+  FAIL copy-fact              FAIL copy-headings          WARN copy-buttons           
   WARN copy-actions           PASS heading-scale          PASS stagger                
   PASS top-stagger            PASS off-grid               PASS col-edge               
   PASS right-edge             PASS centre-axis            PASS tilt                   
   PASS contrast               PASS text-contrast          PASS body-size              
   PASS busy-ground            FAIL section-gaps           PASS proximity              
-  PASS hole                   PASS links                  PASS forms                  
+  PASS hole                   PASS links                  SKIP forms                  
   PASS photo-upscale          WARN photo-set              WARN photo-credit           
   PASS nav-family             WARN nav-labels             PASS link-styles            
   PASS heading-align          PASS label-centre           PASS fake-button            
@@ -143,22 +147,22 @@ checks
   PASS progress-bar           PASS photo-repeat           WARN button-contrast        
   PASS photo-print            PASS grounds                PASS split-align            
   PASS fact-agree             PASS fold-action            PASS action-count           
-  PASS one-screen             WARN hover                  PASS hover-move             
+  PASS one-screen             SKIP hover                  SKIP hover-move             
   PASS product-shown          PASS same-object            PASS font-load              
   PASS visual-caption         PASS visual-empty           FAIL effect-kind            
   PASS hero-enter             PASS moment-none            PASS street-number          
   PASS postcode               PASS coordinates            PASS company-number         
-  FAIL phone-number           PASS hero-screen            FAIL section-height         
-  FAIL section-air            PASS one-section            PASS one-heading            
-  FAIL container-edges        PASS row-lines              PASS split-pair             
+  FAIL phone-number           PASS hero-screen            PASS section-height         
+  WARN section-air            PASS one-section            PASS one-heading            
+  PASS container-edges        PASS row-lines              PASS split-pair             
   PASS motion-layer           PASS count-text             PASS loop-cycle             
-  PASS section-tile           PASS empty-area             FAIL a11y-name              
+  PASS section-tile           PASS empty-area             PASS a11y-name              
   PASS img-alt                PASS field-label            PASS heading-order          
   PASS tabindex               PASS focus-ring             PASS focus-visible          
   PASS focus-hidden           WARN skip-link              PASS menu-toggle            
   PASS lang                   PASS page-meta              PASS share-meta             
-  PASS action-repeat          PASS map-link               PASS open-now               
+  WARN action-repeat          PASS map-link               PASS open-now               
   PASS assumed                PASS run-on                 PASS form-fields            
   PASS form-send              
 
-total  12 FAIL  22 WARN  (crops and report.json in C:\Users\Administrador\Documents\site larissa kelvin\lavier\dist\.taste-skill\consistency)
+total  8 FAIL  27 WARN  (crops and report.json in C:\Users\Administrador\Documents\site larissa kelvin\lavier\dist\.taste-skill\consistency)

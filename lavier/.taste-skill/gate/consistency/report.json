@@ -1,24 +1,104 @@
 {
  "page": "C:\\Users\\Administrador\\Documents\\site larissa kelvin\\lavier\\dist\\index.html",
  "url": "http://127.0.0.1:5200/index.html",
- "at": "2026-11-18T17:10:48.585Z",
+ "at": "2026-11-18T19:43:25.355Z",
  "out": "C:\\Users\\Administrador\\Documents\\site larissa kelvin\\lavier\\.taste-skill\\gate\\consistency",
  "widths": [
   {
    "width": 1440,
    "height": 900,
-   "screens": 9,
+   "screens": 10,
    "held": 0,
    "errors": [],
    "findings": [
+    {
+     "check": "same-action",
+     "sev": "FAIL",
+     "sel": "header.nav > div.wrap.nav__bar > div.nav__actions > a.btn.btn--primary",
+     "text": "AGENDAR AVALIAÇÃO",
+     "stop": 0,
+     "msg": "\"AGENDAR AVALIAÇÃO\" appears 4 times in different looks: 44px and 68px tall, labels at 13px and 25px",
+     "crop": "1440-01-same-action.jpg",
+     "fix": "draw one action the same way everywhere (only the nav copy may be one size smaller)"
+    },
+    {
+     "check": "cta",
+     "sev": "FAIL",
+     "sel": "section#larissa",
+     "text": "Larissa Xavier, esteticista e terapeuta",
+     "msg": "the last section before the footer ends with no button",
+     "stop": 7,
+     "crop": "1440-22-cta.jpg",
+     "fix": "add the action: a button in the hero, one on every priced item, one in the closing section"
+    },
+    {
+     "check": "copy-fact",
+     "sev": "FAIL",
+     "sel": "h1#hero-h",
+     "text": "Estética corporal e facial em Salvador",
+     "msg": "the first screen holds no number, price, date, place, platform or genre",
+     "stop": 0,
+     "crop": "1440-02-copy-fact.jpg",
+     "fix": "put one hard fact from the brief on the first screen: a number, a price, a date, the place, the platforms it runs on or a game's genre; take it from the brief or remove the claim"
+    },
+    {
+     "check": "copy-headings",
+     "sev": "FAIL",
+     "sel": "h2#faq-h",
+     "text": "Perguntas frequentes",
+     "msg": "\"Perguntas frequentes\" names no product, part, place or section (4 headings like it; at most one brand line per page) (and 3 more like it: \"Quais tratamentos a Lavi\", \"Quanto custa um tratamen\", \"Onde fica a clínica?\")",
+     "stop": 5,
+     "crop": "1440-17-copy-headings.jpg",
+     "fix": "name the thing in every heading: the product, a part, the place or a section noun"
+    },
+    {
+     "check": "contrast",
+     "sev": "FAIL",
+     "sel": "div.closing__links > div.grid > div.span-2.footer__col:nth-of-type(3) > h3",
+     "text": "Espaço",
+     "stop": 0,
+     "msg": "body text over a picture reads at 4.5:1 at its worst tenth (needs 4.5:1), on a busy ground (and 4 more like it: \"A clínica\", \"Contato\", \"WhatsApp\", \"Instagram\")",
+     "crop": "1440-03-contrast.jpg",
+     "fix": "put the text on a calm part of the picture, or on a solid panel"
+    },
+    {
+     "check": "text-contrast",
+     "sev": "FAIL",
+     "sel": "h2#close-h > span.w:nth-of-type(1)",
+     "text": "Agende",
+     "stop": 0,
+     "msg": "a caption, label or muted line in #fbf6f1 on #fbf6f1 reads 1:1 (needs 3:1); 8 like it, like \"sua\", \"avaliação\", \"Atendimento com hora m\"",
+     "crop": "1440-04-text-contrast.jpg",
+     "fix": "body text in the ink at 7:1 or more; grey (4.5:1 or more) only for captions and labels"
+    },
+    {
+     "check": "text-contrast",
+     "sev": "FAIL",
+     "sel": "h2#close-h > em > span.w:nth-of-type(1)",
+     "text": "na",
+     "stop": 0,
+     "msg": "a caption, label or muted line in #f5c6b8 on #fbf6f1 reads 1.43:1 (needs 3:1); 5 like it, like \"Lavier\", \"Tratamentos\", \"© 2026 Lavier Corpo & \"",
+     "crop": "1440-05-text-contrast.jpg",
+     "fix": "body text in the ink at 7:1 or more; grey (4.5:1 or more) only for captions and labels"
+    },
     {
      "check": "section-gaps",
      "sev": "FAIL",
      "sel": "main#top > section.hero.hero--split / section#harmonia",
      "text": "",
      "stop": 0,
-     "msg": "64px between these sections, -62% against the median 168px",
-     "crop": "1440-01-section-gaps.jpg",
+     "msg": "64px between these sections, -71% against the median 218px",
+     "crop": "1440-06-section-gaps.jpg",
+     "fix": "use one gap between sections (all within 25% of each other)"
+    },
+    {
+     "check": "section-gaps",
+     "sev": "FAIL",
+     "sel": "section#larissa / footer#contact",
+     "text": "",
+     "stop": 8,
+     "msg": "0px between these sections, -100% against the median 218px",
+     "crop": "1440-23-section-gaps.jpg",
      "fix": "use one gap between sections (all within 25% of each other)"
     },
     {
@@ -36,19 +116,39 @@
      "sel": "header.nav > div.wrap.nav__bar > div.nav__actions > a.btn.btn--primary",
      "text": "https://wa.me/5571981538910?text=Ol%C3%A",
      "stop": 0,
-     "msg": "a WhatsApp link calls a number in a real dialable format: \"https://wa.me/5571981538910?text=Ol%C3%A\"; a visitor can dial it and reach a stranger (and 5 more like it: div.hero-text.grid > div.hero__text.span-5 > div.btn-row > a.btn.btn--primary, div.wrap.grid > div.span-6 > div.btn-row > a.btn.btn--primary, footer#contact > div.wrap > div.closing__cta.close--type > a.btn.btn--primary, ...)",
-     "crop": "1440-02-phone-number.jpg",
+     "msg": "a WhatsApp link calls a number in a real dialable format: \"https://wa.me/5571981538910?text=Ol%C3%A\"; a visitor can dial it and reach a stranger (and 6 more like it: div.hero-text.grid > div.hero__text.span-5 > div.btn-row > a.btn.btn--primary, div.wrap.grid > div.span-6 > div.btn-row > a.btn.btn--primary, div.wrap.grid > div.span-5.faq__intro > p.faq__help > a.link, ...)",
+     "crop": "1440-07-phone-number.jpg",
      "fix": "drop the number and its tel: link (a \"Request a call\" form may stand in), unless the brief gives the number"
+    },
+    {
+     "check": "action-repeat",
+     "sev": "FAIL",
+     "sel": "header.nav > div.wrap.nav__bar > div.nav__actions:nth-of-type(2) > a.btn.btn--primary",
+     "text": "agendar avaliação",
+     "stop": 10,
+     "msg": "\"agendar avaliação\" shows 3 times on the first screen at 1440px (nav, hero, bar): three copies of one action on a screen read as clutter",
+     "crop": "1440-24-action-repeat.jpg",
+     "fix": "show the action once a screen besides the nav's button: the hero's, the close's or the phone bar's, never all at once"
     },
     {
      "check": "scroll-reveal",
      "sev": "WARN",
-     "sel": "section#avaliacao > div.wrap.grid > figure.develop.span-6",
-     "text": "",
+     "sel": "section#avaliacao",
+     "text": "A avaliação individual. Todo protocolo começa ne",
      "msg": "starts an animation (1.6 s) the moment it is scrolled into view (an IntersectionObserver) on img (inside a dealt moment's section, [data-moment]: an enter moment is expected on every kind; its still is judged under reduced motion)",
      "stop": 5,
-     "crop": "1440-10-scroll-reveal.jpg",
+     "crop": "1440-18-scroll-reveal.jpg",
      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view"
+    },
+    {
+     "check": "text-only",
+     "sev": "WARN",
+     "sel": "section#faq",
+     "text": "Perguntas frequentes",
+     "msg": "the section is only text: no picture, icon, mock or effect in it",
+     "stop": 6,
+     "crop": "1440-20-text-only.jpg",
+     "fix": "give the section a visual: a photograph that fits, the real icons, or a UI fragment on a ground"
     },
     {
      "check": "copy-buttons",
@@ -57,7 +157,7 @@
      "text": "AGENDAR AVALIAÇÃO",
      "msg": "\"AGENDAR AVALIAÇÃO\" does not start with a verb (book, buy, try, start, get, see...) (and 1 more like it: \"VER TRATAMENTOS\")",
      "stop": 0,
-     "crop": "1440-03-copy-buttons.jpg",
+     "crop": "1440-08-copy-buttons.jpg",
      "fix": "label buttons with a verb and what the visitor gets (\"Book a room\", \"Start free trial\")"
     },
     {
@@ -67,8 +167,27 @@
      "text": "AGENDAR AVALIAÇÃO",
      "msg": "2 labels for one target /5571981538910?text=Ol%C3%A1!%20Quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Lavier.: \"AGENDAR AVALIAÇÃO\", \"Agendar avaliação\"",
      "stop": 0,
-     "crop": "1440-04-copy-actions.jpg",
+     "crop": "1440-09-copy-actions.jpg",
      "fix": "few actions, one wording: at most 2 in the hero, the main action word for word in nav, hero and close"
+    },
+    {
+     "check": "copy-actions",
+     "sev": "WARN",
+     "sel": "(the page)",
+     "text": "",
+     "msg": "the main action \"Agendar avaliação\" does not read word for word the same in the closing section",
+     "stop": null,
+     "fix": "few actions, one wording: at most 2 in the hero, the main action word for word in nav, hero and close"
+    },
+    {
+     "check": "busy-ground",
+     "sev": "WARN",
+     "sel": "div.span-2.footer__col:nth-of-type(3) > ul > li:nth-of-type(1) > a",
+     "text": "O espaço",
+     "stop": 0,
+     "msg": "text over a detailed part of a picture (its ground changes by 3.7 L* from one pixel to the next under the words)",
+     "crop": "1440-10-busy-ground.jpg",
+     "fix": "move the text to a calm part of the picture, or put it on a panel"
     },
     {
      "check": "section-gaps",
@@ -76,48 +195,28 @@
      "sel": "section#harmonia / section#tratamentos",
      "text": "",
      "stop": 2,
-     "msg": "117px between these sections, -30% against the median 168px",
-     "crop": "1440-07-section-gaps.jpg",
+     "msg": "117px between these sections, -46% against the median 218px",
+     "crop": "1440-16-section-gaps.jpg",
      "fix": "use one gap between sections (all within 25% of each other)"
     },
     {
      "check": "section-gaps",
      "sev": "WARN",
-     "sel": "section#tratamentos / section#espaco",
-     "text": "",
-     "stop": 3,
-     "msg": "223px between these sections, +33% against the median 168px",
-     "crop": "1440-08-section-gaps.jpg",
-     "fix": "use one gap between sections (all within 25% of each other)"
-    },
-    {
-     "check": "section-gaps",
-     "sev": "WARN",
-     "sel": "section#espaco / section#avaliacao",
-     "text": "",
-     "stop": 4,
-     "msg": "218px between these sections, +30% against the median 168px",
-     "crop": "1440-09-section-gaps.jpg",
-     "fix": "use one gap between sections (all within 25% of each other)"
-    },
-    {
-     "check": "section-gaps",
-     "sev": "WARN",
-     "sel": "section#avaliacao / section#larissa",
+     "sel": "section#avaliacao / section#faq",
      "text": "",
      "stop": 5,
-     "msg": "337px between these sections, +53% against the median 221px of gaps at a change of ground",
-     "crop": "1440-11-section-gaps.jpg",
+     "msg": "337px between these sections, +55% against the median 218px",
+     "crop": "1440-19-section-gaps.jpg",
      "fix": "use one gap between sections (all within 25% of each other)"
     },
     {
      "check": "section-gaps",
      "sev": "WARN",
-     "sel": "section#avaliacao / section#larissa",
+     "sel": "section#faq / section#larissa",
      "text": "",
-     "stop": 5,
-     "msg": "uneven space at the edge of a band: 220px outside its edge, 117px inside it (the space on either side of a change of ground reads as one gap only when the two match)",
-     "crop": "1440-12-section-gaps.jpg",
+     "stop": 6,
+     "msg": "306px between these sections, +40% against the median 218px",
+     "crop": "1440-21-section-gaps.jpg",
      "fix": "use one gap between sections (all within 25% of each other)"
     },
     {
@@ -128,6 +227,16 @@
      "stop": 0,
      "msg": "8 library sources (unsplash): the page credits unsplash, photo-1591343395082-e120087004b4, photo-1560750588-73207b1ef5b8, photo-1600334129128-685c5582fd35, photo-1540555700478-4be289fbecef, ...; confirm each shows the client's own product, place or people",
      "fix": "confirm the library photograph shows the client's own product, place or people; otherwise replace it"
+    },
+    {
+     "check": "nav-family",
+     "sev": "WARN",
+     "sel": "footer#contact > div.wrap",
+     "text": "",
+     "stop": 0,
+     "msg": "the nav's links and actions use 2 type families (Cormorant Garamond, Montserrat Variable)",
+     "crop": "1440-11-nav-family.jpg",
+     "fix": "keep one nav on every screen: the same bar, fill, links and type"
     },
     {
      "check": "nav-labels",
@@ -141,10 +250,20 @@
     {
      "check": "nav-labels",
      "sev": "WARN",
-     "sel": "div.nav__item:nth-of-type(1) > div.nav__menu > div.wrap.grid > a.menu-card.span-3",
-     "text": "Agenda de dezembro de 2026 abertaAvaliaç",
-     "msg": "\"Agenda de dezembro de 2026 abertaAvaliaç\" opens a section headed \"A avaliação individual. Todo protocolo começa nela\"",
+     "sel": "div.wrap.nav__bar > nav.nav__links > div.nav__item:nth-of-type(5) > a.nav__link",
+     "text": "Dúvidas",
+     "msg": "\"Dúvidas\" opens a section headed \"Perguntas frequentes\"",
      "stop": null,
+     "fix": "name each nav link after the heading of the section it opens"
+    },
+    {
+     "check": "nav-labels",
+     "sev": "WARN",
+     "sel": "div.nav__pill > nav.tubelight > div.tubelight__item:nth-of-type(5) > a.tubelight__link",
+     "text": "Dúvidas",
+     "msg": "\"Dúvidas\" opens a section headed \"Perguntas frequentes\"",
+     "stop": 0,
+     "crop": "1440-12-nav-labels.jpg",
      "fix": "name each nav link after the heading of the section it opens"
     },
     {
@@ -159,11 +278,11 @@
     {
      "check": "nav-current",
      "sev": "WARN",
-     "sel": "header.nav",
+     "sel": "footer#contact > div.wrap",
      "text": "",
      "stop": 1,
-     "msg": "the nav stays on screen with 4 links to the page's sections, but never marks the one you are in (no link changes as the page scrolls)",
-     "crop": "1440-06-nav-current.jpg",
+     "msg": "the nav stays on screen with 7 links to the page's sections, but never marks the one you are in (no link changes as the page scrolls)",
+     "crop": "1440-15-nav-current.jpg",
      "fix": "mark the link of the section on screen (a colour, a weight or a line under it) as the visitor scrolls"
     },
     {
@@ -172,8 +291,18 @@
      "sel": "div.hero-text.grid > div.hero__text.span-5 > div.btn-row > a.btn.btn--secondary",
      "text": "VER TRATAMENTOS",
      "stop": 0,
-     "msg": "the button \"VER TRATAMENTOS\" (#ece8e0) stands only 1.05:1 off the ground around it: it reads as part of the ground, or as switched off",
-     "crop": "1440-05-button-contrast.jpg",
+     "msg": "the button \"VER TRATAMENTOS\" (#ece8e0) stands only 1.07:1 off the ground around it: it reads as part of the ground, or as switched off",
+     "crop": "1440-13-button-contrast.jpg",
+     "fix": "give the button a fill that stands at least 1.5:1 off what is around it, or an outline in the ink"
+    },
+    {
+     "check": "button-contrast",
+     "sev": "WARN",
+     "sel": "footer#contact > div.wrap > div.closing__cta.close--type > a.btn.btn--primary",
+     "text": "Agendar avaliação",
+     "stop": 0,
+     "msg": "the button \"Agendar avaliação\" (#f4e9e1) stands only 1.07:1 off the ground around it: it reads as part of the ground, or as switched off",
+     "crop": "1440-14-button-contrast.jpg",
      "fix": "give the button a fill that stands at least 1.5:1 off what is around it, or an outline in the ink"
     },
     {
@@ -186,16 +315,6 @@
      "fix": "add the starter's skip link as the header's first child: <a class=\"skip-link\" href=\"#top\">Skip to content</a>"
     },
     {
-     "check": "action-repeat",
-     "sev": "WARN",
-     "sel": "header.nav > div.wrap.nav__bar > div.nav__actions > a.btn.btn--primary",
-     "text": "agendar avaliação",
-     "stop": 10,
-     "msg": "\"agendar avaliação\" shows 2 times on the first screen at 1440px (nav, hero): the nav's button and the hero's; nothing else on the screen may repeat it",
-     "crop": "1440-13-action-repeat.jpg",
-     "fix": "show the action once a screen besides the nav's button: the hero's, the close's or the phone bar's, never all at once"
-    },
-    {
      "check": "section-air",
      "sev": "WARN",
      "sel": "section#harmonia / section#tratamentos",
@@ -203,7 +322,35 @@
      "msg": "568px of air between the content of these two sections: 128-480px (64-600px WARN) (SR-3)",
      "fix": "keep 128-480px of air between the content of neighbouring sections (112-420px on a phone): the sections' padding (--padt, --padb)",
      "rule": "SR-3 T-gap",
-     "crop": "1440-rhythm-01-section-air.jpg"
+     "crop": "1440-rhythm-02-section-air.jpg"
+    },
+    {
+     "check": "container-edges",
+     "sev": "FAIL",
+     "sel": "footer#contact",
+     "text": "Agende sua avaliação na LavierAtendiment",
+     "msg": "the section needs exactly one in-flow child .wrap (it has 0 in-flow children, 0 .wrap) (SR-6)",
+     "fix": "build the page as header.nav, a main of sections (each one in-flow .wrap plus background layers) and footer.closing",
+     "rule": "SR-6 T1-structure",
+     "crop": "1440-rhythm-01-container-edges.jpg"
+    },
+    {
+     "check": "container-edges",
+     "sev": "FAIL",
+     "sel": "footer#contact > div.wrap",
+     "text": "Agende sua avaliação na LavierAtendiment",
+     "msg": "a child of section 8 beside its .wrap is no valid background layer: not img, picture, video or canvas; position fixed, not absolute; does not span the screen from 0 to 1440px; runs outside the section box; not aria-hidden=\"true\" (SR-6)",
+     "fix": "build the page as header.nav, a main of sections (each one in-flow .wrap plus background layers) and footer.closing",
+     "rule": "SR-6 T1-structure"
+    },
+    {
+     "check": "container-edges",
+     "sev": "FAIL",
+     "sel": "footer#contact > div.wrap",
+     "text": "Agende sua avaliação na LavierAtendiment",
+     "msg": "the .wrap has z-index 0 beside a layer: 1 or more (SR-6)",
+     "fix": "build the page as header.nav, a main of sections (each one in-flow .wrap plus background layers) and footer.closing",
+     "rule": "SR-6 T1-structure"
     }
    ],
    "glAsked": 0
@@ -211,18 +358,38 @@
   {
    "width": 390,
    "height": 844,
-   "screens": 10,
+   "screens": 11,
    "held": 0,
    "errors": [],
    "findings": [
+    {
+     "check": "scroll-reveal",
+     "sev": "FAIL",
+     "sel": "footer#contact > div.wrap > div.closing__cta.close--type > a.btn.btn--primary",
+     "text": "AGENDAR AVALIAÇÃO",
+     "msg": "starts \"color\" (0.1 s) the moment it is scrolled into view (an IntersectionObserver)",
+     "stop": 8,
+     "crop": "390-10-scroll-reveal.jpg",
+     "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view"
+    },
     {
      "check": "section-gaps",
      "sev": "FAIL",
      "sel": "main#top > section.hero.hero--split / section#harmonia",
      "text": "",
      "stop": 0,
-     "msg": "24px between these sections, -86% against the median 167px",
+     "msg": "24px between these sections, -85% against the median 161px",
      "crop": "390-01-section-gaps.jpg",
+     "fix": "use one gap between sections (all within 25% of each other)"
+    },
+    {
+     "check": "section-gaps",
+     "sev": "FAIL",
+     "sel": "section#larissa / footer#contact",
+     "text": "",
+     "stop": 8,
+     "msg": "0px between these sections, -100% against the median 161px",
+     "crop": "390-11-section-gaps.jpg",
      "fix": "use one gap between sections (all within 25% of each other)"
     },
     {
@@ -242,18 +409,18 @@
      "text": "",
      "msg": "starts an animation (1.6 s) the moment it is scrolled into view (an IntersectionObserver) on img (inside a dealt moment's section, [data-moment]: an enter moment is expected on every kind; its still is judged under reduced motion)",
      "stop": 5,
-     "crop": "390-08-scroll-reveal.jpg",
+     "crop": "390-07-scroll-reveal.jpg",
      "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view"
     },
     {
-     "check": "section-gaps",
+     "check": "text-only",
      "sev": "WARN",
-     "sel": "section#harmonia / section#tratamentos",
-     "text": "",
-     "stop": 2,
-     "msg": "94px between these sections, -44% against the median 167px",
-     "crop": "390-04-section-gaps.jpg",
-     "fix": "use one gap between sections (all within 25% of each other)"
+     "sel": "section#faq",
+     "text": "Perguntas frequentes",
+     "msg": "the section is only text: no picture, icon, mock or effect in it",
+     "stop": 6,
+     "crop": "390-09-text-only.jpg",
+     "fix": "give the section a visual: a photograph that fits, the real icons, or a UI fragment on a ground"
     },
     {
      "check": "section-gaps",
@@ -261,8 +428,8 @@
      "sel": "section#tratamentos / section#espaco",
      "text": "",
      "stop": 3,
-     "msg": "251px between these sections, +50% against the median 167px",
-     "crop": "390-05-section-gaps.jpg",
+     "msg": "207px between these sections, +29% against the median 161px",
+     "crop": "390-04-section-gaps.jpg",
      "fix": "use one gap between sections (all within 25% of each other)"
     },
     {
@@ -271,8 +438,18 @@
      "sel": "section#espaco / section#avaliacao",
      "text": "",
      "stop": 4,
-     "msg": "240px between these sections, +44% against the median 167px",
-     "crop": "390-07-section-gaps.jpg",
+     "msg": "212px between these sections, +32% against the median 161px",
+     "crop": "390-06-section-gaps.jpg",
+     "fix": "use one gap between sections (all within 25% of each other)"
+    },
+    {
+     "check": "section-gaps",
+     "sev": "WARN",
+     "sel": "section#avaliacao / section#faq",
+     "text": "",
+     "stop": 5,
+     "msg": "215px between these sections, +34% against the median 161px",
+     "crop": "390-08-section-gaps.jpg",
      "fix": "use one gap between sections (all within 25% of each other)"
     },
     {
@@ -281,8 +458,8 @@
      "sel": "div.wrap > div.grid.grid--top > div.frame.frame--photo > img.frame__img:nth-of-type(1)",
      "text": "photo-1600334129128-685c5582fd35",
      "stop": 3,
-     "msg": "5 photographs in more than one look: lightness from 0.24 to 0.80; saturation from 0.14 to 0.56; the odd one out is photo-1600334129128-685c5582fd35",
-     "crop": "390-06-photo-set.jpg",
+     "msg": "5 photographs in more than one look: lightness from 0.24 to 0.80; saturation from 0.14 to 0.53; the odd one out is photo-1600334129128-685c5582fd35",
+     "crop": "390-05-photo-set.jpg",
      "fix": "grade the photographs to one look (light, colour, warmth), or replace the odd one out"
     },
     {
@@ -321,7 +498,7 @@
  ],
  "shaders": 0,
  "hidden": {
-  "screens": 14,
+  "screens": 16,
   "quick": true
  },
  "sweep": {
@@ -339,11 +516,32 @@
   "width": 320,
   "height": 640,
   "errors": [],
-  "findings": []
+  "findings": [
+   {
+    "check": "fold-cut",
+    "sev": "WARN",
+    "sel": "div.hero__media.frame--corners > div.ly-float > div.ly-float__row > span:nth-of-type(1)",
+    "text": "Salvador, BA",
+    "msg": "a line of the hero text is sliced by the bottom of the first screen",
+    "crop": "narrow-320-01-fold-cut.jpg",
+    "width": 320,
+    "fix": "size the hero so the heading ends above the fold, or starts below it"
+   },
+   {
+    "check": "fold-cut",
+    "sev": "WARN",
+    "sel": "div.hero__media.frame--corners > div.ly-float > div.ly-float__row > span:nth-of-type(2)",
+    "text": "Hora marcada",
+    "msg": "a line of the hero text is sliced by the bottom of the first screen",
+    "crop": "narrow-320-02-fold-cut.jpg",
+    "width": 320,
+    "fix": "size the hero so the heading ends above the fold, or starts below it"
+   }
+  ]
  },
  "counts": {
-  "FAIL": 4,
-  "WARN": 25
+  "FAIL": 18,
+  "WARN": 31
  },
  "checks": {
   "assets": "PASS",
@@ -367,17 +565,17 @@
   "tap-size": "PASS",
   "row-gap": "PASS",
   "cut-text": "PASS",
-  "fold-cut": "PASS",
+  "fold-cut": "WARN",
   "marquee": "PASS",
   "scroll-linked": "not checked",
-  "scroll-reveal": "WARN",
+  "scroll-reveal": "FAIL",
   "pinned": "PASS",
   "loop-pause": "not checked",
   "reduced-motion": "not checked",
   "hidden-content": "PASS",
   "webgl": "PASS",
   "no-visual": "PASS",
-  "text-only": "PASS",
+  "text-only": "WARN",
   "card-visual": "PASS",
   "hidden-visual": "not checked",
   "card-family": "PASS",
@@ -389,13 +587,13 @@
   "dark-ground": "PASS",
   "button-styles": "PASS",
   "button-shape": "PASS",
-  "same-action": "PASS",
+  "same-action": "FAIL",
   "button-picture": "PASS",
-  "cta": "PASS",
+  "cta": "FAIL",
   "pricing-tiers": "PASS",
   "copy-headline": "PASS",
-  "copy-fact": "PASS",
-  "copy-headings": "PASS",
+  "copy-fact": "FAIL",
+  "copy-headings": "FAIL",
   "copy-buttons": "WARN",
   "copy-actions": "WARN",
   "heading-scale": "PASS",
@@ -406,10 +604,10 @@
   "right-edge": "PASS",
   "centre-axis": "PASS",
   "tilt": "PASS",
-  "contrast": "PASS",
-  "text-contrast": "PASS",
+  "contrast": "FAIL",
+  "text-contrast": "FAIL",
   "body-size": "PASS",
-  "busy-ground": "PASS",
+  "busy-ground": "WARN",
   "section-gaps": "FAIL",
   "proximity": "PASS",
   "hole": "PASS",
@@ -418,7 +616,7 @@
   "photo-upscale": "PASS",
   "photo-set": "WARN",
   "photo-credit": "WARN",
-  "nav-family": "PASS",
+  "nav-family": "WARN",
   "nav-labels": "WARN",
   "link-styles": "PASS",
   "heading-align": "PASS",
@@ -463,7 +661,7 @@
   "section-air": "WARN",
   "one-section": "PASS",
   "one-heading": "PASS",
-  "container-edges": "PASS",
+  "container-edges": "FAIL",
   "row-lines": "PASS",
   "split-pair": "PASS",
   "motion-layer": "PASS",
@@ -484,7 +682,7 @@
   "lang": "PASS",
   "page-meta": "PASS",
   "share-meta": "PASS",
-  "action-repeat": "WARN",
+  "action-repeat": "FAIL",
   "map-link": "PASS",
   "open-now": "PASS",
   "assumed": "PASS",

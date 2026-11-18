@@ -1,5 +1,5 @@
 import { photos, treatments, evaluationSteps, links } from '../content.js'
-import { BookButton, Photo } from './ui.jsx'
+import { BandEdge, BookButton, Photo, Words } from './ui.jsx'
 
 // peek-list: four rows, each with its own photograph; system.js swaps the picture to the row under
 // the pointer, the focus or a tap.
@@ -8,7 +8,7 @@ export function Treatments() {
     <section className="section" id="tratamentos" aria-labelledby="tratamentos-h">
       <div className="wrap">
         <div className="section-head">
-          <h2 id="tratamentos-h">Tratamentos. <span className="muted">Corpo, rosto e mente no mesmo plano.</span></h2>
+          <h2 id="tratamentos-h" data-words=""><Words>Tratamentos.</Words> <span className="muted"><Words>Corpo, rosto e mente no mesmo plano.</Words></span></h2>
         </div>
         <div className="grid grid--top fill" data-peek>
           <ul className="rows span-6">
@@ -37,7 +37,7 @@ export function Space() {
     <section className="section" id="espaco" aria-labelledby="espaco-h">
       <div className="wrap">
         <div className="section-head">
-          <h2 id="espaco-h">O espaço Lavier em Salvador</h2>
+          <h2 id="espaco-h" data-words=""><Words>O espaço Lavier em Salvador</Words></h2>
           <p>Inaugurado em outubro de 2026, com hora marcada e cuidado individualizado em cada atendimento.</p>
         </div>
         <div className="grid pair">
@@ -56,15 +56,19 @@ export function Evaluation() {
       <div className="wrap grid grid--top">
         <div className="span-6">
           <div className="section-head">
-            <h2 id="avaliacao-h">A avaliação individual. <span className="muted">Todo protocolo começa nela.</span></h2>
+            <h2 id="avaliacao-h" data-words=""><Words>A avaliação individual.</Words> <span className="muted"><Words>Todo protocolo começa nela.</Words></span></h2>
           </div>
-          <ol className="rows steps-list">
-            {evaluationSteps.map((s) => (
-              <li key={s.name}>
-                <span className="rows__name">{s.name}<small>{s.line}</small></span>
-              </li>
-            ))}
-          </ol>
+          {/* a real sequence: a gold line draws down the steps as you scroll and each marker lights up
+              when it reaches it (src/lib/motion.js); without script the line and markers stand drawn */}
+          <div className="steps" data-timeline="">
+            <ol className="rows steps-list">
+              {evaluationSteps.map((s) => (
+                <li key={s.name}>
+                  <span className="rows__name">{s.name}<small>{s.line}</small></span>
+                </li>
+              ))}
+            </ol>
+          </div>
           <div className="btn-row"><BookButton /></div>
         </div>
         <figure className="develop span-6 start-7" data-moment="picture-develops">
@@ -79,10 +83,11 @@ export function Evaluation() {
 // no portrait until the clinic sends one.
 export function Larissa() {
   return (
-    <section className="section ground-rose" id="larissa" aria-labelledby="larissa-h">
+    <section className="section ground-rose band" id="larissa" aria-labelledby="larissa-h">
+      <BandEdge />
       <div className="wrap">
         <div className="section-head">
-          <h2 id="larissa-h">Larissa Xavier, <em>esteticista e terapeuta</em></h2>
+          <h2 id="larissa-h" data-words=""><Words>Larissa Xavier,</Words> <em><Words>esteticista e terapeuta</Words></em></h2>
         </div>
         <div className="grid grid--top fill">
           <div className="span-6 flex flex-col gap-6">

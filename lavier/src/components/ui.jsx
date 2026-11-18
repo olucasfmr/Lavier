@@ -1,12 +1,15 @@
 import { links, MAIN_ACTION } from '../content.js'
 
-// The drawn arrow of the kit's primary button (motion.css animates it on hover).
+// The drawn arrow of a primary button, in its own square chip at the button's end (the button inside
+// the button); index.css moves the chip and grows the arrow's stem on hover and focus.
 export function Arrow() {
   return (
-    <svg className="m-arrow" viewBox="0 0 12 12" aria-hidden="true">
-      <path className="m-arrow__stem" d="M1 6h8" />
-      <path className="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5" />
-    </svg>
+    <span className="btn__chip" aria-hidden="true">
+      <svg className="m-arrow" viewBox="0 0 12 12">
+        <path className="m-arrow__stem" d="M1 6h8" />
+        <path className="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5" />
+      </svg>
+    </span>
   )
 }
 
@@ -39,6 +42,22 @@ export function Photo({ photo, className, sizes = '(max-width: 1023px) 100vw, 50
       data-source="stand-in"
       {...rest}
     />
+  )
+}
+
+// A heading's words as plain spans, split when the page is built, so the scroll reveal
+// (src/lib/motion.js) can move them one by one. The text reads the same with or without script.
+export function Words({ children }) {
+  return String(children)
+    .split(/(\s+)/)
+    .map((part, i) => (/^\s+$/.test(part) || !part ? part : <span key={i} className="w">{part}</span>))
+}
+
+// The gold line along a colour band's wave edge (the band itself is cut by a CSS mask). A background
+// layer beside the section's .wrap, hidden from assistive technology.
+export function BandEdge({ top = false }) {
+  return (
+    <img className="band-edge" src={top ? 'img/band-edge-top.svg' : 'img/band-edge.svg'} width="1440" height="900" alt="" aria-hidden="true" loading="lazy" decoding="async" />
   )
 }
 

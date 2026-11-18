@@ -65,3 +65,38 @@ export const evaluationSteps = [
   { name: 'Avaliação do corpo e da pele', line: 'Corpo e pele avaliados para definir o que faz sentido no seu caso.' },
   { name: 'Plano individual', line: 'Um protocolo com as sessões indicadas para o seu caso.' },
 ]
+
+// Perguntas frequentes: só o que o site e o Instagram da clínica já afirmam (nada de preço, endereço ou
+// horário inventado). A clínica deve revisar as respostas (LEIA-ME no README).
+export const faqItems = [
+  {
+    id: 'agendar',
+    question: 'Como agendo minha avaliação?',
+    answer: 'Pelo WhatsApp da clínica: toque em Agendar avaliação e envie a mensagem que já vem pronta. Os horários são combinados por lá.',
+  },
+  {
+    id: 'avaliacao',
+    question: 'Por que tudo começa por uma avaliação?',
+    answer: 'Porque cada protocolo da Lavier é montado para o seu caso. Na avaliação, Larissa conversa sobre seus objetivos e sua rotina e avalia corpo e pele antes de indicar as sessões.',
+  },
+  {
+    id: 'tratamentos',
+    question: 'Quais tratamentos a Lavier oferece?',
+    answer: 'Estética corporal, estética facial e terapia integrativa. Os protocolos de cada área são definidos depois da avaliação individual.',
+  },
+  {
+    id: 'integrativa',
+    question: 'O que é a terapia integrativa?',
+    answer: 'É o cuidado que trata corpo e mente juntos, para que a autoestima acompanhe o resultado dos tratamentos de estética.',
+  },
+  {
+    id: 'valores',
+    question: 'Quanto custa um tratamento?',
+    answer: 'O valor depende do protocolo indicado para você. Para saber valores, fale com a clínica pelo WhatsApp.',
+  },
+  {
+    id: 'onde',
+    question: 'Onde fica a clínica?',
+    answer: 'Em Salvador, na Bahia, com atendimento com hora marcada. Confirme o endereço pelo WhatsApp ao agendar.',
+  },
+]
