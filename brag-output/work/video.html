@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Lavier video</title>
+<style>
+@font-face { font-family: "Cormorant Garamond"; font-style: normal; font-weight: 400; src: url(/__f/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-400-normal.woff2) format("woff2"); }
+@font-face { font-family: "Cormorant Garamond"; font-style: italic; font-weight: 400; src: url(/__f/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-400-italic.woff2) format("woff2"); }
+@font-face { font-family: "Cormorant Garamond"; font-style: normal; font-weight: 500; src: url(/__f/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-500-normal.woff2) format("woff2"); }
+@font-face { font-family: "Montserrat"; font-style: normal; font-weight: 100 900; src: url(/__f/@fontsource-variable/montserrat/files/montserrat-latin-wght-normal.woff2) format("woff2"); }
+:root { --ink: #4a5233; --ink-deep: #353b25; --rose: #a86a5c; --rose-light: #f5c6b8; --gold: #c9a15b; --gold-deep: #9c7a3c;
+  --bg: #fbf6f1; --creme: #f4e9e1; --olive: #4a5233; }
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+#stage { position: relative; width: 1920px; height: 1080px; overflow: hidden; font-family: "Montserrat", sans-serif; color: var(--ink);
+  background: radial-gradient(ellipse 85% 65% at 8% 8%, rgba(245,198,184,.42), transparent 60%), radial-gradient(ellipse 75% 60% at 75% 35%, rgba(232,208,160,.34), transparent 62%),
+    radial-gradient(ellipse 70% 60% at 15% 80%, rgba(227,162,148,.22), transparent 62%), radial-gradient(ellipse 70% 60% at 92% 92%, rgba(107,122,75,.10), transparent 62%), linear-gradient(180deg, #fbf6f1 0%, #f4e9e1 100%); }
+.abs { position: absolute; }
+#grain { position: absolute; inset: 0; z-index: 90; pointer-events: none; opacity: .045;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .21 0 0 0 0 .23 0 0 0 0 .15 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") repeat; }
+
+/* scene 1: the manifesto */
+#hook { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 44px; }
+.eyebrow { display: flex; align-items: center; gap: 16px; font: 500 17px/1 "Montserrat"; letter-spacing: .24em; text-transform: uppercase; color: var(--ink); }
+.eyebrow::after { content: ""; width: 56px; height: 1px; background: var(--gold); transform-origin: 0 50%; transform: scaleX(var(--line, 1)); }
+#hook .q { margin: 0; max-width: 1500px; text-align: center; font: 400 112px/1.06 "Cormorant Garamond"; letter-spacing: -.01em; color: var(--ink-deep); }
+#hook .q em, .cap h2 em, #outro h2 em { font-style: italic; color: var(--rose); }
+.w { display: inline-block; will-change: transform, opacity, filter; }
+
+/* captions on the left column */
+.cap { position: absolute; left: 128px; top: 0; height: 1080px; width: 520px; display: flex; flex-direction: column; justify-content: center; gap: 28px; }
+.cap h2 { margin: 0; font: 400 76px/1.04 "Cormorant Garamond"; letter-spacing: -.01em; color: var(--ink-deep); }
+.cap p { margin: 0; font: 300 24px/1.5 "Montserrat"; color: var(--ink); max-width: 25ch; }
+.cap .part { will-change: transform, opacity; }
+
+/* the browser window with the real site */
+#win { position: absolute; left: 736px; top: 182px; width: 1056px; transform-origin: 50% 60%; }
+#win .tray { padding: 0; background: var(--bg); box-shadow: 0 0 0 8px color-mix(in srgb, var(--bg) 40%, #fff), 0 0 0 9px color-mix(in srgb, var(--gold) 55%, transparent), 0 40px 80px -36px rgb(53 59 37 / .38); }
+#win .bar { height: 40px; display: flex; align-items: center; gap: 8px; padding: 0 16px; background: #f1e7df; border-bottom: 1px solid rgb(74 82 51 / .14); }
+#win .dot { width: 9px; height: 9px; background: rgb(74 82 51 / .22); }
+#win .addr { margin-left: 18px; flex: 1; height: 24px; display: flex; align-items: center; justify-content: center; gap: 8px; background: #fbf6f1; border: 1px solid rgb(74 82 51 / .12);
+  font: 500 12px/1 "Montserrat"; letter-spacing: .04em; color: rgb(74 82 51 / .8); margin-right: 60px; }
+#win .addr img { width: 14px; height: 14px; }
+#win .view { position: relative; width: 1056px; height: 660px; overflow: hidden; }
+#win iframe { position: absolute; left: 0; top: 0; width: 1440px; height: 900px; border: 0; transform: scale(.73334); transform-origin: 0 0; }
+#cursor { position: absolute; left: 0; top: 0; z-index: 40; width: 28px; height: 28px; pointer-events: none; filter: drop-shadow(0 3px 6px rgb(53 59 37 / .3)); }
+
+/* two phones */
+.phone { position: absolute; top: 132px; width: 374px; height: 794px; padding: 11px; background: #2a2e21; border-radius: 52px;
+  box-shadow: 0 0 0 1px rgb(201 161 91 / .45), 0 46px 90px -40px rgb(53 59 37 / .45); }
+.phone .screen { position: relative; width: 352px; height: 772px; overflow: hidden; border-radius: 42px; background: var(--bg); }
+.phone iframe { position: absolute; left: 0; top: 0; width: 390px; height: 855px; border: 0; transform: scale(.90257); transform-origin: 0 0; }
+#ph1 { left: 868px; } #ph2 { left: 1302px; }
+.tap { position: absolute; z-index: 41; width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 50%; border: 2px solid var(--gold); background: rgb(201 161 91 / .18); pointer-events: none; }
+
+/* the close on the olive band */
+#outro { position: absolute; inset: 0; z-index: 50; background: var(--olive); color: var(--bg); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0;
+  background-image: radial-gradient(68% 70% at 22% 8%, rgb(251 246 241 / .08) 0, rgb(251 246 241 / .02) 50%, transparent 80%), radial-gradient(40% 62% at 70% 0%, rgb(251 246 241 / .05) 0, transparent 100%); }
+#outro .edge { position: absolute; left: 0; right: 0; top: -1px; width: 100%; height: 120px; }
+.plate { position: relative; padding: 22px 30px; background: var(--creme); }
+.plate img { display: block; width: 132px; height: auto; }
+.plate::before, .plate::after { content: ""; position: absolute; width: 22px; height: 22px; border: 1px solid var(--gold); }
+.plate::before { top: 8px; left: 8px; border-right: 0; border-bottom: 0; }
+.plate::after { right: 8px; bottom: 8px; border-left: 0; border-top: 0; }
+#outro h2 { margin: 48px 0 0; font: 400 96px/1.04 "Cormorant Garamond"; letter-spacing: -.01em; color: var(--bg); text-align: center; }
+#outro h2 em { color: var(--rose-light); }
+.btn { position: relative; margin-top: 48px; height: 76px; width: 560px; display: flex; align-items: center; justify-content: center; padding-right: 72px; padding-left: 24px;
+  background: var(--creme); color: var(--olive); font: 500 19px/1 "Montserrat"; letter-spacing: .18em; text-transform: uppercase; }
+.btn .chip { position: absolute; right: 10px; top: 10px; width: 56px; height: 56px; display: grid; place-items: center; background: rgb(201 161 91 / .2); border: 1px solid rgb(201 161 91 / .6); }
+.btn .chip svg { width: 18px; height: 18px; fill: none; stroke: var(--gold-deep); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; overflow: visible; }
+#outro .foot { margin-top: 44px; display: flex; gap: 22px; align-items: center; font: 400 20px/1 "Montserrat"; letter-spacing: .06em; color: rgb(251 246 241 / .86); }
+#outro .foot i { width: 6px; height: 6px; background: var(--gold); display: inline-block; }
+#outro .ring { position: absolute; width: 120px; height: 120px; margin: -60px 0 0 -60px; border-radius: 50%; border: 2px solid var(--gold); pointer-events: none; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <section id="hook">
+    <p class="eyebrow" id="hookEyebrow">Manifesto Lavier</p>
+    <p class="q" id="quote"></p>
+  </section>
+
+  <div class="cap" id="cap2">
+    <p class="eyebrow part">Lavier Corpo &amp; Mente</p>
+    <h2 class="part">O novo site da <em>Lavier Corpo &amp; Mente</em></h2>
+    <p class="part">Estética avançada e terapia integrativa em Salvador.</p>
+  </div>
+  <div class="cap" id="cap3">
+    <p class="eyebrow part">Tratamentos</p>
+    <h2 class="part">Cada tratamento, <em>com a sua foto</em></h2>
+    <p class="part">Corporal, facial e terapia integrativa, lado a lado.</p>
+  </div>
+  <div class="cap" id="cap4">
+    <p class="eyebrow part">No celular</p>
+    <h2 class="part">Da primeira tela <em>à avaliação</em></h2>
+    <p class="part">O agendamento sai pelo WhatsApp, com um toque.</p>
+  </div>
+
+  <div id="win">
+    <div class="tray">
+      <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="addr"><img src="/img/lavier-icon-64.png" alt="">Lavier Corpo &amp; Mente</span></div>
+      <div class="view"><iframe id="fDesk" src="/" title="site"></iframe></div>
+    </div>
+  </div>
+  <svg id="cursor" viewBox="0 0 28 28"><path d="M5 3l17 10.5-7.6 1.4L19 23l-3.4 1.6-4.4-8.2L5 21z" fill="#fbf6f1" stroke="#353b25" stroke-width="1.6" stroke-linejoin="round"/></svg>
+
+  <div class="phone" id="ph1"><div class="screen"><iframe id="fPh1" src="/" title="site"></iframe></div></div>
+  <div class="phone" id="ph2"><div class="screen"><iframe id="fPh2" src="/" title="site"></iframe></div></div>
+  <div class="tap" id="tap"></div>
+
+  <section id="outro">
+    <div class="plate" id="plate"><img src="/img/lavier-logo-224.webp" alt=""></div>
+    <h2 id="outroH"></h2>
+    <div class="btn" id="btn">Agendar avaliação<span class="chip"><svg viewBox="0 0 12 12"><path d="M1 6h8"/><path d="M4.5 2.5 8 6l-3.5 3.5"/></svg></span></div>
+    <p class="foot" id="foot"><span>Salvador, BA</span><i></i><span>@laviercorpoemente</span></p>
+    <div class="ring" id="ring"></div>
+  </section>
+  <div id="grain"></div>
+</div>
+<script>
+// ---------- time helpers: every frame is a pure function of t (seconds)
+const DUR = 21;
+function bez(x1, y1, x2, y2) {
+  const cx = 3 * x1, bx = 3 * (x2 - x1) - cx, ax = 1 - cx - bx, cy = 3 * y1, by = 3 * (y2 - y1) - cy, ay = 1 - cy - by;
+  const sx = t => ((ax * t + bx) * t + cx) * t, sy = t => ((ay * t + by) * t + cy) * t, dx = t => (3 * ax * t + 2 * bx) * t + cx;
+  return x => { if (x <= 0) return 0; if (x >= 1) return 1; let t = x; for (let i = 0; i < 8; i++) { const d = dx(t); if (Math.abs(d) < 1e-6) break; t -= (sx(t) - x) / d; } t = Math.min(1, Math.max(0, t)); return sy(t); };
+}
+const spring = bez(.32, .72, 0, 1), inOut = bez(.65, 0, .35, 1), outQ = bez(.22, 1, .36, 1);
+const p = (t, a, b, e = spring) => e(Math.min(1, Math.max(0, (t - a) / (b - a))));
+const lerp = (a, b, k) => a + (b - a) * k;
+const $ = id => document.getElementById(id);
+const words = (el, html) => { el.innerHTML = html.replace(/(<em>|<\/em>|<br>)|([^\s<]+)/g, (m, tag, w) => tag ? tag : `<span class="w">${w}</span>`); return [...el.querySelectorAll('.w')]; };
+
+const quoteW = words($('quote'), '“Beleza é quando corpo e mente<br><em>encontram o mesmo ritmo.”</em>');
+const outroW = words($('outroH'), 'Agende sua avaliação <em>na Lavier</em>');
+
+// a part comes up: opacity, a rise and a little blur, all from one progress value
+function rise(el, k, dist = 40, blur = 10) {
+  el.style.opacity = k; el.style.transform = `translateY(${(1 - k) * dist}px)`; el.style.filter = k < 1 ? `blur(${(1 - k) * blur}px)` : 'none';
+}
+function leave(el, k, dist = -24) { // k: 0 shown, 1 gone
+  el.style.opacity = 1 - k; el.style.transform = `translateY(${k * dist}px)`; el.style.filter = k > 0 ? `blur(${k * 6}px)` : 'none';
+}
+function caption(id, tIn, tOut) {
+  const parts = [...$(id).querySelectorAll('.part')];
+  parts.forEach((el, i) => {
+    const a = tIn + i * .16;
+    if (tOut != null && 0) {}
+    const kin = p(window.__t, a, a + .9);
+    const kout = tOut == null ? 0 : p(window.__t, tOut + i * .05, tOut + .35 + i * .05, inOut);
+    el.style.opacity = kin * (1 - kout);
+    el.style.transform = `translateY(${(1 - kin) * 36 - kout * 20}px)`;
+    el.style.filter = (kin < 1 || kout > 0) ? `blur(${(1 - kin) * 8 + kout * 5}px)` : 'none';
+    if (el.classList.contains('eyebrow')) el.style.setProperty('--line', p(window.__t, a + .2, a + 1.0));
+  });
+  $(id).style.visibility = (window.__t >= tIn - .01 && (tOut == null || window.__t < tOut + .6)) ? 'visible' : 'hidden';
+}
+
+// ---------- the three copies of the real site
+const frames = { desk: $('fDesk'), ph1: $('fPh1'), ph2: $('fPh2') };
+const anchors = {};
+async function prepFrame(f) {
+  const w = f.contentWindow, d = f.contentDocument;
+  await new Promise(r => { if (d.readyState === 'complete') r(); else w.addEventListener('load', r, { once: true }); });
+  await d.fonts.ready;
+  const st = d.createElement('style');
+  st.textContent = 'html{scrollbar-width:none;scroll-behavior:auto!important} html::-webkit-scrollbar{display:none} .skip-link{display:none!important}';
+  d.head.append(st);
+  d.querySelectorAll('img[loading="lazy"]').forEach(i => { i.loading = 'eager'; });
+  await Promise.all([...d.images].map(i => i.complete ? i.decode().catch(() => {}) : new Promise(r => { i.onload = i.onerror = r; setTimeout(r, 15000); })));
+}
+const top_ = (f, sel) => { const el = f.contentDocument.querySelector(sel); return el.getBoundingClientRect().top + f.contentWindow.scrollY; };
+const raf2 = w => new Promise(r => w.requestAnimationFrame(() => w.requestAnimationFrame(r)));
+window.ready = (async () => {
+  await document.fonts.ready;
+  await Promise.all([...document.fonts].map(f => f.load().catch(() => {})));
+  await Promise.all(Object.values(frames).map(prepFrame));
+  const fd = frames.desk;
+  anchors.harmonia = top_(fd, '#harmonia');
+  anchors.trat = top_(fd, '#tratamentos');
+  anchors.avPh = top_(frames.ph1, '#avaliacao');
+  return anchors;
+})();
+
+function scrollFrame(f, y) { f.contentWindow.scrollTo({ top: Math.round(y), behavior: 'instant' }); }
+
+// ---------- the score
+window.renderAt = async function (t) {
+  window.__t = t;
+  // scene 1: the manifesto, word by word
+  $('hook').style.visibility = t < 4.3 ? 'visible' : 'hidden';
+  const kOut1 = p(t, 3.62, 4.05, inOut);
+  const eb = $('hookEyebrow'); rise(eb, p(t, .05, .8)); eb.style.setProperty('--line', p(t, .3, 1.2));
+  if (kOut1 > 0) leave(eb, kOut1);
+  quoteW.forEach((w, i) => { const a = .32 + i * .12; const k = p(t, a, a + .8); rise(w, k, 34, 12); if (kOut1 > 0) { w.style.opacity = k * (1 - kOut1); w.style.transform = `translateY(${-kOut1 * 26}px)`; w.style.filter = `blur(${kOut1 * 6}px)`; } });
+
+  // scenes 2 and 3: the window with the desktop site
+  const win = $('win');
+  const kIn2 = p(t, 4.0, 4.9), kOut3 = p(t, 12.9, 13.35, inOut);
+  win.style.visibility = (t >= 3.95 && t < 13.4) ? 'visible' : 'hidden';
+  win.style.opacity = kIn2 * (1 - kOut3);
+  win.style.transform = `translateY(${(1 - kIn2) * 70 + kOut3 * 40}px) scale(${lerp(.965, 1, kIn2) - kOut3 * .02})`;
+  caption('cap2', 4.45, 8.15);
+  caption('cap3', 8.6, 12.85);
+  caption('cap4', 13.55, 16.55);
+  // the desktop site scrolls: top, then the manifesto band, then the treatments
+  const fd = frames.desk;
+  let y = 0;
+  y = lerp(0, anchors.harmonia, p(t, 5.5, 7.3, inOut));
+  y = lerp(y, anchors.trat, p(t, 8.2, 9.2, inOut));
+  scrollFrame(fd, y);
+  // treatments: the pointer walks the rows and the photograph follows (the site's own swap)
+  const d = fd.contentDocument;
+  const rows = [...d.querySelectorAll('#tratamentos [data-peek-to]')];
+  const active = t < 10.25 ? 0 : t < 11.4 ? 1 : 2;
+  if (rows[active]) rows[active].dispatchEvent(new PointerEvent('pointerenter', { pointerType: 'mouse' }));
+  const cur = $('cursor');
+  const view = win.querySelector('.view').getBoundingClientRect();
+  const S = .73334;
+  if (t >= 9.1 && t < 13.0 && rows.length) {
+    const pt = i => { const r = rows[i].getBoundingClientRect(); return [view.left + (r.left + 150) * S, view.top + (r.top + 14) * S]; };
+    const way = [[view.left + view.width * .62, view.top + view.height * .95], pt(0), pt(1), pt(2)];
+    const times = [9.1, 9.75, 10.25, 11.4];
+    let x = way[0][0], yy = way[0][1];
+    for (let i = 1; i < way.length; i++) { const k = p(t, times[i] - .55, times[i], inOut); x = lerp(x, way[i][0], k); yy = lerp(yy, way[i][1], k); }
+    cur.style.visibility = 'visible';
+    cur.style.opacity = p(t, 9.1, 9.4) * (1 - p(t, 12.6, 12.9, inOut));
+    cur.style.transform = `translate(${x}px, ${yy}px)`;
+  } else cur.style.visibility = 'hidden';
+
+  // scene 4: two phones
+  const ph = [$('ph1'), $('ph2')];
+  const kOut4 = p(t, 16.55, 16.95, inOut);
+  ph.forEach((el, i) => {
+    const k = p(t, 13.45 + i * .18, 14.35 + i * .18);
+    el.style.visibility = (t >= 13.4 && t < 17.0) ? 'visible' : 'hidden';
+    el.style.opacity = k * (1 - kOut4);
+    el.style.transform = `translateY(${(1 - k) * 90 - kOut4 * 30}px)`;
+  });
+  // phone 1 scrolls from the hero to the evaluation steps
+  scrollFrame(frames.ph1, lerp(0, anchors.avPh, p(t, 14.4, 15.9, inOut)));
+  // phone 2: a tap on Menu, the links rise one by one (styled here, so the frame is exact)
+  const d2 = frames.ph2.contentDocument, nav = d2.querySelector('.nav'), toggle = d2.querySelector('.nav__toggle');
+  scrollFrame(frames.ph2, 0);
+  const open = t >= 14.95 && t < 17.2;
+  if (nav.classList.contains('is-open') !== open) toggle.click();
+  const items = [...d2.querySelectorAll('.nav__links > .nav__item'), d2.querySelector('.nav__actions')];
+  items.forEach((it, i) => { if (!it) return; const k = p(t, 15.0 + i * .08, 15.75 + i * .08); it.style.opacity = open ? k : ''; it.style.transform = open ? `translateY(${(1 - k) * 30}px)` : ''; });
+  const tap = $('tap');
+  if (t >= 14.6 && t < 15.25) {
+    const sr = $('ph2').querySelector('.screen').getBoundingClientRect(), r = toggle.getBoundingClientRect(), PS = .90257;
+    const k = p(t, 14.6, 15.25, outQ);
+    tap.style.visibility = 'visible';
+    tap.style.left = (sr.left + (r.left + r.width / 2) * PS) + 'px'; tap.style.top = (sr.top + (r.top + r.height / 2) * PS) + 'px';
+    tap.style.opacity = (t < 14.75 ? p(t, 14.6, 14.75) : 1) * (1 - k) * .9;
+    tap.style.transform = `scale(${lerp(.5, 1.5, k)})`;
+  } else tap.style.visibility = 'hidden';
+
+  // scene 5: the olive band rises, then the logo, the line, the button and its tap
+  const o = $('outro');
+  const kO = p(t, 16.85, 17.75, inOut);
+  o.style.visibility = t >= 16.8 ? 'visible' : 'hidden';
+  o.style.clipPath = `inset(${(1 - kO) * 100}% 0 0 0)`;
+  rise($('plate'), p(t, 17.45, 18.3), 30, 8);
+  outroW.forEach((w, i) => { const a = 17.75 + i * .1; rise(w, p(t, a, a + .85), 34, 10); });
+  const kb = p(t, 18.35, 19.15); rise($('btn'), kb, 30, 8);
+  const press = t >= 19.6 && t < 20.0 ? Math.sin(Math.PI * (t - 19.6) / .4) : 0;
+  $('btn').style.transform = `translateY(${(1 - kb) * 30}px) scale(${1 - press * .025})`;
+  const chip = $('btn').querySelector('.chip');
+  chip.style.transform = `translate(${press * 3}px, ${-press * 2}px) scale(${1 + press * .06})`;
+  rise($('foot'), p(t, 18.7, 19.5), 20, 6);
+  const ring = $('ring'), br = $('btn').getBoundingClientRect();
+  if (t >= 19.6 && t < 20.35) {
+    const k = p(t, 19.6, 20.35, outQ);
+    ring.style.visibility = 'visible';
+    ring.style.left = (br.left + br.width * .5) + 'px'; ring.style.top = (br.top + br.height * .5) + 'px';
+    ring.style.opacity = (1 - k) * .8; ring.style.transform = `scale(${lerp(.4, 3.2, k)})`;
+  } else ring.style.visibility = 'hidden';
+
+  // settle: the frames paint their scroll and swaps, images on screen are decoded
+  await Promise.all(Object.values(frames).map(f => raf2(f.contentWindow)));
+  for (const f of Object.values(frames)) {
+    const vh = f.contentWindow.innerHeight;
+    const pend = [...f.contentDocument.images].filter(i => { const r = i.getBoundingClientRect(); return r.bottom > 0 && r.top < vh && !i.complete; });
+    if (pend.length) await Promise.all(pend.map(i => new Promise(r => { i.onload = i.onerror = r; setTimeout(r, 8000); })));
+  }
+  await raf2(window);
+  return true;
+};
+</script>
+</body>
+</html>

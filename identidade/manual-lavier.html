@@ -28,7 +28,7 @@ body{font-family:var(--sans);font-weight:400;color:var(--ink);font-size:9.5pt;li
 @media screen{.page{margin:8mm auto;box-shadow:0 6px 30px rgba(0,0,0,.12)}}
 
 /* tipografia */
-.eyebrow{display:flex;align-items:center;gap:4mm;font:500 7pt/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.eyebrow{white-space:nowrap;display:flex;align-items:center;gap:4mm;font:500 7pt/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
 .eyebrow::before{content:"";width:10mm;height:.3mm;background:var(--dourado)}
 .eyebrow.plain::before{display:none}
 h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.02;letter-spacing:-.005em}
@@ -71,7 +71,7 @@ p{max-width:58ch}
 .cover__card{width:104mm;height:146mm;background:var(--branco);box-shadow:0 18mm 30mm -12mm rgba(74,82,51,.28),0 2mm 5mm rgba(74,82,51,.08);transform:rotate(2.2deg);position:relative;display:grid;place-items:center}
 .cover__card .logo{width:74mm}
 .brandmark{display:flex;align-items:center;gap:3mm}
-.brandmark .logo{width:11mm}
+.brandmark .logo{width:15mm}
 
 /* ---------- 02 manifesto ---------- */
 .manifesto{background:var(--verde);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
@@ -81,16 +81,16 @@ p{max-width:58ch}
 .manifesto p{margin:0 auto;max-width:62ch;color:rgba(244,233,225,.85);font-size:10pt}
 
 /* ---------- 03 essência ---------- */
-.three{grid-template-columns:repeat(3,1fr);gap:0;margin-top:11mm;border:.3mm solid var(--line)}
+.three{grid-template-columns:repeat(3,1fr);gap:0;margin-top:11mm;height:116mm;border:.3mm solid var(--line)}
 .three > div{padding:7mm 7mm 8mm;border-right:.3mm solid var(--line);display:flex;flex-direction:column}
 .three > div:last-child{border-right:0}
-.three svg{width:30mm;height:34mm;margin:5mm auto 7mm;display:block}
-.three h3{font-size:20pt;margin-bottom:2mm}
+.three svg{width:40mm;height:46mm;margin:auto;display:block}
+.three h3{font-size:20pt;margin-bottom:2mm;margin-top:6mm}
 
 /* ---------- 04 anatomia ---------- */
 .anat{display:grid;grid-template-columns:96mm 1fr;gap:16mm;align-items:center;margin-top:7mm}
 .anat__fig{position:relative;background:var(--creme);height:132mm;display:grid;place-items:center}
-.anat__fig .logo{width:100mm}
+.anat__fig .logo{width:78mm;margin-right:6mm}
 .anat__list{display:grid;gap:6mm}
 .anat__item{display:grid;grid-template-columns:12mm 1fr;gap:3mm;padding-top:4mm;border-top:.3mm solid var(--line)}
 .anat__item b{font:500 15pt/1 var(--serif);color:var(--rtexto)}
@@ -103,9 +103,8 @@ p{max-width:58ch}
 .v{position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:6mm}
 .v .logo{width:62%;margin:auto}
 .v.main .logo{width:58%}
-.v__cap{display:flex;justify-content:space-between;align-items:flex-end;gap:4mm}
-.v__cap h3{font-size:14pt}
-.v__cap .small{max-width:34ch}
+.v__cap h3{font-size:15pt;margin-bottom:1.5mm}
+.v__cap .small{max-width:46ch}
 
 /* ---------- 06 proteção ---------- */
 .prot{display:grid;grid-template-columns:120mm 1fr;gap:16mm;margin-top:8mm}
@@ -132,18 +131,18 @@ p{max-width:58ch}
 .sw.dark{color:var(--creme)}
 .sw h3{font-size:13pt;margin-bottom:2mm}
 .sw .mono-num{display:block;font-size:6.3pt;line-height:1.6;opacity:.92}
-.sw .role{font-size:6.3pt;line-height:1.45;margin-top:2mm;opacity:.92}
+.sw .role{font-size:6.3pt;line-height:1.45;margin-top:2mm;opacity:.92;min-height:2.9em}
 .prop{display:flex;height:7mm;margin-top:7mm}
 .prop span{display:flex;align-items:center;justify-content:center;font:500 5.8pt/1 var(--sans);letter-spacing:.08em}
 
 /* ---------- 09 contraste ---------- */
 .pairs{grid-template-columns:repeat(4,1fr);gap:5mm;margin-top:8mm}
-.pair{height:54mm;padding:5mm;display:flex;flex-direction:column;justify-content:space-between}
+.pair{height:60mm;padding:5mm;display:flex;flex-direction:column;justify-content:space-between}
 .pair__t{font:500 22pt/1 var(--serif)}
 .pair__t em{font-style:italic;font-weight:400}
 .pair__s{font-size:7pt;line-height:1.45}
-.pair__meta{display:flex;justify-content:space-between;align-items:flex-end;font:500 6pt/1.4 var(--sans);letter-spacing:.06em}
-.badge{display:inline-block;padding:1.2mm 2mm;border-radius:10mm;font:600 5.6pt/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;border:.25mm solid currentColor}
+.pair__meta{display:flex;flex-direction:column;align-items:flex-start;gap:2.5mm;font:500 6pt/1.4 var(--sans);letter-spacing:.06em}
+.badge{white-space:nowrap;display:inline-block;padding:1.2mm 2mm;border-radius:10mm;font:600 5.6pt/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;border:.25mm solid currentColor}
 
 /* ---------- 10 tipografia ---------- */
 .type{padding:0;display:grid;grid-template-columns:100mm 1fr}
@@ -159,7 +158,7 @@ p{max-width:58ch}
 
 /* ---------- 11 elementos ---------- */
 .elements{grid-template-columns:repeat(4,1fr);gap:6mm;margin-top:9mm}
-.el__tile{height:62mm;background:var(--creme);display:grid;place-items:center;margin-bottom:4mm;position:relative}
+.el__tile{height:84mm;background:var(--creme);display:grid;place-items:center;margin-bottom:4mm;position:relative}
 .el__tile svg{width:44mm;height:44mm}
 .el h3{font-size:14pt;margin-bottom:1.5mm}
 
@@ -213,8 +212,8 @@ p{max-width:58ch}
 .story .b{margin-top:auto;background:var(--verde);color:var(--creme);font:500 5pt/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;padding:2.6mm 4.5mm;border-radius:10mm}
 
 /* ---------- 15 contracapa ---------- */
-.back{background:var(--verde);display:grid;grid-template-columns:1fr 92mm;align-items:center;gap:10mm}
-.back .logo{width:86mm}
+.closing{background:var(--verde);display:grid;grid-template-columns:1fr 92mm;align-items:center;gap:10mm}
+.closing .logo{width:86mm}
 </style>
 </head>
 <body>
@@ -228,7 +227,7 @@ p{max-width:58ch}
       <h1>O cuidado que começa <em>por dentro.</em></h1>
       <p class="lede">Uma identidade que une a delicadeza do corpo à serenidade da mente, em formas orgânicas, metais aquecidos e uma elegância que acolhe.</p>
     </div>
-    <div class="small">Clínica Lavier · Larissa Xavier, esteticista e terapeuta · Salvador, BA</div>
+    <div class="small">Larissa Xavier, esteticista e terapeuta<br>Salvador, BA · @laviercorpoemente</div>
   </div>
   <div class="cover__r">
     <div class="cover__card"><span class="corners"></span><span class="logo"></span></div>
@@ -285,9 +284,9 @@ p{max-width:58ch}
   <div class="anat">
     <div class="anat__fig">
       <span class="logo"></span>
-      <span class="tag" style="left:8mm;top:12mm"><i>1</i></span>
-      <span class="tag" style="left:8mm;top:82mm"><i>2</i></span>
-      <span class="tag" style="left:8mm;top:110mm"><i>3</i></span>
+      <span class="tag" style="left:86mm;top:44mm"><i>1</i></span>
+      <span class="tag" style="left:86mm;top:76mm"><i>2</i></span>
+      <span class="tag" style="left:86mm;top:92.5mm"><i>3</i></span>
     </div>
     <div>
       <h2>Uma assinatura <em>que se revela.</em></h2>
@@ -310,7 +309,7 @@ p{max-width:58ch}
     <div class="v main" style="background:var(--creme)">
       <span class="label">Principal</span>
       <span class="logo"></span>
-      <div class="v__cap"><h3>Metálica</h3><p class="small">Para fundos claros e para o verde escuro. É a versão de uso preferencial: site, redes, fachada, papelaria.</p></div>
+      <div class="v__cap"><h3>Metálica</h3><p class="small">A versão preferencial, sempre sobre fundo claro: creme ou branco quente. Site, redes, fachada, papelaria.</p></div>
     </div>
     <div class="v" style="background:var(--branco);outline:.3mm solid var(--line);outline-offset:-.3mm">
       <span class="label">Tonal</span>
@@ -320,7 +319,7 @@ p{max-width:58ch}
     <div class="v on-dark" style="background:var(--verde)">
       <span class="label">Monocromática</span>
       <span class="logo flat" style="--c:var(--creme)"></span>
-      <div class="v__cap"><h3>Uma cor</h3><p class="small">Para carimbo, gravação, bordado e hot stamping. Só em creme, verde escuro ou rosé para texto.</p></div>
+      <div class="v__cap"><h3>Uma cor</h3><p class="small">Para o verde escuro e para carimbo, gravação, bordado e hot stamping. Em creme ou rosé claro sobre o verde; em verde escuro sobre fundos claros.</p></div>
     </div>
   </div>
   <div class="folio"><span>Lavier Corpo &amp; Mente · Manual de identidade visual</span><span>05</span></div>
@@ -354,7 +353,7 @@ p{max-width:58ch}
         </div>
         <div>
           <span class="label">Fundos</span>
-          <p class="small" style="margin-top:1.5mm">Metálica sobre creme, branco quente ou verde escuro. Sobre rosé claro, use a versão de uma cor em verde escuro.</p>
+          <p class="small" style="margin-top:1.5mm">Metálica só sobre creme ou branco quente: no verde escuro, o descritor CORPO E MENTE some. Sobre o verde, use a versão de uma cor em creme ou rosé claro; sobre rosé, a versão de uma cor em verde escuro.</p>
         </div>
       </div>
     </div>
@@ -370,7 +369,7 @@ p{max-width:58ch}
     <div class="dont"><div class="dont__tile"><span class="logo" style="transform:scaleX(1.45)"></span></div><h3>Esticar ou achatar</h3><p class="small">Redimensione sempre pelo canto, mantendo a proporção.</p></div>
     <div class="dont"><div class="dont__tile"><span class="logo" style="transform:rotate(-18deg)"></span></div><h3>Girar ou inclinar</h3><p class="small">O logo fica sempre na horizontal.</p></div>
     <div class="dont"><div class="dont__tile"><span class="logo" style="filter:hue-rotate(150deg) saturate(1.6)"></span></div><h3>Trocar as cores</h3><p class="small">Só as versões deste manual: metálica, oliva tonal e uma cor.</p></div>
-    <div class="dont"><div class="dont__tile" style="background:var(--rgold)"><span class="logo"></span></div><h3>Fundo sem contraste</h3><p class="small">A metálica some sobre rosé gold e dourado. Use a versão em verde escuro.</p></div>
+    <div class="dont"><div class="dont__tile" style="background:var(--rgold)"><span class="logo"></span></div><h3>Fundo sem contraste</h3><p class="small">A metálica some sobre rosé, dourado e verde. Nesses fundos, use a versão de uma cor.</p></div>
     <div class="dont"><div class="dont__tile" style="background:repeating-linear-gradient(115deg,#C98778 0 6mm,#6B7A4B 6mm 11mm,#F5C6B8 11mm 17mm,#C9A15B 17mm 21mm)"><span class="logo"></span></div><h3>Fundo carregado</h3><p class="small">Sobre foto ou estampa, só em área lisa e calma da imagem.</p></div>
     <div class="dont"><div class="dont__tile"><span class="logo" style="filter:drop-shadow(1.2mm 1.6mm 0 rgba(74,82,51,.55))"></span></div><h3>Sombras e efeitos</h3><p class="small">O brilho do metal já está no desenho. Nada de sombra, contorno ou brilho extra.</p></div>
   </div>
@@ -511,11 +510,11 @@ p{max-width:58ch}
   <h2 style="margin-top:6mm">A marca <em>ganha matéria.</em></h2>
   <div class="apps" style="grid-template-columns:1.6fr 1fr">
     <div class="stage" style="background:var(--rclaro)">
-      <div class="bcard back" style="transform:translate(-26mm,-14mm) rotate(-4deg)">
+      <div class="bcard back" style="transform:translate(-24mm,-17mm) rotate(-4deg)">
         <div><div class="n">Larissa Xavier</div><div class="r">Esteticista e terapeuta</div></div>
         <div class="c">(71) 98153-8910<br>@laviercorpoemente<br>Salvador · BA</div>
       </div>
-      <div class="bcard front" style="transform:translate(24mm,18mm) rotate(3deg)"><span class="corners" style="transform:scale(.6)"></span><span class="logo"></span></div>
+      <div class="bcard front" style="transform:translate(26mm,21mm) rotate(3deg)"><span class="corners" style="transform:scale(.6)"></span><span class="logo"></span></div>
       <span class="stage__cap">Cartão de visita · frente e verso, 85 × 55 mm</span>
     </div>
     <div class="stage" style="background:#E9DDD4">
@@ -555,13 +554,13 @@ p{max-width:58ch}
 </section>
 
 <!-- 15 · CONTRACAPA -->
-<section class="page back on-dark">
+<section class="page closing on-dark">
   <div>
     <div class="eyebrow">Lavier · Corpo e mente</div>
     <h1 style="margin:7mm 0 6mm">Inteira em <em>cada detalhe.</em></h1>
     <p class="lede">Clínica Lavier · Larissa Xavier, esteticista e terapeuta<br>Salvador, BA · @laviercorpoemente</p>
   </div>
-  <span class="logo"></span>
+  <span class="logo flat" style="--c:var(--rclaro)"></span>
   <div class="folio"><span>Manual de identidade visual · 2026</span><span>15</span></div>
 </section>
 
