@@ -3,7 +3,7 @@
 const http = require('http'), fs = require('fs'), path = require('path');
 const WORK = __dirname, SITE = path.resolve(WORK, '../../lavier/dist'), FONTS = path.resolve(WORK, '../../lavier/node_modules');
 const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.mjs': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml',
-  '.webp': 'image/webp', '.png': 'image/png', '.jpg': 'image/jpeg', '.woff2': 'font/woff2', '.woff': 'font/woff', '.wav': 'audio/wav', '.json': 'application/json' };
+  '.webp': 'image/webp', '.png': 'image/png', '.jpg': 'image/jpeg', '.woff2': 'font/woff2', '.woff': 'font/woff', '.wav': 'audio/wav', '.mp4': 'video/mp4', '.webm': 'video/webm', '.json': 'application/json' };
 fs.mkdirSync(path.join(WORK, 'out'), { recursive: true });
 http.createServer((req, res) => {
   const url = new URL(req.url, 'http://x');
@@ -21,7 +21,15 @@ http.createServer((req, res) => {
   if (!file.startsWith(base)) { res.writeHead(403); return res.end(); }
   fs.readFile(file, (err, data) => {
     if (err) { res.writeHead(404); return res.end('404'); }
-    res.writeHead(200, { 'content-type': types[path.extname(file)] || 'application/octet-stream', 'cache-control': 'no-store' });
+    const head = { 'content-type': types[path.extname(file)] || 'application/octet-stream', 'cache-control': 'no-store', 'accept-ranges': 'bytes' };
+    // byte ranges, so a video can be seeked
+    const m = /^bytes=(\d*)-(\d*)$/.exec(req.headers.range || '');
+    if (m) {
+      const start = m[1] ? +m[1] : data.length - +m[2], end = m[1] && m[2] ? Math.min(+m[2], data.length - 1) : data.length - 1;
+      res.writeHead(206, { ...head, 'content-range': `bytes ${start}-${end}/${data.length}`, 'content-length': end - start + 1 });
+      return res.end(data.subarray(start, end + 1));
+    }
+    res.writeHead(200, { ...head, 'content-length': data.length });
     res.end(data);
   });
 }).listen(4390, () => console.log('video server on http://localhost:4390'));

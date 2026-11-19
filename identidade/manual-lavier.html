@@ -2,495 +2,489 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<title>Lavier · Manual de identidade visual</title>
+<title>Lavier · Projeto de Marca e Identidade Visual</title>
 <style>
 @font-face{font-family:"Cormorant Garamond";font-weight:400;font-style:normal;src:url(fonts/cormorant-garamond-latin-400-normal.woff2) format("woff2")}
 @font-face{font-family:"Cormorant Garamond";font-weight:400;font-style:italic;src:url(fonts/cormorant-garamond-latin-400-italic.woff2) format("woff2")}
 @font-face{font-family:"Cormorant Garamond";font-weight:500;font-style:normal;src:url(fonts/cormorant-garamond-latin-500-normal.woff2) format("woff2")}
 @font-face{font-family:"Cormorant Garamond";font-weight:500;font-style:italic;src:url(fonts/cormorant-garamond-latin-500-italic.woff2) format("woff2")}
 @font-face{font-family:"Cormorant Garamond";font-weight:600;font-style:normal;src:url(fonts/cormorant-garamond-latin-600-normal.woff2) format("woff2")}
-@font-face{font-family:"Cormorant Garamond";font-weight:600;font-style:italic;src:url(fonts/cormorant-garamond-latin-600-italic.woff2) format("woff2")}
 @font-face{font-family:"Montserrat";font-weight:100 900;font-style:normal;src:url(fonts/montserrat-latin-wght-normal.woff2) format("woff2")}
-@font-face{font-family:"Montserrat";font-weight:100 900;font-style:italic;src:url(fonts/montserrat-latin-wght-italic.woff2) format("woff2")}
 
-@page{size:297mm 210mm;margin:0}
+@page{size:1440px 810px;margin:0}
 :root{
   --creme:#F4E9E1;--branco:#FBF6F1;--rclaro:#F5C6B8;--rgold:#E3A294;--rescuro:#C98778;
   --rtexto:#A86A5C;--dourado:#C9A15B;--oliva:#6B7A4B;--verde:#4A5233;
-  --ink:#4A5233;--muted:#5E6146;--line:rgba(74,82,51,.18);
+  --muted:#5E6146;--line:rgba(74,82,51,.18);
   --serif:"Cormorant Garamond",Georgia,serif;--sans:"Montserrat",system-ui,sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-html,body{background:#d9cfc7}
-body{font-family:var(--sans);font-weight:400;color:var(--ink);font-size:9.5pt;line-height:1.6}
-.page{width:297mm;height:210mm;position:relative;overflow:hidden;break-after:page;background:var(--branco);padding:17mm 20mm 20mm;margin:0 auto}
-.page:last-child{break-after:auto}
-@media screen{.page{margin:8mm auto;box-shadow:0 6px 30px rgba(0,0,0,.12)}}
+html,body{background:#cfc5bc}
+body{font-family:var(--sans);font-weight:400;color:var(--verde);font-size:15px;line-height:1.65}
+img{display:block}
+
+.s{width:1440px;height:810px;position:relative;overflow:hidden;break-after:page;background:var(--creme);padding:96px 96px 90px}
+.s:last-child{break-after:auto}
+@media screen{.s{margin:20px auto;box-shadow:0 6px 30px rgba(0,0,0,.12)}}
+.dark{background:var(--verde);color:var(--creme)}
+.hd{position:absolute;top:40px;left:96px;font:500 11px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.ft{position:absolute;left:96px;right:96px;bottom:36px;display:flex;justify-content:space-between;font:500 11px/1 var(--sans);letter-spacing:.08em;color:var(--muted)}
+.dark .hd,.dark .ft{color:rgba(244,233,225,.72)}
+
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.04}
+h1{font-size:76px}
+h2{font-size:52px}
+h3{font-size:28px;line-height:1.1}
+h1 em,h2 em,h3 em{font-style:italic;font-weight:400;color:var(--rtexto)}
+.dark h1 em,.dark h2 em,.dark h3 em{color:var(--rclaro)}
+p{max-width:64ch}
+.lede{font-size:18px;line-height:1.7}
+.muted{color:var(--muted)}
+.dark .muted{color:rgba(244,233,225,.8)}
+.label{font:600 11px/1.3 var(--sans);letter-spacing:.2em;text-transform:uppercase}
+.eyebrow{display:flex;align-items:center;gap:16px;font:500 12px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.eyebrow::before{content:"";width:44px;height:1px;background:var(--dourado)}
+.dark .eyebrow{color:rgba(244,233,225,.78)}
+.small{font-size:13px;line-height:1.6}
+
+/* divisórias de seção */
+.divider{display:grid;place-items:center;text-align:center}
+.divider h1{font-size:84px}
+.yr{position:absolute;right:96px;bottom:36px;font:500 12px/1 var(--sans);letter-spacing:.12em;color:rgba(244,233,225,.72)}
+.divider .ix{display:block;font:500 13px/1 var(--sans);letter-spacing:.3em;color:var(--dourado);margin-bottom:26px}
+
+/* duas colunas: título à esquerda, texto à direita */
+.split{display:grid;grid-template-columns:420px 1fr;gap:80px;align-items:center;height:100%}
+
+/* capa */
+.cover{display:grid;grid-template-columns:1fr 520px;align-items:center;padding:96px 110px}
+.cover h1{font-size:84px;margin:30px 0 40px}
+.cover dl,.approve dl{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;font-size:15px;color:rgba(244,233,225,.86)}
+.cover dt,.approve dt{font-weight:600;letter-spacing:.04em}
+.cover > img{width:470px;justify-self:end}
+
+/* golden circle e DNA */
+.diagram{display:grid;grid-template-columns:1fr 560px;gap:70px;align-items:center;height:100%}
+.qa{display:grid;gap:26px}
+.qa h3{font-size:26px;margin-bottom:6px}
+.qa h3 b{font:600 12px/1 var(--sans);letter-spacing:.2em;color:var(--rtexto);margin-right:10px;vertical-align:middle}
+svg text{font-family:var(--sans)}
+
+/* manifesto */
+.manifesto{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.manifesto svg.ring{position:absolute;left:50%;top:50%;width:1040px;height:600px;transform:translate(-50%,-50%)}
+.manifesto blockquote{font:500 54px/1.1 var(--serif);max-width:20ch;margin:28px 0 30px;position:relative}
+.manifesto blockquote em{font-style:italic;font-weight:400;color:var(--rclaro)}
+
+/* pontos de contato */
+.map{position:absolute;left:96px;right:96px;top:190px;bottom:80px}
+.map .core{position:absolute;left:50%;top:50%;width:230px;height:230px;transform:translate(-50%,-50%);display:grid;place-items:center}
+.map .core img{width:150px}
+.node{position:absolute;width:330px}
+.node h3{font-size:23px;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.node h3::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--dourado);flex:none}
+.node p{font-size:13px;line-height:1.55;color:var(--muted)}
+.node.r{text-align:right}
+.node.r h3{flex-direction:row-reverse}
+
+/* elementos do símbolo */
+.els{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:34px}
+.el{background:var(--branco);padding:24px 28px 28px;display:flex;flex-direction:column}
+.el img{width:100%;height:330px;object-fit:contain;margin-bottom:18px}
+.el .label{color:var(--rtexto);margin-bottom:8px}
+.el h3{font-size:34px;margin-bottom:6px}
+.el p{font-size:14px;color:var(--muted)}
+
+/* anatomia */
+.anat{display:grid;grid-template-columns:560px 1fr;gap:80px;align-items:center;height:100%}
+.anat__fig{position:relative;background:var(--branco);height:600px;display:grid;place-items:center}
+.anat__fig img{width:430px;margin-right:40px}
+.tag{position:absolute;right:30px;width:28px;height:28px;border-radius:50%;background:var(--verde);color:var(--creme);display:grid;place-items:center;font:600 12px/1 var(--sans)}
+.parts{display:grid;gap:20px;margin-top:30px}
+.part{display:grid;grid-template-columns:48px 1fr;padding-top:18px;border-top:1px solid var(--line)}
+.part b{font:500 26px/1 var(--serif);color:var(--rtexto)}
+.part h3{font-size:24px;margin-bottom:4px}
 
 /* tipografia */
-.eyebrow{white-space:nowrap;display:flex;align-items:center;gap:4mm;font:500 7pt/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
-.eyebrow::before{content:"";width:10mm;height:.3mm;background:var(--dourado)}
-.eyebrow.plain::before{display:none}
-h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.02;letter-spacing:-.005em}
-h1{font-size:46pt}
-h2{font-size:34pt}
-h3{font-size:17pt;line-height:1.1}
-h1 em,h2 em,h3 em{font-style:italic;font-weight:400;color:var(--rtexto)}
-.on-dark h1 em,.on-dark h2 em,.on-dark h3 em{color:var(--rclaro)}
-p{max-width:58ch}
-.lede{font-size:10.5pt;line-height:1.65;color:var(--muted)}
-.small{font-size:7.5pt;line-height:1.5;color:var(--muted)}
-.label{font:500 6.5pt/1.3 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-.mono-num{font:500 7pt/1.4 var(--sans);letter-spacing:.06em}
+.type{display:grid;grid-template-columns:600px 1fr;gap:70px;align-items:center;height:100%}
+.ab{font-size:330px;line-height:.9;color:transparent;-webkit-text-stroke:1.2px var(--verde);letter-spacing:-.02em}
+.ab.serif{font-family:var(--serif);font-weight:400}
+.ab.sans{font-family:var(--sans);font-weight:300}
+.alpha{margin-top:18px;font-size:15px;letter-spacing:.06em}
+.weights{display:flex;gap:26px;margin-top:22px}
+.hier{border-top:1px solid var(--line);margin-top:30px}
+.hier > div{display:grid;grid-template-columns:170px 1fr;gap:24px;align-items:baseline;padding:15px 0;border-bottom:1px solid var(--line)}
 
-/* folio */
-.folio{position:absolute;left:20mm;right:20mm;bottom:9mm;display:flex;justify-content:space-between;font:500 6pt/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
-.on-dark .folio{color:rgba(244,233,225,.7)}
-.on-dark{color:var(--creme)}
-.on-dark .eyebrow,.on-dark .lede,.on-dark .small,.on-dark .label{color:rgba(244,233,225,.78)}
+/* cores */
+.cards{display:flex;gap:22px;justify-content:center;align-items:center;height:calc(100% - 20px)}
+.ccard{width:150px;display:flex;flex-direction:column}
+.ccard .sw{height:340px;display:flex;align-items:center;justify-content:center;text-align:center;font:600 10px/1.4 var(--sans);letter-spacing:.18em;text-transform:uppercase;padding:10px}
+.tints{display:flex;flex-direction:column}
+.tints span{height:14px;display:block}
+.ccard .hex{font:500 12px/1.5 var(--sans);margin-top:12px;letter-spacing:.04em}
+.color{display:grid;grid-template-columns:340px 1fr;gap:110px;align-items:center;height:100%;padding-left:50px}
+.color .big .sw{height:440px;display:flex;align-items:flex-end;padding:24px;font:600 12px/1.4 var(--sans);letter-spacing:.2em;text-transform:uppercase}
+.color .big .tints span{height:22px}
+.color h2{margin-bottom:24px}
+.color .row{display:grid;grid-template-columns:150px 1fr;gap:24px;padding:18px 0;border-top:1px solid var(--line)}
+.color .codes{display:flex;gap:34px;padding-top:18px;border-top:1px solid var(--line);font:500 13px/1.6 var(--sans);letter-spacing:.04em}
+.color .codes b{display:block;font:600 10px/1.4 var(--sans);letter-spacing:.2em;color:var(--muted)}
 
-/* logo */
-.logo{display:block;aspect-ratio:1234/1275;background:url(lavier-logo.png) center/contain no-repeat}
-.logo.tonal{filter:grayscale(1) sepia(.8) saturate(1.25) hue-rotate(32deg) brightness(.68)}
-.logo.flat{background:var(--c,var(--verde));-webkit-mask:url(lavier-logo.png) center/contain no-repeat;mask:url(lavier-logo.png) center/contain no-repeat}
-
-/* cantoneiras */
-.corners{position:absolute;inset:0;pointer-events:none}
-.corners::before,.corners::after{content:"";position:absolute;width:13mm;height:13mm;border-color:var(--rtexto);border-style:solid}
-.corners::before{top:5mm;left:5mm;border-width:.3mm 0 0 .3mm}
-.corners::after{bottom:5mm;right:5mm;border-width:0 .3mm .3mm 0}
-
-.grid{display:grid;gap:6mm}
-.hair{height:.3mm;background:var(--line)}
-
-/* ---------- 01 capa ---------- */
-.cover{padding:0;display:grid;grid-template-columns:118mm 1fr;background:var(--creme)}
-.cover__l{padding:17mm 16mm 18mm 20mm;display:flex;flex-direction:column;justify-content:space-between}
-.cover__l h1{font-size:50pt;margin:7mm 0 6mm}
-.cover__r{background:#EBD3C8;position:relative;display:grid;place-items:center}
-.cover__card{width:104mm;height:146mm;background:var(--branco);box-shadow:0 18mm 30mm -12mm rgba(74,82,51,.28),0 2mm 5mm rgba(74,82,51,.08);transform:rotate(2.2deg);position:relative;display:grid;place-items:center}
-.cover__card .logo{width:74mm}
-.brandmark{display:flex;align-items:center;gap:3mm}
-.brandmark .logo{width:15mm}
-
-/* ---------- 02 manifesto ---------- */
-.manifesto{background:var(--verde);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
-.manifesto__ring{position:absolute;width:190mm;height:118mm;left:50%;top:50%;transform:translate(-50%,-52%)}
-.manifesto blockquote{font:500 34pt/1.12 var(--serif);max-width:22ch;margin:7mm 0 9mm;position:relative}
-.manifesto blockquote em{font-style:italic;font-weight:400;color:var(--rclaro)}
-.manifesto p{margin:0 auto;max-width:62ch;color:rgba(244,233,225,.85);font-size:10pt}
-
-/* ---------- 03 essência ---------- */
-.three{grid-template-columns:repeat(3,1fr);gap:0;margin-top:11mm;height:116mm;border:.3mm solid var(--line)}
-.three > div{padding:7mm 7mm 8mm;border-right:.3mm solid var(--line);display:flex;flex-direction:column}
-.three > div:last-child{border-right:0}
-.three svg{width:40mm;height:46mm;margin:auto;display:block}
-.three h3{font-size:20pt;margin-bottom:2mm;margin-top:6mm}
-
-/* ---------- 04 anatomia ---------- */
-.anat{display:grid;grid-template-columns:96mm 1fr;gap:16mm;align-items:center;margin-top:7mm}
-.anat__fig{position:relative;background:var(--creme);height:132mm;display:grid;place-items:center}
-.anat__fig .logo{width:78mm;margin-right:6mm}
-.anat__list{display:grid;gap:6mm}
-.anat__item{display:grid;grid-template-columns:12mm 1fr;gap:3mm;padding-top:4mm;border-top:.3mm solid var(--line)}
-.anat__item b{font:500 15pt/1 var(--serif);color:var(--rtexto)}
-.anat__item h3{font-size:15pt;margin-bottom:1.2mm}
-.tag{position:absolute;display:flex;align-items:center;gap:1.5mm;font:500 6.5pt/1 var(--sans);color:var(--verde)}
-.tag i{display:grid;place-items:center;width:5mm;height:5mm;border-radius:50%;background:var(--verde);color:var(--creme);font-style:normal;font-size:6.5pt}
-
-/* ---------- 05 versões ---------- */
-.versions{grid-template-columns:1.25fr 1fr 1fr;margin-top:8mm;height:118mm}
-.v{position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:6mm}
-.v .logo{width:62%;margin:auto}
-.v.main .logo{width:58%}
-.v__cap h3{font-size:15pt;margin-bottom:1.5mm}
-.v__cap .small{max-width:46ch}
-
-/* ---------- 06 proteção ---------- */
-.prot{display:grid;grid-template-columns:120mm 1fr;gap:16mm;margin-top:8mm}
-.prot__fig{background:var(--creme);height:132mm;display:grid;place-items:center;position:relative}
-.prot__box{position:relative;padding:9mm;outline:.3mm dashed var(--rtexto)}
-.prot__box .logo{width:74mm;outline:.3mm solid rgba(74,82,51,.25)}
-.xmark{position:absolute;font:italic 500 11pt/1 var(--serif);color:var(--rtexto)}
-.minis{display:flex;align-items:flex-end;gap:10mm;margin:5mm 0 3mm}
-.minis figure{display:flex;flex-direction:column;align-items:center;gap:2mm}
-.rule-list{display:grid;gap:4mm;margin-top:6mm}
-.rule-list > div{padding-top:3.5mm;border-top:.3mm solid var(--line)}
-
-/* ---------- 07 não fazer ---------- */
-.donts{grid-template-columns:repeat(3,1fr);gap:6mm 6mm;margin-top:8mm}
-.dont{display:flex;flex-direction:column;gap:2.5mm}
-.dont__tile{height:52mm;background:var(--creme);position:relative;overflow:hidden;display:grid;place-items:center}
-.dont__tile .logo{width:36mm}
-.dont__tile::after{content:"";position:absolute;top:3.5mm;right:3.5mm;width:6mm;height:6mm;border-radius:50%;background:var(--rtexto) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M3 3l4 4M7 3l-4 4' stroke='%23FBF6F1' stroke-width='1.1' stroke-linecap='round'/%3E%3C/svg%3E") center/70% no-repeat}
-.dont h3{font-size:13pt}
-
-/* ---------- 08 cores ---------- */
-.palette{display:grid;grid-template-columns:repeat(7,1fr);gap:0;align-items:end;height:112mm;margin-top:6mm}
-.sw{display:flex;flex-direction:column;justify-content:flex-end;padding:4mm 3.5mm;color:var(--verde)}
-.sw.dark{color:var(--creme)}
-.sw h3{font-size:13pt;margin-bottom:2mm}
-.sw .mono-num{display:block;font-size:6.3pt;line-height:1.6;opacity:.92}
-.sw .role{font-size:6.3pt;line-height:1.45;margin-top:2mm;opacity:.92;min-height:2.9em}
-.prop{display:flex;height:7mm;margin-top:7mm}
-.prop span{display:flex;align-items:center;justify-content:center;font:500 5.8pt/1 var(--sans);letter-spacing:.08em}
-
-/* ---------- 09 contraste ---------- */
-.pairs{grid-template-columns:repeat(4,1fr);gap:5mm;margin-top:8mm}
-.pair{height:60mm;padding:5mm;display:flex;flex-direction:column;justify-content:space-between}
-.pair__t{font:500 22pt/1 var(--serif)}
+/* combinações */
+.pairs{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:32px}
+.pair{height:220px;padding:22px;display:flex;flex-direction:column;justify-content:space-between}
+.pair__t{font:500 34px/1 var(--serif)}
 .pair__t em{font-style:italic;font-weight:400}
-.pair__s{font-size:7pt;line-height:1.45}
-.pair__meta{display:flex;flex-direction:column;align-items:flex-start;gap:2.5mm;font:500 6pt/1.4 var(--sans);letter-spacing:.06em}
-.badge{white-space:nowrap;display:inline-block;padding:1.2mm 2mm;border-radius:10mm;font:600 5.6pt/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;border:.25mm solid currentColor}
+.pair__m{font:500 11px/1.5 var(--sans);letter-spacing:.04em}
+.badge{display:inline-block;margin-top:8px;padding:5px 10px;border:1px solid currentColor;border-radius:99px;font:600 9px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;white-space:nowrap}
 
-/* ---------- 10 tipografia ---------- */
-.type{padding:0;display:grid;grid-template-columns:100mm 1fr}
-.type__l{background:var(--verde);display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative}
-.type__l .aa{font:italic 400 150pt/1 var(--serif);color:var(--rclaro)}
-.type__r{padding:17mm 20mm 20mm 16mm;position:relative}
-.spec{display:grid;grid-template-columns:1fr 1fr;gap:9mm;margin-top:7mm}
-.spec .alpha-serif{font:400 15pt/1.35 var(--serif);letter-spacing:.02em}
-.spec .alpha-sans{font:400 9.5pt/1.7 var(--sans);letter-spacing:.04em}
-.weights{display:flex;gap:5mm;margin-top:3mm;flex-wrap:wrap}
-.hier{margin-top:8mm;border-top:.3mm solid var(--line)}
-.hier > div{display:grid;grid-template-columns:34mm 1fr;gap:6mm;align-items:baseline;padding:3.2mm 0;border-bottom:.3mm solid var(--line)}
+/* slides da logo */
+.logo-slide{display:grid;place-items:center;padding:0}
+.logo-slide > img{width:430px}
+.logo-slide .cap{position:absolute;left:96px;bottom:36px;font:500 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase}
+.logo-slide .file{position:absolute;right:96px;bottom:36px;font:500 11px/1 var(--sans);letter-spacing:.04em;opacity:.8}
+.logo-slide .use{position:absolute;left:96px;top:96px;max-width:300px;font-size:14px;line-height:1.6}
+.logo-slide .use h3{font-size:32px;margin-bottom:8px}
 
-/* ---------- 11 elementos ---------- */
-.elements{grid-template-columns:repeat(4,1fr);gap:6mm;margin-top:9mm}
-.el__tile{height:84mm;background:var(--creme);display:grid;place-items:center;margin-bottom:4mm;position:relative}
-.el__tile svg{width:44mm;height:44mm}
-.el h3{font-size:14pt;margin-bottom:1.5mm}
+/* proteção e cuidados */
+.prot{display:grid;grid-template-columns:620px 1fr;gap:80px;align-items:center;height:100%}
+.prot__fig{background:var(--branco);height:600px;display:grid;place-items:center;position:relative}
+.prot__box{position:relative;padding:44px;outline:1px dashed var(--rtexto)}
+.prot__box img{width:380px;outline:1px solid rgba(74,82,51,.22)}
+.xm{position:absolute;font:italic 500 18px/1 var(--serif);color:var(--rtexto)}
+.minis{display:flex;align-items:flex-end;gap:44px;margin:18px 0 12px}
+.minis figure{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:12px;color:var(--muted)}
+.donts{display:grid;grid-template-columns:repeat(3,1fr);gap:20px 26px;margin-top:26px}
+.dont__tile{height:200px;background:var(--branco);position:relative;overflow:hidden;display:grid;place-items:center;margin-bottom:10px}
+.dont__tile img{width:140px;position:relative}
+.dont__tile .x{position:absolute;top:14px;right:14px;width:26px;height:26px}
+.dont h3{font-size:22px;margin-bottom:2px}
+.dont p{font-size:13px;color:var(--muted)}
 
-/* ---------- 12 voz ---------- */
-.voice{display:grid;grid-template-columns:1fr 1.15fr;gap:16mm;margin-top:8mm}
-.traits{display:grid;gap:5mm}
-.trait{padding-top:4mm;border-top:.3mm solid var(--line)}
-.trait h3{font-size:17pt;margin-bottom:1mm}
+/* elementos gráficos e voz */
+.elements{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:36px}
+.el2 .tile{height:330px;background:var(--branco);display:grid;place-items:center;margin-bottom:18px}
+.el2 svg{width:190px;height:190px}
+.el2 h3{font-size:24px;margin-bottom:4px}
+.el2 p{font-size:13px;color:var(--muted)}
+.voice{display:grid;grid-template-columns:1fr 1.1fr;gap:80px}
+.trait{padding-top:14px;border-top:1px solid var(--line);margin-top:16px}
+.trait h3{font-size:26px}
 .trait h3 span{font-style:italic;font-weight:400;color:var(--rtexto)}
-.table{display:grid;grid-template-columns:1fr 1fr;border-top:.3mm solid var(--verde)}
-.table > div{padding:3.4mm 4mm 3.4mm 0;border-bottom:.3mm solid var(--line);font-size:8.6pt;line-height:1.45}
-.table .h{font:500 6.5pt/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;padding:3mm 0}
-.table .yes{font:500 12pt/1.25 var(--serif)}
+.table{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--verde);align-self:center}
+.table > div{padding:15px 18px 15px 0;border-bottom:1px solid var(--line);font-size:14px}
+.table .h{font:600 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;padding:16px 0}
+.table .yes{font:500 21px/1.25 var(--serif)}
 .table .no{color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(168,106,92,.6)}
 
-/* ---------- 13/14 aplicações ---------- */
-.apps{display:grid;gap:6mm;margin-top:8mm;height:122mm}
+/* aplicações */
+.apps{display:grid;gap:22px;position:absolute;left:96px;right:96px;top:130px;bottom:80px}
 .stage{position:relative;overflow:hidden;display:grid;place-items:center}
-.stage__cap{position:absolute;left:5mm;bottom:4.5mm;font:500 6pt/1 var(--sans);letter-spacing:.2em;text-transform:uppercase}
-.bcard{width:85mm;height:55mm;position:absolute;box-shadow:0 8mm 14mm -6mm rgba(74,82,51,.35),0 .6mm 1.5mm rgba(74,82,51,.12)}
-.bcard.front{background:var(--branco);display:grid;place-items:center}
-.bcard.front .logo{width:30mm}
-.bcard.back{background:var(--verde);color:var(--creme);padding:7mm 7mm 6mm;display:flex;flex-direction:column;justify-content:space-between}
-.bcard.back .n{font:500 17pt/1 var(--serif)}
-.bcard.back .r{font:500 5.6pt/1.4 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--rclaro);margin-top:1.8mm}
-.bcard.back .c{font-size:6.2pt;line-height:1.7;color:rgba(244,233,225,.85)}
-.sheet{width:68mm;height:96mm;background:var(--branco);box-shadow:0 8mm 14mm -6mm rgba(74,82,51,.3);padding:6mm 6mm 5mm;display:flex;flex-direction:column}
-.sheet .logo{width:15mm;margin:0 auto 3mm}
-.sheet .t{font:500 10.5pt/1.1 var(--serif);text-align:center}
+.stage__cap{position:absolute;left:22px;bottom:18px;font:600 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase}
+.lift{position:relative;isolation:isolate}
+.lift::before{content:"";position:absolute;left:-10%;right:-10%;top:6%;bottom:-18%;background:url(img/sombra.png) center/100% 100% no-repeat;z-index:-1;opacity:.7}
+.bcard{width:340px;height:220px}
+.bcard.front{background:var(--branco);display:grid;place-items:center;position:relative}
+.bcard.front img{width:120px}
+.bcard.back{background:var(--verde);color:var(--creme);padding:28px 28px 24px;display:flex;flex-direction:column;justify-content:space-between}
+.bcard .n{font:500 30px/1 var(--serif)}
+.bcard .r{font:600 9px/1.4 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--rclaro);margin-top:8px}
+.bcard .c{font-size:11px;line-height:1.7;color:rgba(244,233,225,.86)}
+.corners{position:absolute;inset:0}
+.corners::before,.corners::after{content:"";position:absolute;width:34px;height:34px;border-color:var(--rtexto);border-style:solid}
+.corners::before{top:14px;left:14px;border-width:1px 0 0 1px}
+.corners::after{bottom:14px;right:14px;border-width:0 1px 1px 0}
+.sheet{width:290px;height:410px;background:var(--branco);padding:26px 26px 20px;display:flex;flex-direction:column}
+.sheet img{width:64px;margin:0 auto 12px}
+.sheet .t{font:500 19px/1.1 var(--serif);text-align:center}
 .sheet .t em{font-style:italic;font-weight:400;color:var(--rtexto)}
-.sheet .ln{height:.25mm;background:rgba(74,82,51,.16);margin-top:4.2mm}
-.sheet .ft{margin-top:auto;padding-top:2.5mm;border-top:.25mm solid var(--dourado);display:flex;justify-content:space-between;font:500 4.2pt/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-
-.bottle{position:relative;width:38mm;height:96mm}
-.bottle__cap{position:absolute;left:10.5mm;width:17mm;top:0;height:17mm;border-radius:1.2mm 1.2mm .4mm .4mm;background:linear-gradient(90deg,#9C7B3E,#D9B877 35%,#F0D9A4 48%,#C9A15B 62%,#8E6E36)}
-.bottle__body{position:absolute;left:0;right:0;top:16mm;bottom:0;border-radius:8mm 8mm 3mm 3mm;background:linear-gradient(90deg,#9F6A5C,#C98778 22%,#E2A99A 40%,#D1907F 58%,#A9705F 85%,#94604F)}
-.bottle__label{position:absolute;left:5mm;right:5mm;top:34mm;height:44mm;background:var(--branco);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2mm;text-align:center}
-.bottle__label .logo{width:17mm}
-.bottle__label .p{font:italic 400 9pt/1 var(--serif);color:var(--rtexto);margin-top:1.5mm}
-.bottle__label .q{font:500 4.2pt/1 var(--sans);letter-spacing:.2em;color:var(--muted);margin-top:1.2mm}
-.post{width:72mm;height:72mm;background:var(--verde);color:var(--creme);position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;box-shadow:0 8mm 14mm -6mm rgba(74,82,51,.3)}
-.post .arc{position:absolute;width:40mm;height:40mm;border:.3mm solid var(--dourado);border-radius:50%;border-right-color:transparent;transform:rotate(-30deg);top:11mm;left:15mm}
-.post .q{font:500 17pt/1.05 var(--serif);position:relative}
+.sheet .ln{height:1px;background:rgba(74,82,51,.16);margin-top:18px}
+.sheet .fo{margin-top:auto;padding-top:10px;border-top:1px solid var(--dourado);display:flex;justify-content:space-between;font:600 7px/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.bottle{position:relative;width:150px;height:380px}
+.bottle .cap{position:absolute;left:42px;width:66px;top:0;height:66px;border-radius:5px 5px 2px 2px;background:linear-gradient(90deg,#9C7B3E,#D9B877 35%,#F0D9A4 48%,#C9A15B 62%,#8E6E36)}
+.bottle .body{position:absolute;left:0;right:0;top:62px;bottom:0;border-radius:32px 32px 12px 12px;background:linear-gradient(90deg,#9F6A5C,#C98778 22%,#E2A99A 40%,#D1907F 58%,#A9705F 85%,#94604F)}
+.bottle .lab{position:absolute;left:20px;right:20px;top:134px;height:174px;background:var(--branco);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.bottle .lab img{width:72px}
+.bottle .lab .p{font:italic 400 17px/1 var(--serif);color:var(--rtexto);margin-top:6px}
+.bottle .lab .q{font:600 7px/1 var(--sans);letter-spacing:.2em;color:var(--muted);margin-top:5px}
+.post{width:300px;height:300px;background:var(--verde);color:var(--creme);position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.post svg{position:absolute;left:62px;top:46px;width:176px;height:176px}
+.post .q{font:500 30px/1.05 var(--serif);position:relative}
 .post .q em{font-style:italic;font-weight:400;color:var(--rclaro)}
-.post .h{position:absolute;bottom:5mm;font:500 4.6pt/1 var(--sans);letter-spacing:.24em;color:rgba(244,233,225,.75)}
-.story{width:54mm;height:96mm;background:var(--creme);position:relative;box-shadow:0 8mm 14mm -6mm rgba(74,82,51,.3);display:flex;flex-direction:column;align-items:center;padding:9mm 5mm 7mm;text-align:center}
-.story .logo{width:22mm}
-.story .q{font:500 14pt/1.05 var(--serif);margin-top:7mm}
+.post .h{position:absolute;bottom:20px;font:600 7px/1 var(--sans);letter-spacing:.24em;color:rgba(244,233,225,.78)}
+.story{width:220px;height:390px;background:var(--creme);display:flex;flex-direction:column;align-items:center;padding:34px 20px 26px;text-align:center}
+.story img{width:92px}
+.story .q{font:500 25px/1.05 var(--serif);margin-top:26px}
 .story .q em{font-style:italic;font-weight:400;color:var(--rtexto)}
-.story .s{font-size:5.6pt;line-height:1.5;color:var(--muted);margin-top:3mm;max-width:34ch}
-.story .b{margin-top:auto;background:var(--verde);color:var(--creme);font:500 5pt/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;padding:2.6mm 4.5mm;border-radius:10mm}
+.story .s2{font-size:10px;line-height:1.5;color:var(--muted);margin-top:12px}
+.story .b{margin-top:auto;background:var(--verde);color:var(--creme);font:600 8px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;padding:11px 18px;border-radius:99px}
 
-/* ---------- 15 contracapa ---------- */
-.closing{background:var(--verde);display:grid;grid-template-columns:1fr 92mm;align-items:center;gap:10mm}
-.closing .logo{width:86mm}
+/* aprovação */
+.approve{display:flex;flex-direction:column;justify-content:center;padding-left:110px}
+.approve h1{font-size:84px;margin:28px 0 34px}
+.approve > img{position:absolute;right:110px;top:50%;transform:translateY(-50%);width:400px}
 </style>
 </head>
 <body>
 
-<!-- 01 · CAPA -->
-<section class="page cover">
-  <div class="cover__l">
-    <div class="brandmark"><span class="logo"></span><span class="label">Lavier Corpo &amp; Mente</span></div>
-    <div>
-      <div class="eyebrow">Manual de identidade visual · 2026</div>
-      <h1>O cuidado que começa <em>por dentro.</em></h1>
-      <p class="lede">Uma identidade que une a delicadeza do corpo à serenidade da mente, em formas orgânicas, metais aquecidos e uma elegância que acolhe.</p>
-    </div>
-    <div class="small">Larissa Xavier, esteticista e terapeuta<br>Salvador, BA · @laviercorpoemente</div>
+<!-- CAPA -->
+<section class="s dark cover" data-nofolio>
+  <div>
+    <div class="eyebrow">Lavier Corpo &amp; Mente</div>
+    <h1>Projeto de Marca &amp; <em>Identidade Visual</em></h1>
+    <dl><dt>Cliente:</dt><dd>Larissa Xavier · Lavier Corpo &amp; Mente</dd><dt>Data:</dt><dd>18 de novembro de 2026</dd></dl>
   </div>
-  <div class="cover__r">
-    <div class="cover__card"><span class="corners"></span><span class="logo"></span></div>
+  <img src="Logos/rose-transparente.png" alt="Logo Lavier Corpo e Mente, versão rosé">
+  <span class="yr">2026</span>
+</section>
+
+<!-- INTRODUÇÃO -->
+<section class="s" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+  <h2 style="margin-bottom:30px">Introdução</h2>
+  <p class="lede" style="max-width:62ch"><b>Esta apresentação reúne a identidade visual da Lavier Corpo &amp; Mente.</b> Nos próximos slides, você verá como os elementos da marca se conectam para expressar, em cada ponto de contato, o que a Lavier representa:</p>
+  <p class="label" style="margin:30px 0;color:var(--rtexto);letter-spacing:.3em">Acolhimento • Serenidade • Sofisticação • Transformação</p>
+  <p class="muted" style="max-width:58ch">Larissa, este material foi feito com cuidado em cada detalhe. Fique à vontade para aprovar ou pedir ajustes em qualquer página: a palavra final é sua.</p>
+</section>
+
+<!-- SOBRE O PROJETO -->
+<section class="s">
+  <div class="split">
+    <h2>Sobre <em>o projeto</em></h2>
+    <div class="lede muted" style="display:grid;gap:18px">
+      <p>A identidade da Lavier partiu do que a clínica oferece: estética corporal, estética facial e terapia integrativa, sempre a partir de uma avaliação individual.</p>
+      <p>A marca precisava traduzir uma ideia simples: cuidar do corpo e da mente ao mesmo tempo, para que a autoestima acompanhe o resultado dos tratamentos.</p>
+      <p>O desafio era criar uma presença sofisticada que continuasse acolhedora, feminina e próxima. Uma identidade que transmite profissionalismo e eleva a percepção de valor, sem perder a calma que a cliente sente ao entrar.</p>
+      <p>Com o símbolo, o logotipo, a tipografia e a paleta definidos, este documento consolida o sistema visual e verbal da marca e mostra como ele se aplica no dia a dia.</p>
+    </div>
   </div>
 </section>
 
-<!-- 02 · MANIFESTO -->
-<section class="page manifesto on-dark">
-  <svg class="manifesto__ring" viewBox="0 0 190 118" fill="none"><ellipse cx="95" cy="59" rx="94.7" ry="58.7" stroke="rgba(201,161,91,.45)" stroke-width=".3"/></svg>
-  <div class="eyebrow plain" style="position:relative">01 / Manifesto</div>
+<section class="s dark divider"><div><span class="ix">01</span><h1>Golden Circle</h1></div><span class="yr">2026</span></section>
+
+<!-- GOLDEN CIRCLE -->
+<section class="s">
+  <div class="diagram">
+    <div class="qa">
+      <div><h3><b>3</b>Por que a Lavier faz?</h3><p class="muted">Porque beleza também é cuidado. Cada atendimento deve ser uma pausa, em que o corpo é tratado e a mente descansa, para que a mulher se reconheça no próprio resultado.</p></div>
+      <div><h3><b>2</b>Como a Lavier faz?</h3><p class="muted">Começando por uma avaliação individual: uma conversa sobre objetivos e rotina, a avaliação do corpo e da pele e um plano feito para cada caso. Técnica, escuta e atenção aos detalhes.</p></div>
+      <div><h3><b>1</b>O que a Lavier faz?</h3><p class="muted">Estética corporal, estética facial e terapia integrativa, com protocolos definidos depois da avaliação de cada cliente.</p></div>
+    </div>
+    <svg viewBox="0 0 560 560" aria-label="Golden circle">
+      <circle cx="300" cy="280" r="250" fill="none" stroke="#4A5233" stroke-width="1"/>
+      <circle cx="235" cy="280" r="175" fill="none" stroke="#4A5233" stroke-width="1"/>
+      <circle cx="170" cy="280" r="100" fill="#4A5233"/>
+      <text x="170" y="270" text-anchor="middle" fill="#F5C6B8" font-size="13" font-weight="600">3</text>
+      <text x="170" y="294" text-anchor="middle" fill="#F4E9E1" font-size="16" font-weight="500">Por quê?</text>
+      <text x="340" y="270" text-anchor="middle" fill="#A86A5C" font-size="13" font-weight="600">2</text>
+      <text x="340" y="294" text-anchor="middle" fill="#4A5233" font-size="16" font-weight="500">Como?</text>
+      <text x="482" y="270" text-anchor="middle" fill="#A86A5C" font-size="13" font-weight="600">1</text>
+      <text x="482" y="294" text-anchor="middle" fill="#4A5233" font-size="16" font-weight="500">O quê?</text>
+    </svg>
+  </div>
+</section>
+
+<section class="s dark divider"><div><span class="ix">02</span><h1>Personalidade <em>da marca</em></h1></div><span class="yr">2026</span></section>
+
+<!-- DNA -->
+<section class="s">
+  <div class="diagram">
+    <div>
+      <div class="eyebrow">O DNA da Lavier</div>
+      <h2 style="margin:22px 0">A essência que guia <em>cada escolha.</em></h2>
+      <p class="muted">Do desenho do símbolo à paleta, da tipografia ao jeito de falar, cada decisão traduz este DNA: uma beleza serena, natural e sofisticada, que acolhe antes de transformar.</p>
+      <p class="small muted" style="margin-top:22px">No centro, os três atributos principais da marca. No círculo externo, as personalidades que dão suporte a eles.</p>
+    </div>
+    <svg viewBox="0 0 560 560" aria-label="DNA da marca">
+      <circle cx="280" cy="280" r="270" fill="#E9DCD2"/>
+      <circle cx="280" cy="280" r="128" fill="#4A5233"/>
+      <circle cx="280" cy="280" r="200" fill="none" stroke="#C9A15B" stroke-width=".8" stroke-dasharray="2 5"/>
+      <g fill="#F4E9E1" font-size="18" text-anchor="middle" font-weight="500"><text x="280" y="256">Acolhedora</text><text x="280" y="286">Serena</text><text x="280" y="316">Sofisticada</text></g>
+      <g fill="#4A5233" font-size="14" text-anchor="middle" font-weight="500" id="ring"></g>
+    </svg>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="s dark manifesto">
+  <svg class="ring" viewBox="0 0 1040 600" fill="none"><ellipse cx="520" cy="300" rx="519" ry="299" stroke="rgba(201,161,91,.5)" stroke-width="1"/></svg>
+  <div class="eyebrow" style="position:relative">Manifesto</div>
   <blockquote>“Beleza é quando <em>corpo</em> e <em>mente</em> encontram o mesmo ritmo.”</blockquote>
-  <p style="position:relative">A Lavier nasce do encontro entre o toque que cuida e a pausa que transforma. Uma marca feminina sem excessos, sofisticada sem distância.</p>
-  <div class="folio"><span>Lavier Corpo &amp; Mente · Manual de identidade visual</span><span>02</span></div>
+  <p class="muted" style="position:relative;max-width:60ch;font-size:17px">A Lavier nasce do encontro entre o toque que cuida e a pausa que transforma. Uma marca feminina sem excessos, sofisticada sem distância.</p>
 </section>
 
-<!-- 03 · ESSÊNCIA -->
-<section class="page">
-  <div class="eyebrow">02 / Essência</div>
-  <h2 style="margin-top:6mm">Três gestos. <em>Uma só essência.</em></h2>
-  <div class="grid three">
-    <div>
-      <span class="label">I</span>
-      <svg viewBox="0 0 100 110" fill="none" stroke="#C98778" stroke-width="1.6" stroke-linecap="round">
-        <path d="M38 6c-8 18-12 32-3 48 6 11-6 22-2 38 2 7 6 12 10 16"/><path d="M62 6c8 18 12 32 3 48-6 11 6 22 2 38-2 7-6 12-10 16"/><path d="M42 58c5 3 11 3 16 0" stroke="#C9A15B"/>
-      </svg>
-      <h3>Corpo</h3>
-      <p class="small">Presença, movimento e autocuidado, expressos em linhas fluidas e femininas.</p>
-    </div>
-    <div>
-      <span class="label">II</span>
-      <svg viewBox="0 0 100 110" fill="none" stroke="#6B7A4B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M30 18c14-14 40-10 44 12 2 9 0 14 2 18l6 10-6 3c1 4 0 7-3 9 2 4 1 9-5 10-6 1-8 6-7 22"/><path d="M58 44c3 2 6 2 9 0" stroke="#C9A15B"/><path d="M30 18c-9 9-12 24-8 38" opacity=".55"/>
-      </svg>
-      <h3>Mente</h3>
-      <p class="small">Silêncio, equilíbrio e consciência, traduzidos em espaço, leveza e serenidade.</p>
-    </div>
-    <div>
-      <span class="label">III</span>
-      <svg viewBox="0 0 100 110" fill="none" stroke="#4A5233" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M24 104C38 76 52 52 78 12"/>
-        <path d="M44 70c-12-2-18-10-18-18 10 0 17 7 18 18z" stroke="#6B7A4B"/><path d="M56 52c2-12 10-18 19-18-1 10-8 17-19 18z" stroke="#6B7A4B"/><path d="M64 36c-9-4-12-12-10-19 8 2 12 10 10 19z" stroke="#6B7A4B"/>
-        <path d="M70 70c4-7 12-8 15-4-3 5-10 6-15 4zm0 0c-1-8 4-14 9-14 1 6-3 12-9 14z" stroke="#C98778"/>
-      </svg>
-      <h3>Transformação</h3>
-      <p class="small">O florescer de uma nova relação consigo mesma, simbolizado por folhas e borboletas.</p>
-    </div>
+<section class="s dark divider"><div><span class="ix">03</span><h1>Pontos <em>de contato</em></h1></div><span class="yr">2026</span></section>
+
+<!-- PONTOS DE CONTATO -->
+<section class="s">
+  <div class="eyebrow">Do físico ao digital</div>
+  <p class="muted" style="margin-top:14px;max-width:100ch">Cada encontro entre a cliente e a Lavier é uma chance de reforçar a marca. Por isso mapeamos os pontos de contato, físicos e digitais, para manter o mesmo cuidado em cada detalhe.</p>
+  <div class="map">
+    <svg style="position:absolute;inset:0;width:100%;height:100%" viewBox="0 0 1248 540" preserveAspectRatio="none" fill="none" stroke="#C9A15B" stroke-width=".8">
+      <circle cx="624" cy="270" r="112" stroke="#4A5233"/>
+      <path d="M512 270H350M736 270H898M545 190L440 70M703 190L808 70M545 350L440 470M703 350L808 470"/>
+    </svg>
+    <div class="core"><img src="Logos/metalica-transparente.png" alt=""></div>
+    <div class="node" style="left:0;top:20px"><h3>Atendimento</h3><p>Recepção, avaliação individual, linguagem e postura no cuidado.</p></div>
+    <div class="node r" style="right:0;top:20px"><h3>Ambiente</h3><p>Fachada e placa, decoração, aromas, música, iluminação e sinalização interna.</p></div>
+    <div class="node" style="left:0;top:232px"><h3>Redes sociais</h3><p>Instagram (feed, stories e destaques) e WhatsApp Business (foto, boas-vindas e respostas).</p></div>
+    <div class="node r" style="right:0;top:232px"><h3>Materiais impressos</h3><p>Cartão de visita, ficha de avaliação, folha de orientações e cartão fidelidade.</p></div>
+    <div class="node" style="left:0;top:440px"><h3>Produtos e embalagens</h3><p>Rótulos, frascos, sacolas e cartões de presente.</p></div>
+    <div class="node r" style="right:0;top:440px"><h3>Pós-atendimento</h3><p>Mensagem de agradecimento, lembrete de retorno e pesquisa de satisfação.</p></div>
   </div>
-  <div class="folio"><span>Lavier Corpo &amp; Mente · Manual de identidade visual</span><span>03</span></div>
 </section>
 
-<!-- 04 · ANATOMIA DO LOGO -->
-<section class="page">
-  <div class="eyebrow">03 / A marca</div>
+<section class="s dark divider"><div><span class="ix">04</span><h1>O símbolo</h1></div><span class="yr">2026</span></section>
+
+<!-- ELEMENTOS DO SÍMBOLO -->
+<section class="s">
+  <div class="eyebrow">Três elementos, uma só essência</div>
+  <div class="els">
+    <div class="el"><img src="Logos/elementos/corpo-destaque-no-simbolo.png" alt="Silhueta do corpo de uma mulher em destaque no símbolo da Lavier"><span class="label">I · Corpo</span><h3>Corpo</h3><p>O corpo de uma mulher, desenhado em linhas fluidas. Representa presença, movimento e autocuidado.</p></div>
+    <div class="el"><img src="Logos/elementos/cabeca-destaque-no-simbolo.png" alt="Rosto de perfil em destaque no símbolo da Lavier"><span class="label">II · Mente</span><h3>Cabeça</h3><p>Um rosto visto de lado, de olhos fechados. Representa a mente: silêncio, equilíbrio e consciência.</p></div>
+    <div class="el"><img src="Logos/elementos/transformacao-destaque-no-simbolo.png" alt="Planta com flores e borboletas em destaque no símbolo da Lavier"><span class="label">III · Transformação</span><h3>Transformação</h3><p>Uma planta com flores e borboletas que nasce entre o corpo e a cabeça. Representa o florescer de uma nova relação consigo mesma.</p></div>
+  </div>
+</section>
+
+<!-- ANATOMIA -->
+<section class="s">
   <div class="anat">
     <div class="anat__fig">
-      <span class="logo"></span>
-      <span class="tag" style="left:86mm;top:44mm"><i>1</i></span>
-      <span class="tag" style="left:86mm;top:76mm"><i>2</i></span>
-      <span class="tag" style="left:86mm;top:92.5mm"><i>3</i></span>
+      <img src="Logos/metalica-transparente.png" alt="Logo Lavier Corpo e Mente">
+      <span class="tag" style="top:220px">1</span><span class="tag" style="top:390px">2</span><span class="tag" style="top:468px">3</span>
     </div>
     <div>
-      <h2>Uma assinatura <em>que se revela.</em></h2>
-      <p class="lede" style="margin:4mm 0 8mm">Três partes que contam a mesma história: o corpo, a mente e o que floresce entre eles. Elas aparecem sempre juntas e na mesma proporção.</p>
-      <div class="anat__list">
-        <div class="anat__item"><b>1</b><div><h3>Símbolo</h3><p class="small">O círculo aberto envolve a silhueta do corpo e o perfil do rosto. Entre os dois cresce um ramo com borboletas: a transformação.</p></div></div>
-        <div class="anat__item"><b>2</b><div><h3>Logotipo</h3><p class="small">LAVIER em serifa clássica, atravessado pela onda que nasce do símbolo e une as letras. A folha oliva no A repete o ramo.</p></div></div>
-        <div class="anat__item"><b>3</b><div><h3>Descritor</h3><p class="small">CORPO E MENTE, em verde, entre dois fios. Diz em palavras o que o símbolo mostra.</p></div></div>
+      <div class="eyebrow">A assinatura</div>
+      <h2 style="margin-top:22px">Três partes, <em>uma história.</em></h2>
+      <div class="parts">
+        <div class="part"><b>1</b><div><h3>Símbolo</h3><p class="muted small">O círculo aberto envolve o corpo, a cabeça e a planta que floresce entre eles.</p></div></div>
+        <div class="part"><b>2</b><div><h3>Logotipo</h3><p class="muted small">LAVIER em serifa clássica, atravessado pela onda que nasce do símbolo. A folha oliva no A repete a planta.</p></div></div>
+        <div class="part"><b>3</b><div><h3>Descritor</h3><p class="muted small">CORPO E MENTE, entre dois fios. Diz em palavras o que o símbolo mostra. As três partes aparecem sempre juntas e na mesma proporção.</p></div></div>
       </div>
     </div>
   </div>
-  <div class="folio"><span>Lavier Corpo &amp; Mente · Manual de identidade visual</span><span>04</span></div>
 </section>
 
-<!-- 05 · VERSÕES -->
-<section class="page">
-  <div class="eyebrow">04 / Versões</div>
-  <h2 style="margin-top:6mm">Do brilho metálico <em>a uma só cor.</em></h2>
-  <div class="grid versions">
-    <div class="v main" style="background:var(--creme)">
-      <span class="label">Principal</span>
-      <span class="logo"></span>
-      <div class="v__cap"><h3>Metálica</h3><p class="small">A versão preferencial, sempre sobre fundo claro: creme ou branco quente. Site, redes, fachada, papelaria.</p></div>
-    </div>
-    <div class="v" style="background:var(--branco);outline:.3mm solid var(--line);outline-offset:-.3mm">
-      <span class="label">Tonal</span>
-      <span class="logo tonal"></span>
-      <div class="v__cap"><h3>Oliva tonal</h3><p class="small">Mantém o relevo do metal em verde. Para peças discretas e materiais de apoio.</p></div>
-    </div>
-    <div class="v on-dark" style="background:var(--verde)">
-      <span class="label">Monocromática</span>
-      <span class="logo flat" style="--c:var(--creme)"></span>
-      <div class="v__cap"><h3>Uma cor</h3><p class="small">Para o verde escuro e para carimbo, gravação, bordado e hot stamping. Em creme ou rosé claro sobre o verde; em verde escuro sobre fundos claros.</p></div>
+<section class="s dark divider"><div><span class="ix">05</span><h1>Tipografia</h1></div><span class="yr">2026</span></section>
+
+<section class="s">
+  <div class="type">
+    <div><div class="ab serif">Ab</div><p class="alpha" style="font-family:var(--serif);font-size:24px;line-height:1.4">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz 0123456789</p></div>
+    <div>
+      <div class="eyebrow">Tipografia principal</div>
+      <h2 style="margin:22px 0">Cormorant <em>Garamond</em></h2>
+      <p class="muted">Usada nos títulos e nas frases de destaque. É uma serifa de desenho editorial, com contraste entre traços finos e grossos e curvas suaves, que conversa com a serifa do logotipo LAVIER.</p>
+      <p class="muted" style="margin-top:14px">O itálico em rosé marca a segunda parte dos títulos, como uma respiração no fim da frase.</p>
+      <div class="weights" style="font-family:var(--serif);font-size:24px"><span>Regular</span><span style="font-weight:500">Medium</span><span style="font-weight:600">Semibold</span><span style="font-style:italic">Itálico</span></div>
     </div>
   </div>
-  <div class="folio"><span>Lavier Corpo &amp; Mente · Manual de identidade visual</span><span>05</span></div>
 </section>
 
-<!-- 06 · ÁREA DE PROTEÇÃO E TAMANHO MÍNIMO -->
-<section class="page">
-  <div class="eyebrow">05 / Uso do logo</div>
+<section class="s">
+  <div class="type">
+    <div><div class="ab sans">Ab</div><p class="alpha">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz 0123456789</p></div>
+    <div>
+      <div class="eyebrow">Tipografia complementar</div>
+      <h2 style="margin:22px 0">Montserrat</h2>
+      <p class="muted">Usada em textos, legendas, botões e informações. Tem desenho moderno e equilibrado e é fácil de ler em qualquer tamanho, no celular e no papel.</p>
+      <div class="hier">
+        <div><span class="label muted">Sobretítulo</span><span class="eyebrow" style="color:var(--verde)">Medium · caixa alta</span></div>
+        <div><span class="label muted">Título</span><span style="font:500 30px/1 var(--serif)">Cormorant Medium, <em style="font-weight:400;color:var(--rtexto)">fim em itálico.</em></span></div>
+        <div><span class="label muted">Texto</span><span>Montserrat Regular, entrelinha generosa.</span></div>
+        <div><span class="label muted">Legenda</span><span class="small muted">Montserrat Regular, menor e em verde suave.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s dark divider"><div><span class="ix">06</span><h1>Cores</h1></div><span class="yr">2026</span></section>
+
+<section class="s">
+  <div class="split">
+    <h2>Psicologia <em>das cores</em></h2>
+    <div class="lede muted" style="display:grid;gap:18px">
+      <p>A escolha das cores de uma marca vai além da estética. Cada tom desperta sensações, constrói percepções e reforça a personalidade que queremos transmitir.</p>
+      <p>Para a Lavier, a paleta une três universos: o creme e os rosés, que trazem calor, feminilidade e acolhimento; o dourado, que acrescenta o brilho do metal; e os verdes, que trazem natureza, equilíbrio e a calma da mente.</p>
+      <p>Juntos, eles criam uma atmosfera leve e sofisticada, que traduz em cor o cuidado com o corpo e com a mente.</p>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="palette"></section>
+<template id="colorpages"></template>
+
+<!-- COMBINAÇÕES -->
+<section class="s">
+  <div class="eyebrow">Combinações</div>
+  <h2 style="margin-top:22px">Bonito <em>e fácil de ler.</em></h2>
+  <div class="pairs">
+    <div class="pair" style="background:var(--branco);color:var(--verde)"><div class="pair__t">Corpo e <em>mente</em></div><div class="pair__m">Verde escuro sobre creme · 6,9:1<br><span class="badge">Todos os tamanhos</span></div></div>
+    <div class="pair" style="background:var(--verde);color:var(--creme)"><div class="pair__t">Corpo e <em style="color:var(--rclaro)">mente</em></div><div class="pair__m">Creme sobre verde escuro · 6,9:1<br><span class="badge">Todos os tamanhos</span></div></div>
+    <div class="pair" style="background:var(--verde);color:var(--rclaro)"><div class="pair__t"><em>Respire.</em></div><div class="pair__m">Rosé claro sobre verde escuro · 5,4:1<br><span class="badge">Todos os tamanhos</span></div></div>
+    <div class="pair" style="background:var(--rclaro);color:var(--verde)"><div class="pair__t">Corpo e <em>mente</em></div><div class="pair__m">Verde escuro sobre rosé claro · 5,4:1<br><span class="badge">Todos os tamanhos</span></div></div>
+    <div class="pair" style="background:var(--branco);color:var(--rtexto)"><div class="pair__t"><em>por dentro.</em></div><div class="pair__m" style="color:var(--verde)">Rosé para texto (#A86A5C) sobre creme · 3,6:1<br><span class="badge">Só títulos</span></div></div>
+    <div class="pair" style="background:var(--rgold);color:var(--verde)"><div class="pair__t">Corpo e <em>mente</em></div><div class="pair__m">Verde escuro sobre rosé gold · 3,9:1<br><span class="badge">Só títulos</span></div></div>
+    <div class="pair" style="background:var(--verde);color:var(--dourado)"><div class="pair__t">Lavier</div><div class="pair__m">Dourado sobre verde escuro · 3,4:1<br><span class="badge">Só títulos</span></div></div>
+    <div class="pair" style="background:var(--branco);color:var(--rescuro)"><div class="pair__t"><em>evite</em></div><div class="pair__m" style="color:var(--verde)">Rosé escuro sobre creme · 2,4:1<br><span class="badge" style="color:var(--rtexto)">Não usar em texto</span></div></div>
+  </div>
+  <p class="small muted" style="margin-top:20px">Contraste medido pela norma de acessibilidade WCAG: texto corrido pede 4,5:1, títulos grandes pedem 3:1.</p>
+</section>
+
+<section class="s dark divider"><div><span class="ix">07</span><h1>Logotipo</h1></div><span class="yr">2026</span></section>
+<template id="logopages"></template>
+
+<!-- PROTEÇÃO -->
+<section class="s">
   <div class="prot">
     <div class="prot__fig">
       <div class="prot__box">
-        <span class="logo"></span>
-        <span class="xmark" style="top:3mm;left:50%;transform:translateX(-50%)">½x</span>
-        <span class="xmark" style="bottom:3mm;left:50%;transform:translateX(-50%)">½x</span>
-        <span class="xmark" style="left:2.2mm;top:50%;transform:translateY(-50%)">½x</span>
-        <span class="xmark" style="right:2.2mm;top:50%;transform:translateY(-50%)">½x</span>
+        <img src="Logos/metalica-transparente.png" alt="Logo com área de proteção">
+        <span class="xm" style="top:13px;left:50%;transform:translateX(-50%)">½x</span><span class="xm" style="bottom:13px;left:50%;transform:translateX(-50%)">½x</span>
+        <span class="xm" style="left:10px;top:50%;transform:translateY(-50%)">½x</span><span class="xm" style="right:10px;top:50%;transform:translateY(-50%)">½x</span>
       </div>
-      <span class="small" style="position:absolute;left:6mm;bottom:5mm">x = altura da letra L de LAVIER</span>
+      <span class="small muted" style="position:absolute;left:24px;bottom:18px">x = altura da letra L de LAVIER</span>
     </div>
     <div>
-      <h2>Espaço <em>para respirar.</em></h2>
-      <p class="lede" style="margin-top:4mm">Nenhum texto, foto ou borda entra na área tracejada. Quanto mais ar em volta, mais a marca parece o que é.</p>
-      <div class="rule-list">
-        <div>
-          <span class="label">Tamanho mínimo, em tamanho real</span>
-          <div class="minis">
-            <figure><span class="logo" style="width:30mm"></span><span class="small">Impresso · 30 mm</span></figure>
-            <figure><span class="logo" style="width:22mm"></span><span class="small">Digital · 160 px</span></figure>
-          </div>
-          <p class="small">Abaixo disso o descritor CORPO E MENTE deixa de ser lido. Para usos menores (favicon, ícone de perfil, carimbo pequeno) será preciso uma versão reduzida, feita a partir do arquivo vetorial.</p>
-        </div>
-        <div>
-          <span class="label">Fundos</span>
-          <p class="small" style="margin-top:1.5mm">Metálica só sobre creme ou branco quente: no verde escuro, o descritor CORPO E MENTE some. Sobre o verde, use a versão de uma cor em creme ou rosé claro; sobre rosé, a versão de uma cor em verde escuro.</p>
-        </div>
+      <div class="eyebrow">Uso do logo</div>
+      <h2 style="margin:22px 0 16px">Espaço <em>para respirar.</em></h2>
+      <p class="muted">Nenhum texto, foto ou borda entra na área tracejada. Quanto mais ar em volta, mais a marca parece o que é.</p>
+      <div style="margin-top:26px;padding-top:18px;border-top:1px solid var(--line)">
+        <span class="label muted">Tamanho mínimo</span>
+        <div class="minis"><figure><img src="Logos/metalica-transparente.png" style="width:113px" alt=""><span>Impresso · 30 mm</span></figure><figure><img src="Logos/metalica-transparente.png" style="width:80px" alt=""><span>Digital · 160 px</span></figure></div>
+        <p class="small muted">Abaixo disso, o descritor CORPO E MENTE deixa de ser lido. Para ícones pequenos (perfil, favicon, carimbo), será preciso uma versão reduzida feita a partir do arquivo vetorial.</p>
       </div>
     </div>
   </div>
-  <div class="folio"><span>Lavier Corpo &amp; Mente · Manual de identidade visual</span><span>06</span></div>
 </section>
 
-<!-- 07 · NÃO FAZER -->
-<section class="page">
-  <div class="eyebrow">06 / Cuidados</div>
-  <h2 style="margin-top:6mm">O que <em>não fazer.</em></h2>
-  <div class="grid donts">
-    <div class="dont"><div class="dont__tile"><span class="logo" style="transform:scaleX(1.45)"></span></div><h3>Esticar ou achatar</h3><p class="small">Redimensione sempre pelo canto, mantendo a proporção.</p></div>
-    <div class="dont"><div class="dont__tile"><span class="logo" style="transform:rotate(-18deg)"></span></div><h3>Girar ou inclinar</h3><p class="small">O logo fica sempre na horizontal.</p></div>
-    <div class="dont"><div class="dont__tile"><span class="logo" style="filter:hue-rotate(150deg) saturate(1.6)"></span></div><h3>Trocar as cores</h3><p class="small">Só as versões deste manual: metálica, oliva tonal e uma cor.</p></div>
-    <div class="dont"><div class="dont__tile" style="background:var(--rgold)"><span class="logo"></span></div><h3>Fundo sem contraste</h3><p class="small">A metálica some sobre rosé, dourado e verde. Nesses fundos, use a versão de uma cor.</p></div>
-    <div class="dont"><div class="dont__tile" style="background:repeating-linear-gradient(115deg,#C98778 0 6mm,#6B7A4B 6mm 11mm,#F5C6B8 11mm 17mm,#C9A15B 17mm 21mm)"><span class="logo"></span></div><h3>Fundo carregado</h3><p class="small">Sobre foto ou estampa, só em área lisa e calma da imagem.</p></div>
-    <div class="dont"><div class="dont__tile"><span class="logo" style="filter:drop-shadow(1.2mm 1.6mm 0 rgba(74,82,51,.55))"></span></div><h3>Sombras e efeitos</h3><p class="small">O brilho do metal já está no desenho. Nada de sombra, contorno ou brilho extra.</p></div>
-  </div>
-  <div class="folio"><span>Lavier Corpo &amp; Mente · Manual de identidade visual</span><span>07</span></div>
+<!-- NÃO FAZER -->
+<section class="s">
+  <div class="eyebrow">Cuidados</div>
+  <h2 style="margin-top:22px">O que <em>não fazer.</em></h2>
+  <div class="donts" id="donts"></div>
 </section>
 
-<!-- 08 · CORES -->
-<section class="page">
-  <div style="display:flex;justify-content:space-between;align-items:flex-end">
-    <div><div class="eyebrow">07 / Cores</div><h2 style="margin-top:6mm">Calor, natureza <em>e delicadeza.</em></h2></div>
-    <p class="small" style="max-width:62mm">CMYK aproximado, convertido do RGB. Peça à gráfica uma prova de cor antes de imprimir em quantidade.</p>
-  </div>
-  <div class="palette">
-    <div class="sw" style="background:var(--creme);height:52%"><h3>Creme</h3><span class="mono-num">#F4E9E1<br>RGB 244 233 225<br>CMYK 0 5 8 4</span><p class="role">Fundo principal</p></div>
-    <div class="sw" style="background:var(--rclaro);height:64%"><h3>Rosé claro</h3><span class="mono-num">#F5C6B8<br>RGB 245 198 184<br>CMYK 0 19 25 4</span><p class="role">Faixas e itálicos sobre o verde</p></div>
-    <div class="sw" style="background:var(--rgold);height:76%"><h3>Rosé gold</h3><span class="mono-num">#E3A294<br>RGB 227 162 148<br>CMYK 0 29 35 11</span><p class="role">Cor do metal, detalhes</p></div>
-    <div class="sw" style="background:var(--rescuro);height:68%"><h3>Rosé escuro</h3><span class="mono-num">#C98778<br>RGB 201 135 120<br>CMYK 0 33 40 21</span><p class="role">Linhas e ornamentos</p></div>
-    <div class="sw" style="background:var(--dourado);height:80%"><h3>Dourado</h3><span class="mono-num">#C9A15B<br>RGB 201 161 91<br>CMYK 0 20 55 21</span><p class="role">Fios, cantos e arcos</p></div>
-    <div class="sw dark" style="background:var(--oliva);height:90%"><h3>Oliva</h3><span class="mono-num">#6B7A4B<br>RGB 107 122 75<br>CMYK 12 0 39 52</span><p class="role">Folhas, apoio</p></div>
-    <div class="sw dark" style="background:var(--verde);height:100%"><h3>Verde escuro</h3><span class="mono-num">#4A5233<br>RGB 74 82 51<br>CMYK 10 0 38 68</span><p class="role">Texto, botões, faixas</p></div>
-  </div>
-  <div class="prop">
-    <span style="flex:44;background:var(--creme)">CREME 44%</span>
-    <span style="flex:22;background:var(--verde);color:var(--creme)">VERDE 22%</span>
-    <span style="flex:14;background:var(--rclaro)">ROSÉ CLARO 14%</span>
-    <span style="flex:8;background:var(--rgold)">8%</span>
-    <span style="flex:5;background:var(--rescuro)">5%</span>
-    <span style="flex:4;background:var(--dourado)">4%</span>
-    <span style="flex:3;background:var(--oliva)"></span>
-  </div>
-  <p class="small" style="margin-top:2mm">Proporção sugerida em uma peça: muito creme, verde para ancorar, rosé para aquecer, dourado só nos detalhes.</p>
-  <div class="folio"><span>Lavier Corpo &amp; Mente · Manual de identidade visual</span><span>08</span></div>
-</section>
-
-<!-- 09 · COMBINAÇÕES -->
-<section class="page">
-  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12mm">
-    <div><div class="eyebrow">08 / Combinações</div><h2 style="margin-top:6mm">Bonito <em>e fácil de ler.</em></h2></div>
-    <p class="small" style="max-width:96mm">Contraste medido pela norma de acessibilidade WCAG. Texto corrido pede 4,5:1; títulos grandes, 3:1. O rosé escuro do manual fica em 2,4:1 sobre o creme, por isso os itálicos em texto usam um tom mais fundo: <b style="color:var(--rtexto)">rosé para texto, #A86A5C</b>.</p>
-  </div>
-  <div class="grid pairs">
-    <div class="pair" style="background:var(--creme);color:var(--verde)"><div class="pair__t">Corpo e <em>mente</em></div><p class="pair__s">Texto corrido, legendas e títulos.</p><div class="pair__meta"><span>Verde escuro sobre creme<br>6,9 : 1</span><span class="badge">Todos os tamanhos</span></div></div>
-    <div class="pair" style="background:var(--verde);color:var(--creme)"><div class="pair__t">Corpo e <em style="color:var(--rclaro)">mente</em></div><p class="pair__s">Faixas de destaque e rodapés.</p><div class="pair__meta"><span>Creme sobre verde escuro<br>6,9 : 1</span><span class="badge">Todos os tamanhos</span></div></div>
-    <div class="pair" style="background:var(--verde);color:var(--rclaro)"><div class="pair__t"><em>Respire.</em></div><p class="pair__s">Itálicos e citações sobre o verde.</p><div class="pair__meta"><span>Rosé claro sobre verde escuro<br>5,4 : 1</span><span class="badge">Todos os tamanhos</span></div></div>
-    <div class="pair" style="background:var(--rclaro);color:var(--verde)"><div class="pair__t">Corpo e <em>mente</em></div><p class="pair__s">Faixas rosé com texto verde.</p><div class="pair__meta"><span>Verde escuro sobre rosé claro<br>5,4 : 1</span><span class="badge">Todos os tamanhos</span></div></div>
-    <div class="pair" style="background:var(--creme);color:var(--rtexto)"><div class="pair__t"><em>por dentro.</em></div><p class="pair__s" style="color:var(--verde)">A segunda parte dos títulos.</p><div class="pair__meta" style="color:var(--verde)"><span>Rosé para texto sobre creme<br>3,6 : 1</span><span class="badge">Só títulos</span></div></div>
-    <div class="pair" style="background:var(--rgold);color:var(--verde)"><div class="pair__t">Corpo e <em>mente</em></div><p class="pair__s">Capas e chamadas curtas.</p><div class="pair__meta"><span>Verde escuro sobre rosé gold<br>3,9 : 1</span><span class="badge">Só títulos</span></div></div>
-    <div class="pair" style="background:var(--verde);color:var(--dourado)"><div class="pair__t">Lavier</div><p class="pair__s">Números, fios e pequenos detalhes.</p><div class="pair__meta"><span>Dourado sobre verde escuro<br>3,4 : 1</span><span class="badge">Só títulos</span></div></div>
-    <div class="pair" style="background:var(--creme);color:var(--rescuro)"><div class="pair__t" style="opacity:.9"><em>evite</em></div><p class="pair__s" style="color:var(--verde)">Só para linhas e ornamentos.</p><div class="pair__meta" style="color:var(--verde)"><span>Rosé escuro sobre creme<br>2,4 : 1</span><span class="badge" style="color:var(--rtexto)">Não usar em texto</span></div></div>
-  </div>
-  <div class="folio"><span>Lavier Corpo &amp; Mente · Manual de identidade visual</span><span>09</span></div>
-</section>
-
-<!-- 10 · TIPOGRAFIA -->
-<section class="page type">
-  <div class="type__l on-dark">
-    <span class="aa">Aa</span>
-    <span class="label" style="margin-top:4mm">Cormorant Garamond</span>
-  </div>
-  <div class="type__r">
-    <div class="eyebrow">09 / Tipografia</div>
-    <h2 style="margin-top:6mm">Elegância <em>em cada detalhe.</em></h2>
-    <div class="spec">
-      <div>
-        <span class="label">Títulos · Cormorant Garamond</span>
-        <p class="alpha-serif" style="margin-top:2.5mm">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br><em>àáâãçéêíóôõú 0123456789</em></p>
-        <div class="weights small"><span style="font:400 11pt var(--serif)">Regular</span><span style="font:500 11pt var(--serif)">Medium</span><span style="font:600 11pt var(--serif)">Semibold</span><span style="font:italic 400 11pt var(--serif)">Itálico</span></div>
-      </div>
-      <div>
-        <span class="label">Textos e legendas · Montserrat</span>
-        <p class="alpha-sans" style="margin-top:2.5mm">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>àáâãçéêíóôõú 0123456789</p>
-        <div class="weights small"><span style="font:300 8.5pt var(--sans)">Light</span><span style="font:400 8.5pt var(--sans)">Regular</span><span style="font:500 8.5pt var(--sans)">Medium</span></div>
-      </div>
-    </div>
-    <div class="hier">
-      <div><span class="label">Sobretítulo</span><span class="eyebrow plain" style="color:var(--verde)">Montserrat Medium · caixa alta · espaçado</span></div>
-      <div><span class="label">Título</span><span style="font:500 22pt/1 var(--serif)">Cormorant Medium, <em style="font-weight:400;color:var(--rtexto)">fim em itálico.</em></span></div>
-      <div><span class="label">Texto</span><span style="font-size:9pt">Montserrat Regular, de 9 a 11 pt, entrelinha generosa. Light só acima de 12 pt.</span></div>
-      <div><span class="label">Legenda</span><span class="small">Montserrat Regular, 7 a 8 pt, em verde suave.</span></div>
-    </div>
-    <div class="folio" style="left:16mm"><span>Lavier Corpo &amp; Mente · Manual de identidade visual</span><span>10</span></div>
+<!-- ELEMENTOS GRÁFICOS -->
+<section class="s">
+  <div class="eyebrow">Elementos gráficos</div>
+  <h2 style="margin-top:22px">Detalhes <em>que vêm do símbolo.</em></h2>
+  <div class="elements">
+    <div class="el2"><div class="tile"><svg viewBox="0 0 100 100" fill="none" stroke="#C9A15B" stroke-width=".8"><path d="M78 18A40 40 0 1 0 90 56"/></svg></div><h3>Arco aberto</h3><p>O círculo do símbolo, nunca fechado. Emoldura fotos e citações.</p></div>
+    <div class="el2"><div class="tile"><svg viewBox="0 0 100 100" fill="none" stroke-width=".8"><path d="M14 50h28M58 50h28" stroke="#C9A15B"/><path d="M50 45l4 5-4 5-4-5z" stroke="#C98778"/></svg></div><h3>Fio dourado</h3><p>Linha fina que abre sobretítulos e separa blocos.</p></div>
+    <div class="el2"><div class="tile"><svg viewBox="0 0 100 100" fill="none" stroke="#A86A5C" stroke-width=".8"><path d="M18 40V18h22M82 60v22H60"/></svg></div><h3>Cantoneiras</h3><p>Dois cantos opostos marcam cartões e destaques.</p></div>
+    <div class="el2"><div class="tile"><svg viewBox="0 0 100 100" fill="none" stroke="#C98778" stroke-width=".9" stroke-linecap="round"><path d="M8 58c14-20 26-20 38-6s26 14 46-10"/></svg></div><h3>Onda</h3><p>A curva que atravessa o logotipo. Bordas de faixas e divisões.</p></div>
   </div>
 </section>
 
-<!-- 11 · ELEMENTOS GRÁFICOS -->
-<section class="page">
-  <div class="eyebrow">10 / Elementos gráficos</div>
-  <h2 style="margin-top:6mm">Detalhes <em>que vêm do símbolo.</em></h2>
-  <div class="grid elements">
-    <div class="el">
-      <div class="el__tile"><svg viewBox="0 0 100 100" fill="none" stroke="#C9A15B" stroke-width="1"><path d="M78 18A40 40 0 1 0 90 56"/></svg></div>
-      <h3>Arco aberto</h3><p class="small">O círculo do símbolo, nunca fechado. Emoldura fotos, títulos e citações.</p>
-    </div>
-    <div class="el">
-      <div class="el__tile"><svg viewBox="0 0 100 100" fill="none" stroke-linecap="round"><path d="M14 50h28" stroke="#C9A15B" stroke-width="1"/><path d="M58 50h28" stroke="#C9A15B" stroke-width="1"/><path d="M50 45l4 5-4 5-4-5z" stroke="#C98778" stroke-width="1"/></svg></div>
-      <h3>Fio dourado</h3><p class="small">Linha fina que abre sobretítulos e separa blocos, como os fios do descritor.</p>
-    </div>
-    <div class="el">
-      <div class="el__tile"><svg viewBox="0 0 100 100" fill="none" stroke="#A86A5C" stroke-width="1"><path d="M18 40V18h22"/><path d="M82 60v22H60"/></svg></div>
-      <h3>Cantoneiras</h3><p class="small">Dois cantos opostos marcam cartões, capas e destaques sem fechar a moldura.</p>
-    </div>
-    <div class="el">
-      <div class="el__tile"><svg viewBox="0 0 100 100" fill="none" stroke="#C98778" stroke-width="1.1" stroke-linecap="round"><path d="M8 58c14-20 26-20 38-6s26 14 46-10"/></svg></div>
-      <h3>Onda</h3><p class="small">A curva que atravessa o logotipo. Bordas de faixas e divisões de seção.</p>
-    </div>
-  </div>
-  <div class="folio"><span>Lavier Corpo &amp; Mente · Manual de identidade visual</span><span>11</span></div>
-</section>
-
-<!-- 12 · TOM DE VOZ -->
-<section class="page">
-  <div class="eyebrow">11 / Tom de voz</div>
+<!-- TOM DE VOZ -->
+<section class="s">
   <div class="voice">
     <div>
-      <h2>Como <em>a Lavier fala.</em></h2>
-      <p class="lede" style="margin:4mm 0 7mm">A mesma calma do visual, nas palavras. Frases curtas, verbos simples e nenhuma promessa que o corpo não possa cumprir.</p>
-      <div class="traits">
-        <div class="trait"><h3>Acolhedora, <span>não melosa.</span></h3><p class="small">Fala com a cliente como quem recebe alguém na sala, sem diminutivos em excesso.</p></div>
-        <div class="trait"><h3>Precisa, <span>não técnica.</span></h3><p class="small">Explica o que acontece em cada etapa com palavras do dia a dia.</p></div>
-        <div class="trait"><h3>Sofisticada, <span>não distante.</span></h3><p class="small">Elegante no cuidado com o texto, próxima no jeito de dizer.</p></div>
-      </div>
+      <div class="eyebrow">Tom de voz</div>
+      <h2 style="margin:22px 0 14px">Como <em>a Lavier fala.</em></h2>
+      <p class="muted">A mesma calma do visual, nas palavras. Frases curtas, verbos simples e nenhuma promessa que o corpo não possa cumprir.</p>
+      <div class="trait"><h3>Acolhedora, <span>não melosa.</span></h3><p class="small muted">Fala com a cliente como quem recebe alguém na sala.</p></div>
+      <div class="trait"><h3>Precisa, <span>não técnica.</span></h3><p class="small muted">Explica cada etapa com palavras do dia a dia.</p></div>
+      <div class="trait"><h3>Sofisticada, <span>não distante.</span></h3><p class="small muted">Elegante no texto, próxima no jeito de dizer.</p></div>
     </div>
     <div class="table">
       <div class="h">Prefira</div><div class="h">Evite</div>
@@ -501,68 +495,121 @@ p{max-width:58ch}
       <div class="yes">Respire. Seu corpo sabe o caminho.</div><div class="no">Transforme seu corpo agora mesmo</div>
     </div>
   </div>
-  <div class="folio"><span>Lavier Corpo &amp; Mente · Manual de identidade visual</span><span>12</span></div>
 </section>
 
-<!-- 13 · APLICAÇÕES: PAPELARIA -->
-<section class="page">
-  <div class="eyebrow">12 / Aplicações</div>
-  <h2 style="margin-top:6mm">A marca <em>ganha matéria.</em></h2>
+<section class="s dark divider"><div><span class="ix">08</span><h1>Aplicações</h1></div><span class="yr">2026</span></section>
+
+<section class="s" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+  <p class="lede muted" style="max-width:70ch">Nesta etapa, o conceito ganha corpo. A seguir, algumas possibilidades de aplicação da identidade em pontos de contato da Lavier.</p>
+  <p class="lede" style="margin:24px 0;font-weight:600">O posicionamento da Lavier se transforma em experiência concreta.</p>
+  <p class="muted" style="max-width:70ch">As peças têm caráter ilustrativo: servem para visualizar como a identidade se comporta em situações reais e facilitar a aprovação, os ajustes e as decisões finais antes da produção.</p>
+</section>
+
+<section class="s">
+  <div class="eyebrow">Papelaria</div>
   <div class="apps" style="grid-template-columns:1.6fr 1fr">
     <div class="stage" style="background:var(--rclaro)">
-      <div class="bcard back" style="transform:translate(-24mm,-17mm) rotate(-4deg)">
-        <div><div class="n">Larissa Xavier</div><div class="r">Esteticista e terapeuta</div></div>
-        <div class="c">(71) 98153-8910<br>@laviercorpoemente<br>Salvador · BA</div>
-      </div>
-      <div class="bcard front" style="transform:translate(26mm,21mm) rotate(3deg)"><span class="corners" style="transform:scale(.6)"></span><span class="logo"></span></div>
-      <span class="stage__cap">Cartão de visita · frente e verso, 85 × 55 mm</span>
+      <div class="lift" style="position:absolute;left:10%;top:14%;transform:rotate(-4deg)"><div class="bcard back"><div><div class="n">Larissa Xavier</div><div class="r">Esteticista e terapeuta</div></div><div class="c">(71) 98153-8910<br>@laviercorpoemente<br>Salvador · BA</div></div></div>
+      <div class="lift" style="position:absolute;right:9%;bottom:16%;transform:rotate(3deg)"><div class="bcard front"><span class="corners"></span><img src="Logos/metalica-transparente.png" alt=""></div></div>
+      <span class="stage__cap">Cartão de visita · frente e verso</span>
     </div>
     <div class="stage" style="background:#E9DDD4">
-      <div class="sheet">
-        <span class="logo"></span>
-        <div class="t">Orientações <em>de cuidado</em></div>
-        <div class="ln" style="margin-top:6mm"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln" style="width:60%"></div>
-        <div class="ft"><span>Larissa Xavier</span><span>@laviercorpoemente</span></div>
-      </div>
+      <div class="lift"><div class="sheet"><img src="Logos/metalica-transparente.png" alt=""><div class="t">Orientações <em>de cuidado</em></div><div class="ln" style="margin-top:24px"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln" style="width:60%"></div><div class="fo"><span>Larissa Xavier</span><span>@laviercorpoemente</span></div></div></div>
       <span class="stage__cap">Folha de orientação · A5</span>
     </div>
   </div>
-  <div class="folio"><span>Lavier Corpo &amp; Mente · Manual de identidade visual</span><span>13</span></div>
 </section>
 
-<!-- 14 · APLICAÇÕES: EMBALAGEM E DIGITAL -->
-<section class="page">
-  <div class="eyebrow">12 / Aplicações</div>
-  <h2 style="margin-top:6mm">Do frasco <em>ao feed.</em></h2>
-  <div class="apps" style="grid-template-columns:1fr 1.15fr 1fr">
+<section class="s">
+  <div class="eyebrow">Embalagem e redes sociais</div>
+  <div class="apps" style="grid-template-columns:1fr 1.2fr 1fr">
     <div class="stage" style="background:#EBD3C8">
-      <div class="bottle"><span class="bottle__cap"></span><span class="bottle__body"></span>
-        <div class="bottle__label"><span class="logo"></span><span class="p">óleo corporal</span><span class="q">120 ML</span></div>
-      </div>
+      <div class="lift"><div class="bottle"><span class="cap"></span><span class="body"></span><div class="lab"><img src="Logos/metalica-transparente.png" alt=""><span class="p">óleo corporal</span><span class="q">120 ML</span></div></div></div>
       <span class="stage__cap">Embalagem · ritual de cuidado</span>
     </div>
-    <div class="stage" style="background:var(--creme)">
-      <div class="post"><span class="arc"></span><div class="q">Respire.<br><em>Seu corpo sabe<br>o caminho.</em></div><span class="h">@LAVIERCORPOEMENTE</span></div>
+    <div class="stage" style="background:var(--branco)">
+      <div class="lift"><div class="post"><svg viewBox="0 0 100 100" fill="none" stroke="#C9A15B" stroke-width=".6"><path d="M78 18A40 40 0 1 0 90 56"/></svg><div class="q">Respire.<br><em>Seu corpo sabe<br>o caminho.</em></div><span class="h">@LAVIERCORPOEMENTE</span></div></div>
       <span class="stage__cap">Instagram · post</span>
     </div>
     <div class="stage" style="background:var(--verde)">
-      <div class="story"><span class="logo"></span><div class="q">Um tempo<br><em>para você.</em></div><p class="s">Na primeira consulta, seus objetivos, seu histórico e o plano feito para o seu caso.</p><span class="b">Agendar avaliação</span></div>
-      <span class="stage__cap" style="color:rgba(244,233,225,.8)">Instagram · story</span>
+      <div class="lift"><div class="story"><img src="Logos/metalica-transparente.png" alt=""><div class="q">Um tempo<br><em>para você.</em></div><p class="s2">Na primeira consulta, seus objetivos, seu histórico e o plano feito para o seu caso.</p><span class="b">Agendar avaliação</span></div></div>
+      <span class="stage__cap" style="color:rgba(244,233,225,.85)">Instagram · story</span>
     </div>
   </div>
-  <div class="folio"><span>Lavier Corpo &amp; Mente · Manual de identidade visual</span><span>14</span></div>
 </section>
 
-<!-- 15 · CONTRACAPA -->
-<section class="page closing on-dark">
-  <div>
-    <div class="eyebrow">Lavier · Corpo e mente</div>
-    <h1 style="margin:7mm 0 6mm">Inteira em <em>cada detalhe.</em></h1>
-    <p class="lede">Clínica Lavier · Larissa Xavier, esteticista e terapeuta<br>Salvador, BA · @laviercorpoemente</p>
-  </div>
-  <span class="logo flat" style="--c:var(--rclaro)"></span>
-  <div class="folio"><span>Manual de identidade visual · 2026</span><span>15</span></div>
+<!-- APROVAÇÃO -->
+<section class="s dark approve" data-nofolio>
+  <div class="eyebrow">Lavier Corpo &amp; Mente</div>
+  <h1>Aguardamos <em>sua aprovação</em></h1>
+  <dl><dt>Projeto:</dt><dd>Lavier Corpo &amp; Mente</dd><dt>Cliente:</dt><dd>Larissa Xavier, esteticista e terapeuta</dd><dt>Ano:</dt><dd>2026</dd></dl>
+  <img src="Logos/uma-cor-rose-claro-transparente.png" alt="">
+  <span class="yr">2026</span>
 </section>
 
+<script>
+const C=[
+ {k:'creme',n:'Creme',hex:'#F4E9E1',rgb:'244 233 225',cmyk:'0 5 8 4',t:'#4A5233',
+  sig:'Leveza, acolhimento e naturalidade. É a base luminosa e tranquila da marca, a cor da pausa.',
+  apl:'Cor principal de fundos e áreas de respiro: papelaria, redes sociais, embalagens e site. No espaço físico, paredes, tecidos e toalhas.'},
+ {k:'rclaro',n:'Rosé claro',hex:'#F5C6B8',rgb:'245 198 184',cmyk:'0 19 25 4',t:'#4A5233',
+  sig:'Delicadeza e feminilidade. Aquece a paleta sem pesar e traz proximidade.',
+  apl:'Faixas de destaque, fundos secundários e itálicos sobre o verde escuro. No espaço, almofadas, flores e pequenos objetos.'},
+ {k:'rgold',n:'Rosé gold',hex:'#E3A294',rgb:'227 162 148',cmyk:'0 29 35 11',t:'#4A5233',
+  sig:'O brilho do metal da logo. Sofisticação calorosa, sem frieza.',
+  apl:'Detalhes, capas e chamadas curtas. Na gráfica, é a cor de referência para o hot stamping rosé.'},
+ {k:'rescuro',n:'Rosé escuro',hex:'#C98778',rgb:'201 135 120',cmyk:'0 33 40 21',t:'#FBF6F1',
+  sig:'Profundidade e calor. Dá contorno à delicadeza dos rosés claros.',
+  apl:'Linhas, ícones e ornamentos. Para texto sobre fundo claro, use o tom mais fundo #A86A5C, que garante a leitura.'},
+ {k:'dourado',n:'Dourado',hex:'#C9A15B',rgb:'201 161 91',cmyk:'0 20 55 21',t:'#4A5233',
+  sig:'Valor e cuidado com o detalhe. É o fio que costura a identidade.',
+  apl:'Fios, cantoneiras, arcos e números, sempre em pequenas doses. No espaço, metais, puxadores e molduras.'},
+ {k:'oliva',n:'Oliva',hex:'#6B7A4B',rgb:'107 122 75',cmyk:'12 0 39 52',t:'#FBF6F1',
+  sig:'Natureza e renovação. É a cor das folhas do símbolo e da transformação.',
+  apl:'Elementos de apoio, ícones e a versão oliva da logo. No espaço, plantas, cerâmicas e tecidos naturais.'},
+ {k:'verde',n:'Verde escuro',hex:'#4A5233',rgb:'74 82 51',cmyk:'10 0 38 68',t:'#F4E9E1',
+  sig:'Confiança, equilíbrio e a calma da mente. É a âncora de contraste da marca.',
+  apl:'Textos, botões, faixas e rodapés, usado com estratégia para manter sua força. No espaço, marcenaria, sinalização e fachada.'},
+];
+const tint=(hex,mix)=>{const v=parseInt(hex.slice(1),16),c=[v>>16,v>>8&255,v&255].map(x=>Math.round(x*(1-mix)));return `rgb(${c.join(',')})`};
+const tints=h=>`<div class="tints">${[.06,.12,.18].map(m=>`<span style="background:${tint(h,m)}"></span>`).join('')}</div>`;
+document.getElementById('palette').innerHTML=`<div class="eyebrow">Paleta</div><div class="cards">${C.map(c=>`<div class="ccard"><div class="sw" style="background:${c.hex};color:${c.t};${c.k==='creme'?'outline:1px solid rgba(74,82,51,.25);outline-offset:-1px':''}">${c.n}</div>${tints(c.hex)}<div class="hex">${c.hex}</div></div>`).join('')}</div>`;
+document.getElementById('colorpages').outerHTML=C.map(c=>`<section class="s"><div class="color"><div class="big"><div class="sw" style="background:${c.hex};color:${c.t};${c.k==='creme'?'outline:1px solid rgba(74,82,51,.25);outline-offset:-1px':''}">${c.n}</div>${tints(c.hex)}</div><div><h2>${c.n}</h2><div class="row"><span class="label">Significado</span><p class="muted">${c.sig}</p></div><div class="row"><span class="label">Aplicação</span><p class="muted">${c.apl}</p></div><div class="codes"><span><b>HEX</b>${c.hex}</span><span><b>RGB</b>${c.rgb}</span><span><b>CMYK*</b>${c.cmyk}</span></div><p class="small muted" style="margin-top:16px">* CMYK aproximado. Peça à gráfica uma prova de cor antes de imprimir em quantidade.</p></div></div></section>`).join('');
+
+const L=[
+ ['metalica','creme','#F4E9E1','#4A5233','Metálica','A versão principal. Sempre sobre fundo claro.'],
+ ['metalica','branco','#FBF6F1','#4A5233','Metálica','Sobre branco quente: papelaria, site e embalagens.'],
+ ['rose','verde','#4A5233','#F4E9E1','Rosé','A versão para o verde escuro: mantém o brilho do metal e o descritor legível.'],
+ ['oliva','creme','#F4E9E1','#4A5233','Oliva','Versão tonal, com o relevo do metal em verde. Para peças discretas.'],
+ ['oliva','rose-claro','#F5C6B8','#4A5233','Oliva','Sobre o rosé claro, a versão oliva mantém o contraste.'],
+ ['uma-cor-verde','creme','#F4E9E1','#4A5233','Uma cor · verde','Para carimbo, gravação, bordado e impressão em uma cor.'],
+ ['uma-cor-verde','rose-claro','#F5C6B8','#4A5233','Uma cor · verde','Sobre o rosé claro, em impressões de uma cor.'],
+ ['uma-cor-creme','verde','#4A5233','#F4E9E1','Uma cor · creme','Para o verde escuro: fachada, uniforme, sacolas e hot stamping.'],
+ ['uma-cor-rose-claro','verde','#4A5233','#F4E9E1','Uma cor · rosé claro','Para o verde escuro, com mais calor que o creme.'],
+];
+const BGN={creme:'fundo creme',branco:'fundo branco quente','rose-claro':'fundo rosé claro',verde:'fundo verde escuro'};
+document.getElementById('logopages').outerHTML=L.map(([v,b,bg,fg,n,u])=>`<section class="s logo-slide" style="background:${bg};color:${fg}" data-nofolio><div class="use"><h3>${n}</h3><p style="opacity:.85">${u}</p></div><img src="Logos/${v}-transparente.png" alt="Logo Lavier, versão ${n}"><span class="cap">${n} · ${BGN[b]}</span><span class="file">Logos/${v}-com-fundo-${b}.png</span></section>`).join('');
+
+const X='<svg class="x" viewBox="0 0 26 26"><circle cx="13" cy="13" r="13" fill="#A86A5C"/><path d="M9 9l8 8M17 9l-8 8" stroke="#FBF6F1" stroke-width="1.6" stroke-linecap="round"/></svg>';
+const STR=`<svg style="position:absolute;inset:0;width:100%;height:100%" viewBox="0 0 400 200" preserveAspectRatio="none">${Array.from({length:22},(_,i)=>`<polygon points="${i*26-120},200 ${i*26-120+26},200 ${i*26+26},0 ${i*26},0" fill="${['#C98778','#6B7A4B','#F5C6B8','#C9A15B'][i%4]}"/>`).join('')}</svg>`;
+const D=[
+ ['','Logos/metalica-transparente.png','transform:scaleX(1.45)','Esticar ou achatar','Redimensione sempre mantendo a proporção.'],
+ ['','Logos/metalica-transparente.png','transform:rotate(-18deg)','Girar ou inclinar','O logo fica sempre na horizontal.'],
+ ['','img/errado-cores.png','','Trocar as cores','Use só as versões da pasta Logos.'],
+ ['background:#4A5233','Logos/metalica-transparente.png','','Metálica no verde','O descritor some. No verde, use a versão rosé ou de uma cor.'],
+ ['busy','Logos/metalica-transparente.png','','Fundo carregado','Sobre foto ou estampa, só em área lisa e calma.'],
+ ['','img/errado-sombra.png','','Sombras e efeitos','O brilho do metal já está no desenho.'],
+];
+document.getElementById('donts').innerHTML=D.map(([bg,src,st,h,p])=>`<div class="dont"><div class="dont__tile" style="${bg==='busy'?'':bg}">${bg==='busy'?STR:''}<img src="${src}" style="${st}" alt="">${X}</div><h3>${h}</h3><p>${p}</p></div>`).join('');
+
+const W=['Feminina','Natural','Cuidadosa','Elegante','Equilibrada','Delicada','Atemporal','Transformadora','Próxima','Intuitiva'];
+document.getElementById('ring').innerHTML=W.map((w,i)=>{const a=(i/W.length)*2*Math.PI-Math.PI/2;return `<text x="${(280+200*Math.cos(a)).toFixed(1)}" y="${(285+200*Math.sin(a)).toFixed(1)}">${w}</text>`}).join('');
+
+// cabeçalho e rodapé: capa, divisórias e slides da logo ficam limpos
+let n=0;document.querySelectorAll('section.s').forEach(s=>{n++;const num=String(n).padStart(2,'0');
+  if(s.classList.contains('divider')){s.insertAdjacentHTML('beforeend','<span class="hd">Lavier Corpo &amp; Mente</span>');return}
+  if(s.hasAttribute('data-nofolio'))return;
+  s.insertAdjacentHTML('beforeend',`<span class="hd">Lavier Corpo &amp; Mente</span><div class="ft"><span>${num}</span><span>Projeto de Marca &amp; Identidade Visual | 2026</span></div>`)});
+</script>
 </body>
 </html>

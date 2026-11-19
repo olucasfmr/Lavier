@@ -1,0 +1,136 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>encode</title></head>
+<body>
+<script>
+// Encodes work/frames/*.jpg (H.264) and work/audio.wav (AAC) with Chrome's WebCodecs, writes a plain
+// MP4 (ftyp, moov, mdat) and posts it to the server as out/brag.mp4. Frame 0 is replaced by the poster.
+const q = new URLSearchParams(location.search);
+const N = +q.get('n'), FPS = 30, W = 1920, H = 1080, POSTER = q.get('poster');
+const log = (...a) => console.log('[enc]', ...a);
+
+// ---------- byte helpers
+const u8 = n => new Uint8Array([n & 255]);
+const u16 = n => new Uint8Array([(n >> 8) & 255, n & 255]);
+const u24 = n => new Uint8Array([(n >> 16) & 255, (n >> 8) & 255, n & 255]);
+const u32 = n => new Uint8Array([(n >>> 24) & 255, (n >>> 16) & 255, (n >>> 8) & 255, n & 255]);
+const str = s => new Uint8Array([...s].map(c => c.charCodeAt(0)));
+const zeros = n => new Uint8Array(n);
+const cat = parts => { const len = parts.reduce((a, p) => a + p.length, 0), o = new Uint8Array(len); let k = 0; for (const p of parts) { o.set(p, k); k += p.length; } return o; };
+const box = (type, ...parts) => { const body = cat(parts.flat()); return cat([u32(body.length + 8), str(type), body]); };
+const full = (type, v, flags, ...parts) => box(type, u8(v), u24(flags), ...parts);
+const MATRIX = cat([u32(0x00010000), u32(0), u32(0), u32(0), u32(0x00010000), u32(0), u32(0), u32(0), u32(0x40000000)]);
+
+function trak({ id, handler, timescale, duration, movieDur, sampleEntry, sizes, offsets, sttsEntries, syncs, video }) {
+  const tkhd = full('tkhd', 0, 3, u32(0), u32(0), u32(id), u32(0), u32(movieDur), zeros(8), u16(0), u16(0), u16(video ? 0 : 0x0100), u16(0), MATRIX,
+    u32(video ? W << 16 : 0), u32(video ? H << 16 : 0));
+  const mdhd = full('mdhd', 0, 0, u32(0), u32(0), u32(timescale), u32(duration), u16(0x55c4), u16(0));
+  const hdlr = full('hdlr', 0, 0, u32(0), str(handler), zeros(12), str(video ? 'VideoHandler\0' : 'SoundHandler\0'));
+  const xmhd = video ? full('vmhd', 0, 1, zeros(8)) : full('smhd', 0, 0, u16(0), u16(0));
+  const dinf = box('dinf', full('dref', 0, 0, u32(1), full('url ', 0, 1)));
+  const stsd = full('stsd', 0, 0, u32(1), sampleEntry);
+  const stts = full('stts', 0, 0, u32(sttsEntries.length), ...sttsEntries.map(([c, d]) => cat([u32(c), u32(d)])));
+  const stss = syncs ? full('stss', 0, 0, u32(syncs.length), ...syncs.map(s => u32(s))) : null;
+  const stsc = full('stsc', 0, 0, u32(1), u32(1), u32(1), u32(1));
+  const stsz = full('stsz', 0, 0, u32(0), u32(sizes.length), ...sizes.map(s => u32(s)));
+  const stco = full('stco', 0, 0, u32(offsets.length), ...offsets.map(o => u32(o)));
+  const stbl = box('stbl', stsd, stts, ...(stss ? [stss] : []), stsc, stsz, stco);
+  return box('trak', tkhd, box('mdia', mdhd, hdlr, box('minf', xmhd, dinf, stbl)));
+}
+
+function avc1(avcC) {
+  return box('avc1', zeros(6), u16(1), u16(0), u16(0), zeros(12), u16(W), u16(H), u32(0x00480000), u32(0x00480000), u32(0), u16(1),
+    zeros(32), u16(0x0018), u16(0xffff), box('avcC', avcC), box('pasp', u32(1), u32(1)));
+}
+function mp4a(asc, bitrate) {
+  const dsi = cat([u8(5), u8(asc.length), asc]);
+  const dcd = cat([u8(0x40), u8(0x15), u24(0), u32(bitrate), u32(bitrate), dsi]);
+  const dcdD = cat([u8(4), u8(dcd.length), dcd]);
+  const sl = cat([u8(6), u8(1), u8(2)]);
+  const es = cat([u16(0), u8(0), dcdD, sl]);
+  const esD = cat([u8(3), u8(es.length), es]);
+  return box('mp4a', zeros(6), u16(1), zeros(8), u16(2), u16(16), u16(0), u16(0), u32(48000 << 16), full('esds', 0, 0, esD));
+}
+
+// ---------- video
+async function encodeVideo() {
+  const chunks = []; let desc = null;
+  const enc = new VideoEncoder({
+    output: (c, meta) => { const d = new Uint8Array(c.byteLength); c.copyTo(d); chunks.push({ d, key: c.type === 'key' }); if (meta?.decoderConfig?.description && !desc) desc = new Uint8Array(meta.decoderConfig.description); },
+    error: e => { throw e; },
+  });
+  enc.configure({ codec: 'avc1.640028', width: W, height: H, bitrate: 16e6, framerate: FPS, latencyMode: 'quality', avc: { format: 'avc' } });
+  // RGB to I420 here, BT.709 limited range (what players assume), so the colours match the frames
+  const cv = new OffscreenCanvas(W, H), cx = cv.getContext('2d', { willReadFrequently: true });
+  const yuv = new Uint8Array(W * H * 3 / 2), Y = yuv.subarray(0, W * H), U = yuv.subarray(W * H, W * H * 5 / 4), V = yuv.subarray(W * H * 5 / 4);
+  const toI420 = px => {
+    for (let k = 0, j = 0; k < W * H; k++, j += 4) Y[k] = Math.round(16 + 0.1826 * px[j] + 0.6142 * px[j + 1] + 0.0620 * px[j + 2]);
+    for (let y = 0; y < H / 2; y++) for (let x = 0; x < W / 2; x++) {
+      let r = 0, g = 0, b = 0;
+      for (const [dx, dy] of [[0, 0], [1, 0], [0, 1], [1, 1]]) { const j = ((2 * y + dy) * W + 2 * x + dx) * 4; r += px[j]; g += px[j + 1]; b += px[j + 2]; }
+      r /= 4; g /= 4; b /= 4;
+      U[y * W / 2 + x] = Math.round(128 - 0.1006 * r - 0.3386 * g + 0.4392 * b);
+      V[y * W / 2 + x] = Math.round(128 + 0.4392 * r - 0.3989 * g - 0.0403 * b);
+    }
+  };
+  const cs = { primaries: 'bt709', transfer: 'bt709', matrix: 'bt709', fullRange: false };
+  for (let i = 0; i < N; i++) {
+    const src = i === 0 && POSTER ? POSTER : `frames/${String(i).padStart(5, '0')}.jpg`;
+    const bmp = await createImageBitmap(await (await fetch(src)).blob());
+    cx.drawImage(bmp, 0, 0); bmp.close();
+    toI420(cx.getImageData(0, 0, W, H).data);
+    const vf = new VideoFrame(yuv, { format: 'I420', codedWidth: W, codedHeight: H, timestamp: Math.round(i * 1e6 / FPS), duration: Math.round(1e6 / FPS), colorSpace: cs });
+    enc.encode(vf, { keyFrame: i % 60 === 0 }); vf.close();
+    while (enc.encodeQueueSize > 6) await new Promise(r => setTimeout(r, 5));
+    if (i % 100 === 0) log('video', i);
+  }
+  await enc.flush(); enc.close();
+  return { chunks, desc };
+}
+
+// ---------- audio
+async function encodeAudio() {
+  const buf = new DataView(await (await fetch('audio.wav')).arrayBuffer());
+  const frames = (buf.byteLength - 44) / 4, L = new Float32Array(frames), R = new Float32Array(frames);
+  for (let i = 0; i < frames; i++) { L[i] = buf.getInt16(44 + i * 4, true) / 32768; R[i] = buf.getInt16(46 + i * 4, true) / 32768; }
+  const chunks = []; let desc = null;
+  const enc = new AudioEncoder({
+    output: (c, meta) => { const d = new Uint8Array(c.byteLength); c.copyTo(d); chunks.push({ d }); if (meta?.decoderConfig?.description && !desc) desc = new Uint8Array(meta.decoderConfig.description); },
+    error: e => { throw e; },
+  });
+  enc.configure({ codec: 'mp4a.40.2', sampleRate: 48000, numberOfChannels: 2, bitrate: 192000 });
+  const B = 1024;
+  for (let k = 0; k < frames; k += B) {
+    const n = Math.min(B, frames - k), data = new Float32Array(n * 2);
+    data.set(L.subarray(k, k + n), 0); data.set(R.subarray(k, k + n), n);
+    enc.encode(new AudioData({ format: 'f32-planar', sampleRate: 48000, numberOfFrames: n, numberOfChannels: 2, timestamp: Math.round(k * 1e6 / 48000), data }));
+  }
+  await enc.flush(); enc.close();
+  return { chunks, desc: desc || new Uint8Array([0x11, 0x90]) };
+}
+
+window.done = (async () => {
+  const v = await encodeVideo(); log('video chunks', v.chunks.length);
+  const a = await encodeAudio(); log('audio chunks', a.chunks.length);
+  const VTS = 90000, vDur = N * 3000, movieDur = Math.round(N / FPS * 1000);
+  const aDur = a.chunks.length * 1024;
+  const ftyp = box('ftyp', str('isom'), u32(512), str('isom'), str('iso2'), str('avc1'), str('mp41'));
+  const build = (vOff, aOff) => box('moov',
+    full('mvhd', 0, 0, u32(0), u32(0), u32(1000), u32(movieDur), u32(0x00010000), u16(0x0100), zeros(10), MATRIX, zeros(24), u32(3)),
+    trak({ id: 1, handler: 'vide', timescale: VTS, duration: vDur, movieDur, video: true, sampleEntry: avc1(v.desc), sizes: v.chunks.map(c => c.d.length),
+      offsets: vOff, sttsEntries: [[v.chunks.length, 3000]], syncs: v.chunks.map((c, i) => c.key ? i + 1 : 0).filter(Boolean) }),
+    trak({ id: 2, handler: 'soun', timescale: 48000, duration: aDur, movieDur, video: false, sampleEntry: mp4a(a.desc, 192000), sizes: a.chunks.map(c => c.d.length),
+      offsets: aOff, sttsEntries: [[a.chunks.length, 1024]] }));
+  // sizes do not depend on the offset values, so measure once with zeros, then place
+  const moovSize = build(v.chunks.map(() => 0), a.chunks.map(() => 0)).length;
+  let pos = ftyp.length + moovSize + 8;
+  const vOff = v.chunks.map(c => { const o = pos; pos += c.d.length; return o; });
+  const aOff = a.chunks.map(c => { const o = pos; pos += c.d.length; return o; });
+  const moov = build(vOff, aOff);
+  const mdatBody = [...v.chunks.map(c => c.d), ...a.chunks.map(c => c.d)];
+  const mdatLen = mdatBody.reduce((s, d) => s + d.length, 0) + 8;
+  const file = new Blob([ftyp, moov, u32(mdatLen), str('mdat'), ...mdatBody], { type: 'video/mp4' });
+  await fetch('/__save?name=brag.mp4', { method: 'POST', body: file });
+  return { bytes: file.size, video: v.chunks.length, audio: a.chunks.length, keys: v.chunks.filter(c => c.key).length };
+})();
+</script>
+</body></html>
